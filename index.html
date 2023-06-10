@@ -179,6 +179,76 @@
     
     
     <article
+  id="post-gprMax笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/"
+    >gprMax 学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-06-10T12:20:57.000Z" itemprop="datePublished">2023-06-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gprMax/">gprMax</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="What-is-gprMax"><a href="#What-is-gprMax" class="headerlink" title="What is gprMax"></a>What is gprMax</h2><p><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em>adar (GPR)** but can also be used to model electromagnetic wave propagation for many other applications.</p>
+<h2 id="Input-file-commands"><a href="#Input-file-commands" class="headerlink" title="Input file commands"></a>Input file commands</h2><p><em><em>the hash character (#)</em></em>sh character (#)** is reserved and is used to denote the beginning of a command which will be passed to gprMax:<br><code>#command_name: parameter1 parameter2 parameter3 ...</code> </p>
+<p>The commands have been grouped into six categories:</p>
+<ul>
+<li>Essential - required to run any model, such as the domain size and spatial discretization</li>
+<li>General - provide further control over the model</li>
+<li>Material - used to introduce different materials into the model</li>
+<li>Object construction - used to build geometric shapes with different constitutive parameters</li>
+<li>Source and output - used to place source and output points in the model</li>
+<li>PML - provide advanced customisation and optimisation of the absorbing boundary conditions</li>
+</ul>
+<h3 id="Essential-commands"><a href="#Essential-commands" class="headerlink" title="Essential commands"></a>Essential commands</h3><h4 id="domain"><a href="#domain" class="headerlink" title="domain:"></a>domain:</h4><p>Allows you to specify the size of the model: <code>#domain: f1 f2 f3</code><br>where f1 f2 f3 are the size of the model in the x, y, and z directions respectively.</p>
+<h4 id="dx-dy-dz"><a href="#dx-dy-dz" class="headerlink" title="dx_dy_dz:"></a>dx_dy_dz:</h4><p>Specify the discretization of space in the x , y and z directions respectively ( Δx, Δy, Δz).<br><code>#dx_dy_dz: f1 f2 f3</code><br>The spatial discretization controls the maximum permissible time step Δt with which the solution advances in time in order to reach the required simulated time window. The relation between Δt and Δx, Δy, Δz is:</p>
+<script type="math/tex; mode=display">
+\Delta t \leq \frac{1}{c \sqrt{\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}+\frac{1}{(\Delta z)^2}}}</script><p>where c is the speed of light. The equality is used to determine Δt from Δx, Δy, and Δz.</p>
+<h4 id="time-window"><a href="#time-window" class="headerlink" title="time_window:"></a>time_window:</h4><p>Specify the total required simulated time: <code>#time_window: f1</code> or <code>#time_window: i1</code><br>In the first case the f1 parameter determines the required simulated time in seconds. Alternatively, if the command is specified with an i1 gprMax will interpret this value as a total number of iterations. The number of iterations and the total simulated time window are related by:  </p>
+<script type="math/tex; mode=display">
+t_w = \Delta t \times N_it</script> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gprMax/" rel="tag">gprMax</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-python-数据分析"
   class="article article-type-post"
   itemscope
@@ -210,7 +280,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="python基本语法回顾"><a href="#python基本语法回顾" class="headerlink" title="python基本语法回顾"></a>python基本语法回顾</h2><p>Jupyter 内联 matplotlib 绘图:  <code>%matplotlib inline</code></p>
+  <h2 id="python基本语法回顾"><a href="#python基本语法回顾" class="headerlink" title="python基本语法回顾"></a>python基本语法回顾</h2><p>Jupyter 内联 matplotlib 绘图:  <code>%matplotlib inline</code><br>Python 解释器： <code>#ff</code><br>在python中，模块是以 .py 为后缀名并包含 Python 代码的文件。从相同路径下的导入.py文件中定义的函数： <code>import some_module</code>  <code>result = some_module.f(5)</code><br><code>is/is not</code>:  检查两个引用是否指向同一个对象(list 总是创建一个新的Python列表)， <code>==</code> 是判断两个引用中的对象值是否相同。</p>
  
       <!-- reward -->
       
