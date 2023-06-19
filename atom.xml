@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-06-10T14:05:23.199Z</updated>
+  <updated>2023-06-19T12:26:02.301Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>白噪声</title>
+    <link href="http://josiechourx.top/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/"/>
+    <id>http://josiechourx.top/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/</id>
+    <published>2023-06-19T12:14:29.000Z</published>
+    <updated>2023-06-19T12:26:02.301Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;白噪声&quot;&gt;&lt;a href=&quot;#白噪声&quot; class=&quot;headerlink&quot; title=&quot;白噪声&quot;&gt;&lt;/a&gt;白噪声&lt;/h2&gt;&lt;p&gt;白噪声源自white noise的翻译，其中的 “白” 应该是指其频谱特性是一条直线，并无其他有效信息。&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="signal and system" scheme="http://josiechourx.top/tags/signal-and-system/"/>
+    
+  </entry>
   
   <entry>
     <title>gprMax 学习</title>
@@ -67,15 +91,25 @@
   </entry>
   
   <entry>
-    <title>hello world</title>
+    <title>天线圣经 Chapter(一)</title>
     <link href="http://josiechourx.top/2023/06/03/hello-world/"/>
     <id>http://josiechourx.top/2023/06/03/hello-world/</id>
     <published>2023-06-03T15:29:29.000Z</published>
-    <updated>2023-06-03T15:29:29.548Z</updated>
+    <updated>2023-06-17T14:00:59.547Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-1-天线简介&quot;&gt;&lt;a href=&quot;#1-1-天线简介&quot; class=&quot;headerlink&quot; title=&quot;1.1 天线简介&quot;&gt;&lt;/a&gt;1.1</summary>
+        
+      
     
     
     
     
+    <category term="Antenna theory" scheme="http://josiechourx.top/tags/Antenna-theory/"/>
     
   </entry>
   
