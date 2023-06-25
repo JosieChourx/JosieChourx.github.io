@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-06-19T12:26:02.301Z</updated>
+  <updated>2023-06-25T03:24:12.217Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gprMax(二) Analytical solution</title>
+    <link href="http://josiechourx.top/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/"/>
+    <id>http://josiechourx.top/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/</id>
+    <published>2023-06-24T07:36:47.000Z</published>
+    <updated>2023-06-25T03:24:12.217Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Generation-of-Electromagnetic-Waves&quot;&gt;&lt;a href=&quot;#Generation-of-Electromagnetic-Waves&quot; class=&quot;headerlink&quot; title=&quot;Generation of</summary>
+        
+      
+    
+    
+    
+    <category term="gprMax" scheme="http://josiechourx.top/categories/gprMax/"/>
+    
+    
+    <category term="gprMax" scheme="http://josiechourx.top/tags/gprMax/"/>
+    
+  </entry>
   
   <entry>
     <title>白噪声</title>
@@ -42,10 +67,35 @@
   
   <entry>
     <title>gprMax 学习</title>
+    <link href="http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/"/>
+    <id>http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/</id>
+    <published>2023-06-10T12:20:57.000Z</published>
+    <updated>2023-06-24T07:35:21.519Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;What-is-gprMax&quot;&gt;&lt;a href=&quot;#What-is-gprMax&quot; class=&quot;headerlink&quot; title=&quot;What is gprMax&quot;&gt;&lt;/a&gt;What is gprMax&lt;/h2&gt;&lt;p&gt;&lt;em&gt;&lt;em&gt;Ground</summary>
+        
+      
+    
+    
+    
+    <category term="gprMax" scheme="http://josiechourx.top/categories/gprMax/"/>
+    
+    
+    <category term="gprMax" scheme="http://josiechourx.top/tags/gprMax/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gprMax 学习</title>
     <link href="http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/"/>
     <id>http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/</id>
     <published>2023-06-10T12:20:57.000Z</published>
-    <updated>2023-06-10T14:05:23.199Z</updated>
+    <updated>2023-06-24T07:35:21.519Z</updated>
     
     
       
