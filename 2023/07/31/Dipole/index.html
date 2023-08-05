@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>gprMax 学习 |  Per Aspera Ad Astra</title>
+      <title>Dipole |  Per Aspera Ad Astra</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -67,7 +67,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-gprMax笔记"
+  id="post-Dipole"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -78,7 +78,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  gprMax 学习
+  Dipole
 </h1>
  
 
@@ -86,11 +86,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2023-06-10T12:20:57.000Z" itemprop="datePublished">2023-06-10</time>
+      <a href="/2023/07/31/Dipole/" class="article-date">
+  <time datetime="2023-07-31T14:53:57.000Z" itemprop="datePublished">2023-07-31</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/gprMax/">gprMax</a>
+    <a class="article-category-link" href="/categories/Antenna/">Antenna</a>
   </div>
   
 <div class="word_count">
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">327</span>
+            <span class="post-count">2.8k</span>
         </span>
     </span>
 
@@ -107,7 +107,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">15 分钟</span>
         </span>
     </span>
 </div>
@@ -122,24 +122,133 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="What-is-gprMax"><a href="#What-is-gprMax" class="headerlink" title="What is gprMax"></a>What is gprMax</h2><p><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em>adar (GPR)** but can also be used to model electromagnetic wave propagation for many other applications.</p>
-<h2 id="Input-file-commands"><a href="#Input-file-commands" class="headerlink" title="Input file commands"></a>Input file commands</h2><p><em><em>the hash character (#)</em></em>sh character (#)** is reserved and is used to denote the beginning of a command which will be passed to gprMax:<br><code>#command_name: parameter1 parameter2 parameter3 ...</code> </p>
-<p>The commands have been grouped into six categories:</p>
-<ul>
-<li>Essential - required to run any model, such as the domain size and spatial discretization</li>
-<li>General - provide further control over the model</li>
-<li>Material - used to introduce different materials into the model</li>
-<li>Object construction - used to build geometric shapes with different constitutive parameters</li>
-<li>Source and output - used to place source and output points in the model</li>
-<li>PML - provide advanced customisation and optimisation of the absorbing boundary conditions</li>
-</ul>
-<h3 id="Essential-commands"><a href="#Essential-commands" class="headerlink" title="Essential commands"></a>Essential commands</h3><h4 id="domain"><a href="#domain" class="headerlink" title="domain:"></a>domain:</h4><p>Allows you to specify the size of the model: <code>#domain: f1 f2 f3</code><br>where f1 f2 f3 are the size of the model in the x, y, and z directions respectively.</p>
-<h4 id="dx-dy-dz"><a href="#dx-dy-dz" class="headerlink" title="dx_dy_dz:"></a>dx_dy_dz:</h4><p>Specify the discretization of space in the x , y and z directions respectively ( Δx, Δy, Δz).<br><code>#dx_dy_dz: f1 f2 f3</code><br>The spatial discretization controls the maximum permissible time step Δt with which the solution advances in time in order to reach the required simulated time window. The relation between Δt and Δx, Δy, Δz is:</p>
+  <h1 id="Electric-Dipole-详解"><a href="#Electric-Dipole-详解" class="headerlink" title="Electric Dipole 详解"></a>Electric Dipole 详解</h1><h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
 <script type="math/tex; mode=display">
-\Delta t \leq \frac{1}{c \sqrt{\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}+\frac{1}{(\Delta z)^2}}}</script><p>where c is the speed of light. The equality is used to determine Δt from Δx, Δy, and Δz.</p>
-<h4 id="time-window"><a href="#time-window" class="headerlink" title="time_window:"></a>time_window:</h4><p>Specify the total required simulated time: <code>#time_window: f1</code> or <code>#time_window: i1</code><br>In the first case the f1 parameter determines the required simulated time in seconds. Alternatively, if the command is specified with an i1 gprMax will interpret this value as a total number of iterations. The number of iterations and the total simulated time window are related by:  </p>
+\begin{align}
+    Ampere's~Law: ~\nabla\times \vec{H} &= \vec{J}+\frac{\partial \vec{D}}{\partial t}   \tag{1}  \\
+    Faraday's~Law:~\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \tag{2}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{D} &= \rho  \tag{3}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{B} &= 0  \tag{4}  \\
+\end{align}</script><h3 id="1-Vector-and-scalar-potentials"><a href="#1-Vector-and-scalar-potentials" class="headerlink" title="1. Vector and scalar potentials"></a>1. Vector and scalar potentials</h3><p>因为 $\nabla \cdot B=0$，根据 $\nabla \cdot \nabla \times A = 0$，可以定义一个矢量位函数 $A$</p>
 <script type="math/tex; mode=display">
-t_w = \Delta t \times N_it</script> 
+\vec{B}=\nabla \times \vec{A} \tag{5}</script><p>因此上面的(2)式变为</p>
+<script type="math/tex; mode=display">
+\nabla \times (\vec{E}+\frac{\partial{\vec{A}}}{\partial t}) = 0 \tag{6}</script><p>于是，根据 $\nabla \times \nabla\phi = 0$，可以定义一个标量位函数 $\phi$</p>
+<script type="math/tex; mode=display">
+\vec{E}=-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi \tag{7}</script><p>在空气中，介电常数和磁导率分别为 $\epsilon = \epsilon_0 = 8.85 \times 10^{-12} F/m$，$\mu = \mu_0 = 4\pi \times 10^{-7} H/m$。自由空间中的本构关系为 $\vec{D} = \epsilon_0 \vec{E}$ 和 $\vec{B} = \mu_0 \vec{H}$。</p>
+<p>接下来借用本构关系和Maxwell方程中的(1)和(3)，构造出只含位函数的方程，根据(3)式可以得到</p>
+<script type="math/tex; mode=display">
+\nabla \cdot (\epsilon_0 \vec{E}) = \rho  \\
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right) = \frac{\rho}{\epsilon_0} \\</script><p>由 nabla operator 的性质 $\nabla^2 f = \nabla \cdot (\nabla f) $</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><p>根据(1)式可以得到</p>
+<script type="math/tex; mode=display">
+\nabla\times \vec{H} = \vec{J}+\frac{\partial \vec{D}}{\partial t}\\
+\nabla\times \frac{\vec{B}}{\mu_0} = \vec{J} + \epsilon_0 \frac{\partial{\vec{E}}}{\partial{t}}\\
+\nabla\times(\nabla \times \vec{A}) = \mu_0\vec{J}+\mu_0 \epsilon_0\frac{\partial}{\partial{t}}\left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right)</script><p>由$\nabla^2\vec{A} = \nabla(\nabla\cdot \vec{A})-\nabla\times\nabla\times\vec{A}$ 可以得到</p>
+<script type="math/tex; mode=display">
+\nabla(\nabla\cdot \vec{A}) - \nabla^2\vec{A} = \mu_0\vec{J}+\frac{1}{c^2}\left(-\frac{\partial^2 \vec{A}}{\partial{t^2}}-\frac{\partial (\nabla \phi)}{\partial t}\right) \\
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>因此得到的方程组为</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>可以看出上式中 $\vec{A}$ 和 $\phi$ 的解并不唯一，因此采用 Lorenz condition 来简化这个方程。Lorenz规范如下</p>
+<script type="math/tex; mode=display">
+\nabla \cdot \vec{A} + \frac{1}{c^2}\frac{\partial \phi}{\partial t}=0 \tag{10}</script><p>在这个规范下，(8) 和 (9) 可以转换为</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi - \frac{1}{c^2}\frac{\partial^2\phi}{\partial{t^2}} = -\frac{\rho}{\epsilon_0}  \tag{11}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}} = -\mu_0\vec{J}  \tag{12}</script><p>即真空中的Maxwell方程组可以转换为 (10)-(12) 式。</p>
+<p><em><em>time-harmonic</em></em>c** source，上式可以转换为</p>
+<script type="math/tex; mode=display">
+\nabla \cdot \vec{A}-\frac{i\omega}{c^2}\phi = 0 \tag{13}</script><script type="math/tex; mode=display">
+\nabla^2\phi+k^2\phi = -\frac{\rho}{\epsilon_0} \tag{14}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A}+k^2\vec{A} = -\mu_0 \vec{J} \tag{15}</script><p>其中的转换关系为 </p>
+<script type="math/tex; mode=display">
+\frac{\partial^n}{\partial t^n} = (-i\omega)^n</script><h3 id="2-Dyadic-Green’s-fuction"><a href="#2-Dyadic-Green’s-fuction" class="headerlink" title="2. Dyadic Green’s fuction"></a>2. Dyadic Green’s fuction</h3><p>为了分析由任意电流分布辐射的电磁场，我们需要借助 Dyadic Green’s Function 进行分析计算。</p>
+<p><strong>总体思路为：<br>(1) 求解 $\vec{J}$<br>(2) 再由式 (15) 求解 $\vec{A}$<br>(3) 再由式 (13) 求解 $\phi$<br>(4) 最后由位函数方程 (5) 和 (7) 求解得到场 $\vec{E}$ 和 $\vec{B}$</strong></p>
+<p>根据 (13) 和 (14)， 标量位函数和矢量位函数的每个分量可以表示为</p>
+<script type="math/tex; mode=display">
+\nabla^2\Psi(\vec{r})+k^2\Psi(\vec{r})=-f(\vec{r}) \tag{16}</script><p>其中 $f(\vec{r})$ 表示任意的源分布。可以看出由源 $f(\vec{r})$ 和由其产生的场 $\Psi(\vec{r})$ 之间是线性的关系，故我们可以将 (16) 式看做是一个线性系统，其中 $f(\vec{r})$ 是输入，$\Psi(\vec{r})$ 是其产生的输出。==当输入为一个冲激函数 $\delta$ 时，其产生的脉冲响应函数即为格林函数。==<br>假设有一个点源置于 $\vec{r}’$，即 $f(\vec{r})=\delta(\vec{r}-\vec{r}’)$，故该方程的解即为格林函数 $g(\vec{r},\vec{r}’)$</p>
+<script type="math/tex; mode=display">
+(\nabla^2+k^2)g(\vec{r},\vec{r}') = -\delta(\vec{r}-\vec{r}') \tag{17}</script><p>因为有 $f(\vec{r})=\iiint f(\vec{r})\delta(\vec{r}-\vec{r}’)d\vec{r}’ $，故式(16) 可以表示为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint g(\vec{r},\vec{r}')f(\vec{r}')d\vec{r}' \tag{18}</script><p>为了得到 $g(\vec{r},\vec{r}’)$，将上式简化，考虑 $\vec{r}’=0$，即把源放在原点时的情况，因此 (17) 式可以化简为</p>
+<script type="math/tex; mode=display">
+(\nabla^2+k^2)g(\vec{r}) = -\delta(\vec{r}) \tag{19}</script><p>求解该方程的过程已省略，最后可以得到格林方程为</p>
+<script type="math/tex; mode=display">
+g(\vec{r})=\frac{e^{-jkr}}{4\pi r}</script><p>其中 $r$ 是从观察点到原点的距离。转换为原来的坐标，只需将 $r$ 换为 $|\vec{r}-\vec{r}’|$，因此该标量格林函数可以表示为</p>
+<script type="math/tex; mode=display">
+g(\vec{r},\vec{r}')=\frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}  \tag{20}</script><p>故对于一个任意的点源，将式 (20) 带入 (18) 可以得到位函数通用表达式为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}f(\vec{r}')d\vec{r}' \tag{21}</script><p>因此可以得到位函数 $\vec{A}$ 和 $\phi$，同时也是方程 (14) 和 (15) 的解</p>
+<script type="math/tex; mode=display">
+\Phi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\frac{\rho(\vec{r}')}{\epsilon_0}d\vec{r}' \tag{22}</script><script type="math/tex; mode=display">
+\vec{A}(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{23}</script><p>得到位函数后可以求得场</p>
+<script type="math/tex; mode=display">
+\vec{B}(\vec{r})=\nabla\times\vec{A}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{24}</script><script type="math/tex; mode=display">
+\vec{H}(\vec{r})=\frac{\vec{B}}{\mu_0}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{25}</script><p>最后得到电场分量为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)\cdot\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{26}</script><p>其中 </p>
+<script type="math/tex; mode=display">
+\overline{\overline{G}}(\vec{r}-\vec{r}')=(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)g(\vec{r}-\vec{r}') \tag{27}</script><p>为 ==dyadic Green’s function==. 故 $\vec{E}$最终形式为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0\iiint \overline{\overline{G}}(\vec{r}-\vec{r}')\cdot J(\vec{r}')d\vec{r}' \tag{28}</script><h2 id="（二）-Exact-solution-for-Hertzian-dipole"><a href="#（二）-Exact-solution-for-Hertzian-dipole" class="headerlink" title="（二） Exact solution for Hertzian dipole"></a>（二） Exact solution for Hertzian dipole</h2><p>对于一个任意的在原点的 Hertzian dipole， $\vec{J}(\vec{r})=\vec{I}l\delta (\vec(r))$ ，由式 (25) 可以得到磁场为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{H}(\vec{r}) &= \nabla\times\left(\frac{e^{-jkr}}{4\pi r}\vec{I}l\right)    \\
+    &= \nabla \frac{e^{-jkr}}{4\pi r} \times \vec{I}l \\
+     &= \frac{\partial}{\partial r}\left(\frac{e^{-jkr}}{4\pi r}\right)\times \vec{I}l \\
+     &= \frac{e^{-jkr}}{4\pi r} \hat{r} \times \vec{I}l \left(-jk-\frac{1}{r}\right) \\
+     &= \hat{r} \times \vec{I}l \frac{-jke^{-jkr}}{4\pi r}\left(1-\frac{j}{kr}\right)  \tag{29}
+\end{align}</script><p>根据 Ampere’s Law 可以得到电场</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{1}{j\omega \epsilon_0}\nabla\times \vec{H}(\vec{r})    \\
+    &=\frac{1}{j\omega \epsilon_0}\nabla\times \left[ \hat{r} \times \vec{I}l \frac{e^{-jkr}}{4\pi r}\left(-jk-\frac{1}{r}\right)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}
+\end{align}</script><p>远场和近场：<br>对于远场(辐射场) (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = \frac{-jke^{-jkr}}{4\pi r}\hat{r}\times\vec{I}l \tag{31}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \tag{32}</script><p>对于近场(kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = -\hat{r}\times\vec{I}l\frac{1}{4\pi r^2} \tag{33}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \tag{34}</script><p>因为 current dipole moment $Il$ 是 static electric dipole moment $ql$ 的一阶导，即</p>
+<script type="math/tex; mode=display">
+Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷源</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}=j\omega(ql)\hat{z}=j\omega f \hat{z} \tag{36}</script><p>故式 (30) 又可写为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times\hat{r}\times j\omega f \hat{z}+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot j\omega f \hat{z}-j\omega f \hat{z})\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{-\mu_0e^{-jkr}}{4\pi r}\left[\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\left(\frac{-j\mu_0e^{-jkr}}{4\pi kr^2}-\frac{\mu_0e^{-jkr}}{4\pi k^2r^3}\right)\left[\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi kr^3}\left(jr+\frac{1}{k}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{jr}{k}+\frac{1}{k^2}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(-rc(j\omega)-c^2\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)f ~~ 由于(k=\frac{\omega}{c}), \tau=\frac{r}{c} \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r^3}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{c^2\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{r}{c}(j\omega)f+f\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right) \\
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
+\end{align}</script><p>解析：<br>(1) 第一部分 $\left[\partial^2_t f(t-\tau)\right]$ 是 Radiation field, ==proportional to the acceleration of the charge.== (二次导即为加速度)</p>
+<p>(2) 第二部分 $\left[\tau \partial_t f(t-\tau)\right]$  是 induction field. ==Proportional to speed of charge.== (一次导即为速度)</p>
+<p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
+<p>如果在球坐标下，</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}= Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta} \tag{38}</script><p>(30) 式可写为<br>（1）辐射场 (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \\
+    &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}) \\
+    &=\frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta\hat{\theta} \tag{39}
+\end{align}</script><p>（1）近场 (kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3\hat{r}\hat{r}\cdot(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta})-(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}))\right] \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3Il\cos\theta\hat{r}-Il\cos\theta\hat{r}+Il\sin\theta\hat{\theta}\right] \\
+    &=\frac{Il}{j4\pi\omega\epsilon_0  r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right) \tag{40}
+\end{align}</script> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -209,12 +318,12 @@ t_w = \Delta t \times N_it</script>
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/07/31/Dipole/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gprMax/" rel="tag">gprMax</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
 
     </footer>
   </div>
@@ -222,19 +331,10 @@ t_w = \Delta t \times N_it</script>
    
   <nav class="article-nav">
     
-      <a href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            gprMax 学习
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/06/04/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="article-nav-link">
+      <a href="/2023/07/02/Computational%20electrodynamics/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">python 数据分析</div>
+        <div class="article-nav-title">computational electrodynamics chapter 2</div>
       </a>
     
   </nav>

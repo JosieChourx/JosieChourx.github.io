@@ -179,7 +179,7 @@
     
     
     <article
-  id="post-gprMax(二) Analytical solution"
+  id="post-Dipole"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -190,8 +190,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/"
-    >gprMax(二) Analytical solution</a> 
+  <a class="article-title" href="/2023/07/31/Dipole/"
+    >Dipole</a> 
 </h2>
  
 
@@ -199,62 +199,144 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/" class="article-date">
-  <time datetime="2023-06-24T07:36:47.000Z" itemprop="datePublished">2023-06-24</time>
+      <a href="/2023/07/31/Dipole/" class="article-date">
+  <time datetime="2023-07-31T14:53:57.000Z" itemprop="datePublished">2023-07-31</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/gprMax/">gprMax</a>
+    <a class="article-category-link" href="/categories/Antenna/">Antenna</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="Generation-of-Electromagnetic-Waves"><a href="#Generation-of-Electromagnetic-Waves" class="headerlink" title="Generation of Electromagnetic Waves"></a>Generation of Electromagnetic Waves</h2><p>&emsp;&emsp;  In general, electromagnetic radiation arises when sources of the electromagnetic fields vary in time. </p>
-<p>&emsp; &emsp; Conceptually, the simplest case would be that of a stationary, isolated charge, for which the size of the charge varies with time.</p>
-<p>&emsp; &emsp; The radiation in such a case would be termed monopole radiation;  The simplest way to generate electromagnetic radiation is from a system of electric charges whose electric dipole moment or magnetic dipole moment varies with time.</p>
-<h2 id="Fields-and-Potentials"><a href="#Fields-and-Potentials" class="headerlink" title="Fields and Potentials"></a>Fields and Potentials</h2><p>&emsp; &emsp; Our goal is to find the electric field $\vec{E}$  and the magnetic field $\vec{B}$ in the presence of a time-dependent source, a time-dependent dipole.<br>&emsp; &emsp; Taking the approach of finding first the electric scalar potential $\phi$ and the magnetic vector potential $\vec{A}$, and then deriving the fields using:</p>
+  <h1 id="Electric-Dipole-详解"><a href="#Electric-Dipole-详解" class="headerlink" title="Electric Dipole 详解"></a>Electric Dipole 详解</h1><h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
 <script type="math/tex; mode=display">
-\vec{E} = -\nabla\phi- \frac{\partial\vec{A}}{\partial t} \\
-\vec{B} = \nabla\times\vec{A}</script><p>In the Lorenz gauge, the time-dependent potentials satisfy the wave equations:</p>
+\begin{align}
+    Ampere's~Law: ~\nabla\times \vec{H} &= \vec{J}+\frac{\partial \vec{D}}{\partial t}   \tag{1}  \\
+    Faraday's~Law:~\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \tag{2}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{D} &= \rho  \tag{3}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{B} &= 0  \tag{4}  \\
+\end{align}</script><h3 id="1-Vector-and-scalar-potentials"><a href="#1-Vector-and-scalar-potentials" class="headerlink" title="1. Vector and scalar potentials"></a>1. Vector and scalar potentials</h3><p>因为 $\nabla \cdot B=0$，根据 $\nabla \cdot \nabla \times A = 0$，可以定义一个矢量位函数 $A$</p>
 <script type="math/tex; mode=display">
-\nabla^2\vec{A}-\frac{1}{c^2}\ddot{\vec{A}}=-\mu\vec{J} \tag{1} \\
-\nabla^2\phi-\frac{1}{c^2}\ddot{\phi}=-\frac{\rho}{\epsilon}</script><p>In general, the current density $\vec{J}$ and the charge density $\rho$ can be functions of time.</p>
-<h2 id="Retarded-Potentials"><a href="#Retarded-Potentials" class="headerlink" title="Retarded Potentials"></a>Retarded Potentials</h2><p>Wave equation for the vector potential in (1) has the solution:</p>
+\vec{B}=\nabla \times \vec{A} \tag{5}</script><p>因此上面的(2)式变为</p>
 <script type="math/tex; mode=display">
-\vec{A}(\vec{r},t)=\frac{\mu}{4\pi} \int{\frac{\vec{J}(\vec{r'},t')}{|\vec{r}-\vec{r'}|}} dV'</script><p>where:  </p>
+\nabla \times (\vec{E}+\frac{\partial{\vec{A}}}{\partial t}) = 0 \tag{6}</script><p>于是，根据 $\nabla \times \nabla\phi = 0$，可以定义一个标量位函数 $\phi$</p>
 <script type="math/tex; mode=display">
-t = t' + \frac{|\vec{r}-\vec{r'}|}{c}</script><p>First apply this solution to find the potential, and hence the fields, around an oscillating electric dipole.</p>
-<h2 id="Hertzian-Dipole"><a href="#Hertzian-Dipole" class="headerlink" title="Hertzian Dipole"></a>Hertzian Dipole</h2><p>Suppose the charge is oscillating, such that: $q = q_0e^{jwt}$, then the dipole moment is given by:</p>
+\vec{E}=-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi \tag{7}</script><p>在空气中，介电常数和磁导率分别为 $\epsilon = \epsilon_0 = 8.85 \times 10^{-12} F/m$，$\mu = \mu_0 = 4\pi \times 10^{-7} H/m$。自由空间中的本构关系为 $\vec{D} = \epsilon_0 \vec{E}$ 和 $\vec{B} = \mu_0 \vec{H}$。</p>
+<p>接下来借用本构关系和Maxwell方程中的(1)和(3)，构造出只含位函数的方程，根据(3)式可以得到</p>
 <script type="math/tex; mode=display">
-\vec{p}=q\vec{l}=q_0\vec{l}e^{jwt}=\vec{p_0}e^{jwt}</script><p>We can construct an infinitesimal dipole by taking the limit $|\vec{l}|\rightarrow 0$; but as we do so we allow q_0 to increase, so that the dipole moment remains constant.</p>
-<p><em><em>Hertzian dipole</em></em><em><em>Hertzian dipole</em></em><em><em>Hertzian dipole</em></em><em><em>Hertzian dipole</em></em><strong>Hertzian dipole</strong>.<br>The electric current flow at the midpoint of an oscillating dipole is: </p>
+\nabla \cdot (\epsilon_0 \vec{E}) = \rho  \\
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right) = \frac{\rho}{\epsilon_0} \\</script><p>由 nabla operator 的性质 $\nabla^2 f = \nabla \cdot (\nabla f) $</p>
 <script type="math/tex; mode=display">
-I=\frac{dq}{dt}=j\omega q_0e^{j\omega t}</script><p>where $I_0=j\omega q_0$ is the peak current flow along the z axis.<br>For a Hertzian(infinitesimal)  dipole at the origin, the current is located only at the origin. It follows that:</p>
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><p>根据(1)式可以得到</p>
 <script type="math/tex; mode=display">
-\int{\frac{\vec{J}(\vec{r'},t')}{|\vec{r}-\vec{r'}|}} dV'=\frac{I(t')\vec{l}}{r}=\frac{j\omega q_0 e^{j\omega t'\vec{l}}}{r}</script><p>where $r=|\vec{r}|$<br>Using $\vec{p_0}=q_0\vec{l}$, we can write the integral in terms of the dipole moment:</p>
+\nabla\times \vec{H} = \vec{J}+\frac{\partial \vec{D}}{\partial t}\\
+\nabla\times \frac{\vec{B}}{\mu_0} = \vec{J} + \epsilon_0 \frac{\partial{\vec{E}}}{\partial{t}}\\
+\nabla\times(\nabla \times \vec{A}) = \mu_0\vec{J}+\mu_0 \epsilon_0\frac{\partial}{\partial{t}}\left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right)</script><p>由$\nabla^2\vec{A} = \nabla(\nabla\cdot \vec{A})-\nabla\times\nabla\times\vec{A}$ 可以得到</p>
 <script type="math/tex; mode=display">
-\int{\frac{\vec{J}(\vec{r'},t')}{|\vec{r}-\vec{r'}|}} dV'=j\omega \vec{p_0}\frac{e^{j\omega t'}}{r}</script><p>In spherical polar coordinates, the vector potential $\vec{A}$ is:</p>
+\nabla(\nabla\cdot \vec{A}) - \nabla^2\vec{A} = \mu_0\vec{J}+\frac{1}{c^2}\left(-\frac{\partial^2 \vec{A}}{\partial{t^2}}-\frac{\partial (\nabla \phi)}{\partial t}\right) \\
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>因此得到的方程组为</p>
 <script type="math/tex; mode=display">
-A_r = A\cos\theta \\
-A_\theta = -A\sin\theta  \\
-A_\phi = 0</script><p>where:</p>
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>可以看出上式中 $\vec{A}$ 和 $\phi$ 的解并不唯一，因此采用 Lorenz condition 来简化这个方程。Lorenz规范如下</p>
 <script type="math/tex; mode=display">
-A = \frac{\mu_0}{4\pi}\frac{e^j(\omega t-kr)}{r} j\omega p_0</script><p>The magnetic field \vec{B} is given by:</p>
+\nabla \cdot \vec{A} + \frac{1}{c^2}\frac{\partial \phi}{\partial t}=0 \tag{10}</script><p>在这个规范下，(8) 和 (9) 可以转换为</p>
 <script type="math/tex; mode=display">
-\vec{B} = \nabla \times \vec{A}</script><p>The result for the magnetic field is:</p>
+\nabla^2 \phi - \frac{1}{c^2}\frac{\partial^2\phi}{\partial{t^2}} = -\frac{\rho}{\epsilon_0}  \tag{11}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}} = -\mu_0\vec{J}  \tag{12}</script><p>即真空中的Maxwell方程组可以转换为 (10)-(12) 式。</p>
+<p><em><em>time-harmonic</em></em>c** source，上式可以转换为</p>
 <script type="math/tex; mode=display">
-B_r = 0 \\
-B_\theta = 0 \\
-B_\phi = -\frac{\mu_0}{4\pi} k^2cp_0 \sin\theta(1-\frac{j}{kr})\frac{e^{j(\omega t-kr)}}{r}</script><p>The electric field around a Hertzian dipole can be obtained from Maxwell’s equation:</p>
+\nabla \cdot \vec{A}-\frac{i\omega}{c^2}\phi = 0 \tag{13}</script><script type="math/tex; mode=display">
+\nabla^2\phi+k^2\phi = -\frac{\rho}{\epsilon_0} \tag{14}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A}+k^2\vec{A} = -\mu_0 \vec{J} \tag{15}</script><p>其中的转换关系为 </p>
 <script type="math/tex; mode=display">
-\nabla\times\vec{H} = j\omega\epsilon_0\vec{E}</script><p>or:</p>
+\frac{\partial^n}{\partial t^n} = (-i\omega)^n</script><h3 id="2-Dyadic-Green’s-fuction"><a href="#2-Dyadic-Green’s-fuction" class="headerlink" title="2. Dyadic Green’s fuction"></a>2. Dyadic Green’s fuction</h3><p>为了分析由任意电流分布辐射的电磁场，我们需要借助 Dyadic Green’s Function 进行分析计算。</p>
+<p><strong>总体思路为：<br>(1) 求解 $\vec{J}$<br>(2) 再由式 (15) 求解 $\vec{A}$<br>(3) 再由式 (13) 求解 $\phi$<br>(4) 最后由位函数方程 (5) 和 (7) 求解得到场 $\vec{E}$ 和 $\vec{B}$</strong></p>
+<p>根据 (13) 和 (14)， 标量位函数和矢量位函数的每个分量可以表示为</p>
 <script type="math/tex; mode=display">
-\vec{E}=-\frac{j}{\omega\mu_0\epsilon_0}\nabla\times\vec{B}=-j\frac{c^2}{\omega}\nabla\times\vec{B}</script><p>Then we will obtain:</p>
+\nabla^2\Psi(\vec{r})+k^2\Psi(\vec{r})=-f(\vec{r}) \tag{16}</script><p>其中 $f(\vec{r})$ 表示任意的源分布。可以看出由源 $f(\vec{r})$ 和由其产生的场 $\Psi(\vec{r})$ 之间是线性的关系，故我们可以将 (16) 式看做是一个线性系统，其中 $f(\vec{r})$ 是输入，$\Psi(\vec{r})$ 是其产生的输出。==当输入为一个冲激函数 $\delta$ 时，其产生的脉冲响应函数即为格林函数。==<br>假设有一个点源置于 $\vec{r}’$，即 $f(\vec{r})=\delta(\vec{r}-\vec{r}’)$，故该方程的解即为格林函数 $g(\vec{r},\vec{r}’)$</p>
 <script type="math/tex; mode=display">
-E_r = \frac{j}{4\pi\epsilon_0}2kp_0\cos\theta(1-\frac{j}{kr})\frac{e^{j(\omega t-kr)}}{r^2} \\
-E_\theta = -\frac{1}{4\pi\epsilon_0}k^2p_0\sin\theta(1-\frac{j}{kr}-\frac{1}{k^2r^2})\frac{e^{j(\omega t-kr)}}{r} \\
-E_\phi = 0</script> 
+(\nabla^2+k^2)g(\vec{r},\vec{r}') = -\delta(\vec{r}-\vec{r}') \tag{17}</script><p>因为有 $f(\vec{r})=\iiint f(\vec{r})\delta(\vec{r}-\vec{r}’)d\vec{r}’ $，故式(16) 可以表示为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint g(\vec{r},\vec{r}')f(\vec{r}')d\vec{r}' \tag{18}</script><p>为了得到 $g(\vec{r},\vec{r}’)$，将上式简化，考虑 $\vec{r}’=0$，即把源放在原点时的情况，因此 (17) 式可以化简为</p>
+<script type="math/tex; mode=display">
+(\nabla^2+k^2)g(\vec{r}) = -\delta(\vec{r}) \tag{19}</script><p>求解该方程的过程已省略，最后可以得到格林方程为</p>
+<script type="math/tex; mode=display">
+g(\vec{r})=\frac{e^{-jkr}}{4\pi r}</script><p>其中 $r$ 是从观察点到原点的距离。转换为原来的坐标，只需将 $r$ 换为 $|\vec{r}-\vec{r}’|$，因此该标量格林函数可以表示为</p>
+<script type="math/tex; mode=display">
+g(\vec{r},\vec{r}')=\frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}  \tag{20}</script><p>故对于一个任意的点源，将式 (20) 带入 (18) 可以得到位函数通用表达式为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}f(\vec{r}')d\vec{r}' \tag{21}</script><p>因此可以得到位函数 $\vec{A}$ 和 $\phi$，同时也是方程 (14) 和 (15) 的解</p>
+<script type="math/tex; mode=display">
+\Phi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\frac{\rho(\vec{r}')}{\epsilon_0}d\vec{r}' \tag{22}</script><script type="math/tex; mode=display">
+\vec{A}(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{23}</script><p>得到位函数后可以求得场</p>
+<script type="math/tex; mode=display">
+\vec{B}(\vec{r})=\nabla\times\vec{A}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{24}</script><script type="math/tex; mode=display">
+\vec{H}(\vec{r})=\frac{\vec{B}}{\mu_0}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{25}</script><p>最后得到电场分量为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)\cdot\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{26}</script><p>其中 </p>
+<script type="math/tex; mode=display">
+\overline{\overline{G}}(\vec{r}-\vec{r}')=(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)g(\vec{r}-\vec{r}') \tag{27}</script><p>为 ==dyadic Green’s function==. 故 $\vec{E}$最终形式为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0\iiint \overline{\overline{G}}(\vec{r}-\vec{r}')\cdot J(\vec{r}')d\vec{r}' \tag{28}</script><h2 id="（二）-Exact-solution-for-Hertzian-dipole"><a href="#（二）-Exact-solution-for-Hertzian-dipole" class="headerlink" title="（二） Exact solution for Hertzian dipole"></a>（二） Exact solution for Hertzian dipole</h2><p>对于一个任意的在原点的 Hertzian dipole， $\vec{J}(\vec{r})=\vec{I}l\delta (\vec(r))$ ，由式 (25) 可以得到磁场为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{H}(\vec{r}) &= \nabla\times\left(\frac{e^{-jkr}}{4\pi r}\vec{I}l\right)    \\
+    &= \nabla \frac{e^{-jkr}}{4\pi r} \times \vec{I}l \\
+     &= \frac{\partial}{\partial r}\left(\frac{e^{-jkr}}{4\pi r}\right)\times \vec{I}l \\
+     &= \frac{e^{-jkr}}{4\pi r} \hat{r} \times \vec{I}l \left(-jk-\frac{1}{r}\right) \\
+     &= \hat{r} \times \vec{I}l \frac{-jke^{-jkr}}{4\pi r}\left(1-\frac{j}{kr}\right)  \tag{29}
+\end{align}</script><p>根据 Ampere’s Law 可以得到电场</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{1}{j\omega \epsilon_0}\nabla\times \vec{H}(\vec{r})    \\
+    &=\frac{1}{j\omega \epsilon_0}\nabla\times \left[ \hat{r} \times \vec{I}l \frac{e^{-jkr}}{4\pi r}\left(-jk-\frac{1}{r}\right)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}
+\end{align}</script><p>远场和近场：<br>对于远场(辐射场) (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = \frac{-jke^{-jkr}}{4\pi r}\hat{r}\times\vec{I}l \tag{31}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \tag{32}</script><p>对于近场(kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = -\hat{r}\times\vec{I}l\frac{1}{4\pi r^2} \tag{33}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \tag{34}</script><p>因为 current dipole moment $Il$ 是 static electric dipole moment $ql$ 的一阶导，即</p>
+<script type="math/tex; mode=display">
+Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷源</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}=j\omega(ql)\hat{z}=j\omega f \hat{z} \tag{36}</script><p>故式 (30) 又可写为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times\hat{r}\times j\omega f \hat{z}+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot j\omega f \hat{z}-j\omega f \hat{z})\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{-\mu_0e^{-jkr}}{4\pi r}\left[\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\left(\frac{-j\mu_0e^{-jkr}}{4\pi kr^2}-\frac{\mu_0e^{-jkr}}{4\pi k^2r^3}\right)\left[\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi kr^3}\left(jr+\frac{1}{k}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{jr}{k}+\frac{1}{k^2}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(-rc(j\omega)-c^2\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)f ~~ 由于(k=\frac{\omega}{c}), \tau=\frac{r}{c} \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r^3}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{c^2\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{r}{c}(j\omega)f+f\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right) \\
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
+\end{align}</script><p>解析：<br>(1) 第一部分 $\left[\partial^2_t f(t-\tau)\right]$ 是 Radiation field, ==proportional to the acceleration of the charge.== (二次导即为加速度)</p>
+<p>(2) 第二部分 $\left[\tau \partial_t f(t-\tau)\right]$  是 induction field. ==Proportional to speed of charge.== (一次导即为速度)</p>
+<p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
+<p>如果在球坐标下，</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}= Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta} \tag{38}</script><p>(30) 式可写为<br>（1）辐射场 (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \\
+    &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}) \\
+    &=\frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta\hat{\theta} \tag{39}
+\end{align}</script><p>（1）近场 (kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3\hat{r}\hat{r}\cdot(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta})-(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}))\right] \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3Il\cos\theta\hat{r}-Il\cos\theta\hat{r}+Il\sin\theta\hat{\theta}\right] \\
+    &=\frac{Il}{j4\pi\omega\epsilon_0  r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right) \tag{40}
+\end{align}</script> 
       <!-- reward -->
       
     </div>
@@ -264,7 +346,92 @@ E_\phi = 0</script>
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gprMax/" rel="tag">gprMax</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Computational electrodynamics"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/07/02/Computational%20electrodynamics/"
+    >computational electrodynamics chapter 2</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/02/Computational%20electrodynamics/" class="article-date">
+  <time datetime="2023-07-02T05:50:57.000Z" itemprop="datePublished">2023-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/computational-electrodynamics/">computational electrodynamics</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
+<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
+<script type="math/tex; mode=display">
+u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
+<script type="math/tex; mode=display">
+c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
+<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
+<script type="math/tex; mode=display">
+u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
+<script type="math/tex; mode=display">
+(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
+<script type="math/tex; mode=display">
+\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
+<script type="math/tex; mode=display">
+v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
+<script type="math/tex; mode=display">
+v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
+<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
 
     </footer>
   </div>
@@ -324,250 +491,6 @@ E_\phi = 0</script>
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/signal-and-system/" rel="tag">signal and system</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-gprMax笔记 - 副本"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/"
-    >gprMax 学习</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/" class="article-date">
-  <time datetime="2023-06-10T12:20:57.000Z" itemprop="datePublished">2023-06-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/gprMax/">gprMax</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="What-is-gprMax"><a href="#What-is-gprMax" class="headerlink" title="What is gprMax"></a>What is gprMax</h2><p><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em>adar (GPR)** but can also be used to model electromagnetic wave propagation for many other applications.</p>
-<h2 id="Input-file-commands"><a href="#Input-file-commands" class="headerlink" title="Input file commands"></a>Input file commands</h2><p><em><em>the hash character (#)</em></em>sh character (#)** is reserved and is used to denote the beginning of a command which will be passed to gprMax:<br><code>#command_name: parameter1 parameter2 parameter3 ...</code> </p>
-<p>The commands have been grouped into six categories:</p>
-<ul>
-<li>Essential - required to run any model, such as the domain size and spatial discretization</li>
-<li>General - provide further control over the model</li>
-<li>Material - used to introduce different materials into the model</li>
-<li>Object construction - used to build geometric shapes with different constitutive parameters</li>
-<li>Source and output - used to place source and output points in the model</li>
-<li>PML - provide advanced customisation and optimisation of the absorbing boundary conditions</li>
-</ul>
-<h3 id="Essential-commands"><a href="#Essential-commands" class="headerlink" title="Essential commands"></a>Essential commands</h3><h4 id="domain"><a href="#domain" class="headerlink" title="domain:"></a>domain:</h4><p>Allows you to specify the size of the model: <code>#domain: f1 f2 f3</code><br>where f1 f2 f3 are the size of the model in the x, y, and z directions respectively.</p>
-<h4 id="dx-dy-dz"><a href="#dx-dy-dz" class="headerlink" title="dx_dy_dz:"></a>dx_dy_dz:</h4><p>Specify the discretization of space in the x , y and z directions respectively ( Δx, Δy, Δz).<br><code>#dx_dy_dz: f1 f2 f3</code><br>The spatial discretization controls the maximum permissible time step Δt with which the solution advances in time in order to reach the required simulated time window. The relation between Δt and Δx, Δy, Δz is:</p>
-<script type="math/tex; mode=display">
-\Delta t \leq \frac{1}{c \sqrt{\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}+\frac{1}{(\Delta z)^2}}}</script><p>where c is the speed of light. The equality is used to determine Δt from Δx, Δy, and Δz.</p>
-<h4 id="time-window"><a href="#time-window" class="headerlink" title="time_window:"></a>time_window:</h4><p>Specify the total required simulated time: <code>#time_window: f1</code> or <code>#time_window: i1</code><br>In the first case the f1 parameter determines the required simulated time in seconds. Alternatively, if the command is specified with an i1 gprMax will interpret this value as a total number of iterations. The number of iterations and the total simulated time window are related by:  </p>
-<script type="math/tex; mode=display">
-t_w = \Delta t \times N_it</script> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gprMax/" rel="tag">gprMax</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-gprMax笔记"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/"
-    >gprMax 学习</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2023-06-10T12:20:57.000Z" itemprop="datePublished">2023-06-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/gprMax/">gprMax</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="What-is-gprMax"><a href="#What-is-gprMax" class="headerlink" title="What is gprMax"></a>What is gprMax</h2><p><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em><em><em>Ground Penetrating Radar (GPR)</em></em>adar (GPR)** but can also be used to model electromagnetic wave propagation for many other applications.</p>
-<h2 id="Input-file-commands"><a href="#Input-file-commands" class="headerlink" title="Input file commands"></a>Input file commands</h2><p><em><em>the hash character (#)</em></em>sh character (#)** is reserved and is used to denote the beginning of a command which will be passed to gprMax:<br><code>#command_name: parameter1 parameter2 parameter3 ...</code> </p>
-<p>The commands have been grouped into six categories:</p>
-<ul>
-<li>Essential - required to run any model, such as the domain size and spatial discretization</li>
-<li>General - provide further control over the model</li>
-<li>Material - used to introduce different materials into the model</li>
-<li>Object construction - used to build geometric shapes with different constitutive parameters</li>
-<li>Source and output - used to place source and output points in the model</li>
-<li>PML - provide advanced customisation and optimisation of the absorbing boundary conditions</li>
-</ul>
-<h3 id="Essential-commands"><a href="#Essential-commands" class="headerlink" title="Essential commands"></a>Essential commands</h3><h4 id="domain"><a href="#domain" class="headerlink" title="domain:"></a>domain:</h4><p>Allows you to specify the size of the model: <code>#domain: f1 f2 f3</code><br>where f1 f2 f3 are the size of the model in the x, y, and z directions respectively.</p>
-<h4 id="dx-dy-dz"><a href="#dx-dy-dz" class="headerlink" title="dx_dy_dz:"></a>dx_dy_dz:</h4><p>Specify the discretization of space in the x , y and z directions respectively ( Δx, Δy, Δz).<br><code>#dx_dy_dz: f1 f2 f3</code><br>The spatial discretization controls the maximum permissible time step Δt with which the solution advances in time in order to reach the required simulated time window. The relation between Δt and Δx, Δy, Δz is:</p>
-<script type="math/tex; mode=display">
-\Delta t \leq \frac{1}{c \sqrt{\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}+\frac{1}{(\Delta z)^2}}}</script><p>where c is the speed of light. The equality is used to determine Δt from Δx, Δy, and Δz.</p>
-<h4 id="time-window"><a href="#time-window" class="headerlink" title="time_window:"></a>time_window:</h4><p>Specify the total required simulated time: <code>#time_window: f1</code> or <code>#time_window: i1</code><br>In the first case the f1 parameter determines the required simulated time in seconds. Alternatively, if the command is specified with an i1 gprMax will interpret this value as a total number of iterations. The number of iterations and the total simulated time window are related by:  </p>
-<script type="math/tex; mode=display">
-t_w = \Delta t \times N_it</script> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gprMax/" rel="tag">gprMax</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-python-数据分析"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/06/04/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"
-    >python 数据分析</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/06/04/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="article-date">
-  <time datetime="2023-06-04T01:50:57.000Z" itemprop="datePublished">2023-06-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python%E5%AD%A6%E4%B9%A0/">python学习</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="python基本语法回顾"><a href="#python基本语法回顾" class="headerlink" title="python基本语法回顾"></a>python基本语法回顾</h2><p>Jupyter 内联 matplotlib 绘图:  <code>%matplotlib inline</code><br>Python 解释器： <code>#ff</code><br>在python中，模块是以 .py 为后缀名并包含 Python 代码的文件。从相同路径下的导入.py文件中定义的函数： <code>import some_module</code>  <code>result = some_module.f(5)</code><br><code>is/is not</code>:  检查两个引用是否指向同一个对象(list 总是创建一个新的Python列表)， <code>==</code> 是判断两个引用中的对象值是否相同。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/06/03/hello-world/"
-    >天线圣经 Chapter(一)</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/06/03/hello-world/" class="article-date">
-  <time datetime="2023-06-03T15:29:29.000Z" itemprop="datePublished">2023-06-03</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="1-1-天线简介"><a href="#1-1-天线简介" class="headerlink" title="1.1 天线简介"></a>1.1 天线简介</h2><p>天线是自由空间与导波装置之间的过渡设备。发射天线将电磁能量由发射源传输到天线，接收天线将电磁波传输到接收设备。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Antenna-theory/" rel="tag">Antenna theory</a></li></ul>
 
     </footer>
   </div>

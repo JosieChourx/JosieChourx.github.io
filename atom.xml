@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-06-25T03:24:12.217Z</updated>
+  <updated>2023-08-05T13:47:50.377Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -17,27 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>gprMax(二) Analytical solution</title>
-    <link href="http://josiechourx.top/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/"/>
-    <id>http://josiechourx.top/2023/06/24/gprMax(%E4%BA%8C)%20Analytical%20solution/</id>
-    <published>2023-06-24T07:36:47.000Z</published>
-    <updated>2023-06-25T03:24:12.217Z</updated>
+    <title>Dipole</title>
+    <link href="http://josiechourx.top/2023/07/31/Dipole/"/>
+    <id>http://josiechourx.top/2023/07/31/Dipole/</id>
+    <published>2023-07-31T14:53:57.000Z</published>
+    <updated>2023-08-05T13:47:50.377Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Generation-of-Electromagnetic-Waves&quot;&gt;&lt;a href=&quot;#Generation-of-Electromagnetic-Waves&quot; class=&quot;headerlink&quot; title=&quot;Generation of</summary>
+    <summary type="html">&lt;h1 id=&quot;Electric-Dipole-详解&quot;&gt;&lt;a href=&quot;#Electric-Dipole-详解&quot; class=&quot;headerlink&quot; title=&quot;Electric Dipole 详解&quot;&gt;&lt;/a&gt;Electric Dipole 详解&lt;/h1&gt;&lt;h2</summary>
         
       
     
     
     
-    <category term="gprMax" scheme="http://josiechourx.top/categories/gprMax/"/>
+    <category term="Antenna" scheme="http://josiechourx.top/categories/Antenna/"/>
     
     
-    <category term="gprMax" scheme="http://josiechourx.top/tags/gprMax/"/>
+    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>computational electrodynamics chapter 2</title>
+    <link href="http://josiechourx.top/2023/07/02/Computational%20electrodynamics/"/>
+    <id>http://josiechourx.top/2023/07/02/Computational%20electrodynamics/</id>
+    <published>2023-07-02T05:50:57.000Z</published>
+    <updated>2023-07-02T08:00:05.374Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Chapter-2-一维标量波动方程&quot;&gt;&lt;a href=&quot;#Chapter-2-一维标量波动方程&quot; class=&quot;headerlink&quot; title=&quot;Chapter 2 一维标量波动方程&quot;&gt;&lt;/a&gt;Chapter 2</summary>
+        
+      
+    
+    
+    
+    <category term="computational electrodynamics" scheme="http://josiechourx.top/categories/computational-electrodynamics/"/>
+    
+    
+    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
     
   </entry>
   
@@ -62,104 +87,6 @@
     
     
     <category term="signal and system" scheme="http://josiechourx.top/tags/signal-and-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gprMax 学习</title>
-    <link href="http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/"/>
-    <id>http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0%20-%20%E5%89%AF%E6%9C%AC/</id>
-    <published>2023-06-10T12:20:57.000Z</published>
-    <updated>2023-06-24T07:35:21.519Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;What-is-gprMax&quot;&gt;&lt;a href=&quot;#What-is-gprMax&quot; class=&quot;headerlink&quot; title=&quot;What is gprMax&quot;&gt;&lt;/a&gt;What is gprMax&lt;/h2&gt;&lt;p&gt;&lt;em&gt;&lt;em&gt;Ground</summary>
-        
-      
-    
-    
-    
-    <category term="gprMax" scheme="http://josiechourx.top/categories/gprMax/"/>
-    
-    
-    <category term="gprMax" scheme="http://josiechourx.top/tags/gprMax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gprMax 学习</title>
-    <link href="http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/"/>
-    <id>http://josiechourx.top/2023/06/10/gprMax%E7%AC%94%E8%AE%B0/</id>
-    <published>2023-06-10T12:20:57.000Z</published>
-    <updated>2023-06-24T07:35:21.519Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;What-is-gprMax&quot;&gt;&lt;a href=&quot;#What-is-gprMax&quot; class=&quot;headerlink&quot; title=&quot;What is gprMax&quot;&gt;&lt;/a&gt;What is gprMax&lt;/h2&gt;&lt;p&gt;&lt;em&gt;&lt;em&gt;Ground</summary>
-        
-      
-    
-    
-    
-    <category term="gprMax" scheme="http://josiechourx.top/categories/gprMax/"/>
-    
-    
-    <category term="gprMax" scheme="http://josiechourx.top/tags/gprMax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python 数据分析</title>
-    <link href="http://josiechourx.top/2023/06/04/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    <id>http://josiechourx.top/2023/06/04/python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</id>
-    <published>2023-06-04T01:50:57.000Z</published>
-    <updated>2023-06-04T14:59:26.955Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;python基本语法回顾&quot;&gt;&lt;a href=&quot;#python基本语法回顾&quot; class=&quot;headerlink&quot; title=&quot;python基本语法回顾&quot;&gt;&lt;/a&gt;python基本语法回顾&lt;/h2&gt;&lt;p&gt;Jupyter 内联 matplotlib 绘图: </summary>
-        
-      
-    
-    
-    
-    <category term="python学习" scheme="http://josiechourx.top/categories/python%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="python" scheme="http://josiechourx.top/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天线圣经 Chapter(一)</title>
-    <link href="http://josiechourx.top/2023/06/03/hello-world/"/>
-    <id>http://josiechourx.top/2023/06/03/hello-world/</id>
-    <published>2023-06-03T15:29:29.000Z</published>
-    <updated>2023-06-17T14:00:59.547Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-1-天线简介&quot;&gt;&lt;a href=&quot;#1-1-天线简介&quot; class=&quot;headerlink&quot; title=&quot;1.1 天线简介&quot;&gt;&lt;/a&gt;1.1</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Antenna theory" scheme="http://josiechourx.top/tags/Antenna-theory/"/>
     
   </entry>
   
