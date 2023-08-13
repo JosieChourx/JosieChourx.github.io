@@ -179,6 +179,147 @@
     
     
     <article
+  id="post-Paper reading (1) Integral formulation for migration in two and three dimensions"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/"
+    >Integral formulation for migration in two and three dimensions</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/" class="article-date">
+  <time datetime="2023-08-13T02:17:25.000Z" itemprop="datePublished">2023-08-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/inverse-problem/">inverse problem</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Integral-formulation-for-migration-in-2D-and-3D"><a href="#Integral-formulation-for-migration-in-2D-and-3D" class="headerlink" title="Integral formulation for migration in 2D and 3D"></a>Integral formulation for migration in 2D and 3D</h1><p>​        Summation (integration) along a  diffraction hyperbola(衍射双曲线) was recognized as a way to  automate the familiar point-to-point coordinate transformation performed by interpreters in ==mapping  reflections from the x, t (traveltime) domain into the  x, z (depth domain).==<br>​        Migration can also be viewed as a downward continuation operation which transforms surface recorded data to a deeper hypothetical recording  surface.</p>
+<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>In homogeneous scalar wave equation</p>
+<script type="math/tex; mode=display">
+\nabla^2U-\frac{1}{C^2}U_{tt}=-4\pi q(r,t) \tag{1}</script><p>The complete solution to the equation is turned to be homogeneous wave equation and inhomogeneous boundary conditions of the Dirichlet type.  The remaining surface integral is given by</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{4\pi}\int dt_0\int dS_0 \left[G\frac{\partial}{\partial n}U(r_0,t_0)-U(r_0,t_0)\frac{\part}{\part n}G\right] \tag{2}</script><p>The specific geometry of interest is shown in Figure 1</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/1.jpg" alt="1" style="zoom:70%;" /></p>
+<p><em><em>n</em></em><strong>n</strong> the outward normal vector to the surface $S_0$. 因此边值表示简化为一个包含 $S_0$ 上波场的表面积分和一个合适的格林函数 $G$. 由于方程 (2) 中的 $U(r_0,t_0)$ 等同于观测到的地质数据，因此使得在 $S_0$ 面上 $G=0$.  A Green’s function having  the desired properties at the free surface consists of  a point source at $r_0$ and its negative image at $r_0^{‘}$ .</p>
+<script type="math/tex; mode=display">
+G(r,t|r_0,t_0)=\frac{\delta(t-t_0-\frac{R}{C})}{R}-\frac{\delta(t-t_0-\frac{R^{'}}{C})}{R} \tag{3}</script><p>where</p>
+<script type="math/tex; mode=display">
+R=\sqrt{(z-z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>and </p>
+<script type="math/tex; mode=display">
+R^{'}=\sqrt{(z+z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>将(3)式替换进(2)式，可以得到在任何点的波长 $U(r,t)$ 的积分表示。</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{2\pi}\int dt_0 \int dA_0 \cdot U(r_0,t_0)\frac{\part}{\part z_0}\left[\frac{\delta(t-t_0-\frac{R}{C})}{R}\right] \tag{4}</script><p><em><em>Kirchhoff integral</em></em><em><em>Kirchhoff integral</em></em>f integral**. </p>
+<p>通过处理对 $z_0$ 的微分和对 $t_0$ 的积分，可以得到一个 (4) 的等价的表达式</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{2\pi} \int dA_0 \frac{\cos\theta}{RC}\left[U^{'}(r_0,t_0)+\frac{C}{R}U(r_0,t_0)\right]_{t_0=t-(\frac{R}{C})} \tag{5}</script><p>方程(4)的另外一种表示是通过将 $z_0$ 导数与 $z$ 导数交换，然后可以在积分外取</p>
+<script type="math/tex; mode=display">
+U(r,t)=-\frac{1}{\pi} \frac{\part}{\part z} \int dA_0 \frac{U(r_0,t-\frac{R}{C})}{R} \tag{6}</script><p>如前所述，积分变换方程 (4) 可以用其他符号来表示成三维卷积</p>
+<script type="math/tex; mode=display">
+U(x,y,z,t)=U(x,y,z_0,t)\ast\frac{1}{2\pi} \frac{\part}{\part z_0}\left[\frac{\delta(t\pm \frac{r}{C})}{r}\right]  \tag{7}</script><p>where</p>
+<script type="math/tex; mode=display">
+r^2=\Delta z^2+x^2+y^2</script><p>若对x, y和t进行傅里叶变换，则该表达式在频域上变为复乘法</p>
+<script type="math/tex; mode=display">
+\tilde{U}(k_x,k_y,z,\omega)=\tilde{U}(k_x,k_y,z_0,\omega)H(k_x,k_y,\Delta z,\omega)  \tag{8}</script><p>where</p>
+<script type="math/tex; mode=display">
+H = e^{\pm i|\Delta z|}\sqrt{(\frac{\omega}{C})^2-k_x^2-k_y^2} \tag{9}</script><p>传递函数 $H$ 是一个纯相位算子，体现了标量波动方程的色散关系。方程(7)和(8)中符号的选择很重要，因为它决定了推导的方向。如下图所示</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/2.jpg" alt="2" style="zoom:70%;" /></p>
+<p><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em>e sign** in operator H to extrapolate ==converging waves back toward their origins==.</p>
+<p>为了更好的阐述方程(4)，即基尔霍夫积分方程，以及迁移原则，如下图所示</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/3.jpg" alt="3" style="zoom:70%;" /></p>
+<p>输入假设是在 $Z=0$ 上堆叠的数据， 输出是在某些 $x,y$ 位置上的单轨迹。当receiver向下移动通过一些重叠的位置时候，通过计算 $t=0$ 的积分，在每一步都映射出一个点。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Kirchhoff migration"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/08/12/Kirchhoff%20migration/"
+    >Kirchhoff migration</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/08/12/Kirchhoff%20migration/" class="article-date">
+  <time datetime="2023-08-12T02:31:57.000Z" itemprop="datePublished">2023-08-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/inverse-problem/">inverse problem</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="有关逆时偏移成像方法"><a href="#有关逆时偏移成像方法" class="headerlink" title="有关逆时偏移成像方法"></a>有关逆时偏移成像方法</h1><h2 id="基尔霍夫-Kirchhoff-积分偏移成像方法"><a href="#基尔霍夫-Kirchhoff-积分偏移成像方法" class="headerlink" title="基尔霍夫(Kirchhoff)积分偏移成像方法"></a>基尔霍夫(Kirchhoff)积分偏移成像方法</h2><p>利用优化算法，将瞬变电磁场进行波场变换，得到“波场”，将波场分析的原理即地震波场从地面向地下反向外推进行偏移成像的方法用于对瞬变电磁场的解释，形成瞬变电磁场的偏移方法。即对观测电磁数据向下延拓，构建产生响应的地下电阻率图像。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Dipole"
   class="article article-type-post"
   itemscope

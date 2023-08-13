@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-08-05T13:47:50.377Z</updated>
+  <updated>2023-08-13T08:58:23.866Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Integral formulation for migration in two and three dimensions</title>
+    <link href="http://josiechourx.top/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/"/>
+    <id>http://josiechourx.top/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/</id>
+    <published>2023-08-13T02:17:25.000Z</published>
+    <updated>2023-08-13T08:58:23.866Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Integral-formulation-for-migration-in-2D-and-3D&quot;&gt;&lt;a href=&quot;#Integral-formulation-for-migration-in-2D-and-3D&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="inverse problem" scheme="http://josiechourx.top/categories/inverse-problem/"/>
+    
+    
+    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kirchhoff migration</title>
+    <link href="http://josiechourx.top/2023/08/12/Kirchhoff%20migration/"/>
+    <id>http://josiechourx.top/2023/08/12/Kirchhoff%20migration/</id>
+    <published>2023-08-12T02:31:57.000Z</published>
+    <updated>2023-08-12T02:45:25.819Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;有关逆时偏移成像方法&quot;&gt;&lt;a href=&quot;#有关逆时偏移成像方法&quot; class=&quot;headerlink&quot; title=&quot;有关逆时偏移成像方法&quot;&gt;&lt;/a&gt;有关逆时偏移成像方法&lt;/h1&gt;&lt;h2 id=&quot;基尔霍夫-Kirchhoff-积分偏移成像方法&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="inverse problem" scheme="http://josiechourx.top/categories/inverse-problem/"/>
+    
+    
+    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Dipole</title>
