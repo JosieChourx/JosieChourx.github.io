@@ -127,7 +127,7 @@
 <script type="math/tex; mode=display">
 \nabla^2U-\frac{1}{C^2}U_{tt}=-4\pi q(r,t) \tag{1}</script><p>The complete solution to the equation is turned to be homogeneous wave equation and inhomogeneous boundary conditions of the Dirichlet type.  The remaining surface integral is given by</p>
 <script type="math/tex; mode=display">
-U(r,t)=\frac{1}{4\pi}\int dt_0\int dS_0 \left[G\frac{\partial}{\partial n}U(r_0,t_0)-U(r_0,t_0)\frac{\part}{\part n}G\right] \tag{2}</script><p>The specific geometry of interest is shown in Figure 1</p>
+U(r,t)=\frac{1}{4\pi}\int dt_0\int dS_0 \left[G\frac{\partial}{\partial n}U(r_0,t_0)-U(r_0,t_0)\frac{\partial}{\partial n}G\right] \tag{2}</script><p>The specific geometry of interest is shown in Figure 1</p>
 <p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/1.jpg" alt="1" style="zoom:70%;" /></p>
 <p><em><em>n</em></em><strong>n</strong> the outward normal vector to the surface $S_0$. 因此边值表示简化为一个包含 $S_0$ 上波场的表面积分和一个合适的格林函数 $G$. 由于方程 (2) 中的 $U(r_0,t_0)$ 等同于观测到的地质数据，因此使得在 $S_0$ 面上 $G=0$.  A Green’s function having  the desired properties at the free surface consists of  a point source at $r_0$ and its negative image at $r_0^{‘}$ .</p>
 <script type="math/tex; mode=display">
@@ -137,14 +137,14 @@ R=\sqrt{(z-z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>and </p>
 <script type="math/tex; mode=display">
 R^{'}=\sqrt{(z+z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>将(3)式替换进(2)式，可以得到在任何点的波长 $U(r,t)$ 的积分表示。</p>
 <script type="math/tex; mode=display">
-U(r,t)=\frac{1}{2\pi}\int dt_0 \int dA_0 \cdot U(r_0,t_0)\frac{\part}{\part z_0}\left[\frac{\delta(t-t_0-\frac{R}{C})}{R}\right] \tag{4}</script><p><em><em>Kirchhoff integral</em></em><em><em>Kirchhoff integral</em></em>f integral**. </p>
+U(r,t)=\frac{1}{2\pi}\int dt_0 \int dA_0 \cdot U(r_0,t_0)\frac{\partial}{\partial z_0}\left[\frac{\delta(t-t_0-\frac{R}{C})}{R}\right] \tag{4}</script><p><em><em>Kirchhoff integral</em></em><em><em>Kirchhoff integral</em></em>f integral**. </p>
 <p>通过处理对 $z_0$ 的微分和对 $t_0$ 的积分，可以得到一个 (4) 的等价的表达式</p>
 <script type="math/tex; mode=display">
 U(r,t)=\frac{1}{2\pi} \int dA_0 \frac{\cos\theta}{RC}\left[U^{'}(r_0,t_0)+\frac{C}{R}U(r_0,t_0)\right]_{t_0=t-(\frac{R}{C})} \tag{5}</script><p>方程(4)的另外一种表示是通过将 $z_0$ 导数与 $z$ 导数交换，然后可以在积分外取</p>
 <script type="math/tex; mode=display">
-U(r,t)=-\frac{1}{\pi} \frac{\part}{\part z} \int dA_0 \frac{U(r_0,t-\frac{R}{C})}{R} \tag{6}</script><p>如前所述，积分变换方程 (4) 可以用其他符号来表示成三维卷积</p>
+U(r,t)=-\frac{1}{\pi} \frac{\partial}{\partial z} \int dA_0 \frac{U(r_0,t-\frac{R}{C})}{R} \tag{6}</script><p>如前所述，积分变换方程 (4) 可以用其他符号来表示成三维卷积</p>
 <script type="math/tex; mode=display">
-U(x,y,z,t)=U(x,y,z_0,t)\ast\frac{1}{2\pi} \frac{\part}{\part z_0}\left[\frac{\delta(t\pm \frac{r}{C})}{r}\right]  \tag{7}</script><p>where</p>
+U(x,y,z,t)=U(x,y,z_0,t)\ast\frac{1}{2\pi} \frac{\partial}{\partial z_0}\left[\frac{\delta(t\pm \frac{r}{C})}{r}\right]  \tag{7}</script><p>where</p>
 <script type="math/tex; mode=display">
 r^2=\Delta z^2+x^2+y^2</script><p>若对x, y和t进行傅里叶变换，则该表达式在频域上变为复乘法</p>
 <script type="math/tex; mode=display">
