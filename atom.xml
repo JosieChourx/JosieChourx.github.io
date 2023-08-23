@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-08-13T09:03:35.671Z</updated>
+  <updated>2023-08-23T08:39:14.538Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linear System</title>
+    <link href="http://josiechourx.top/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://josiechourx.top/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/</id>
+    <published>2023-08-23T06:14:29.000Z</published>
+    <updated>2023-08-23T08:39:14.538Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Chapter-1-Introduction&quot;&gt;&lt;a href=&quot;#Chapter-1-Introduction&quot; class=&quot;headerlink&quot; title=&quot;Chapter 1 Introduction&quot;&gt;&lt;/a&gt;Chapter 1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="signal and system" scheme="http://josiechourx.top/tags/signal-and-system/"/>
+    
+  </entry>
   
   <entry>
     <title>Integral formulation for migration in two and three dimensions</title>

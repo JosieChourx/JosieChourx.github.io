@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>computational electrodynamics chapter 2</title>
+    <url>/2023/07/02/Computational%20electrodynamics/</url>
+    <content><![CDATA[<h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
+<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
+<script type="math/tex; mode=display">
+u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
+<script type="math/tex; mode=display">
+c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
+<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
+<script type="math/tex; mode=display">
+u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
+<script type="math/tex; mode=display">
+(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
+<script type="math/tex; mode=display">
+\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
+<script type="math/tex; mode=display">
+v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
+<script type="math/tex; mode=display">
+v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
+<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
+]]></content>
+      <categories>
+        <category>computational electrodynamics</category>
+      </categories>
+      <tags>
+        <tag>EM learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kirchhoff migration</title>
+    <url>/2023/08/12/Kirchhoff%20migration/</url>
+    <content><![CDATA[<h1 id="有关逆时偏移成像方法"><a href="#有关逆时偏移成像方法" class="headerlink" title="有关逆时偏移成像方法"></a>有关逆时偏移成像方法</h1><h2 id="基尔霍夫-Kirchhoff-积分偏移成像方法"><a href="#基尔霍夫-Kirchhoff-积分偏移成像方法" class="headerlink" title="基尔霍夫(Kirchhoff)积分偏移成像方法"></a>基尔霍夫(Kirchhoff)积分偏移成像方法</h2><p>利用优化算法，将瞬变电磁场进行波场变换，得到“波场”，将波场分析的原理即地震波场从地面向地下反向外推进行偏移成像的方法用于对瞬变电磁场的解释，形成瞬变电磁场的偏移方法。即对观测电磁数据向下延拓，构建产生响应的地下电阻率图像。</p>
+]]></content>
+      <categories>
+        <category>inverse problem</category>
+      </categories>
+      <tags>
+        <tag>EM learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dipole</title>
     <url>/2023/07/31/Dipole/</url>
     <content><![CDATA[<h1 id="Electric-Dipole-详解"><a href="#Electric-Dipole-详解" class="headerlink" title="Electric Dipole 详解"></a>Electric Dipole 详解</h1><h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
@@ -138,61 +193,6 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
       </tags>
   </entry>
   <entry>
-    <title>computational electrodynamics chapter 2</title>
-    <url>/2023/07/02/Computational%20electrodynamics/</url>
-    <content><![CDATA[<h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
-<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
-<script type="math/tex; mode=display">
-\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
-<script type="math/tex; mode=display">
-u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
-<script type="math/tex; mode=display">
-c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
-<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
-<script type="math/tex; mode=display">
-u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
-<script type="math/tex; mode=display">
-(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
-<script type="math/tex; mode=display">
-\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
-<script type="math/tex; mode=display">
-v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
-<script type="math/tex; mode=display">
-v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
-<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
-]]></content>
-      <categories>
-        <category>computational electrodynamics</category>
-      </categories>
-      <tags>
-        <tag>EM learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kirchhoff migration</title>
-    <url>/2023/08/12/Kirchhoff%20migration/</url>
-    <content><![CDATA[<h1 id="有关逆时偏移成像方法"><a href="#有关逆时偏移成像方法" class="headerlink" title="有关逆时偏移成像方法"></a>有关逆时偏移成像方法</h1><h2 id="基尔霍夫-Kirchhoff-积分偏移成像方法"><a href="#基尔霍夫-Kirchhoff-积分偏移成像方法" class="headerlink" title="基尔霍夫(Kirchhoff)积分偏移成像方法"></a>基尔霍夫(Kirchhoff)积分偏移成像方法</h2><p>利用优化算法，将瞬变电磁场进行波场变换，得到“波场”，将波场分析的原理即地震波场从地面向地下反向外推进行偏移成像的方法用于对瞬变电磁场的解释，形成瞬变电磁场的偏移方法。即对观测电磁数据向下延拓，构建产生响应的地下电阻率图像。</p>
-]]></content>
-      <categories>
-        <category>inverse problem</category>
-      </categories>
-      <tags>
-        <tag>EM learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>白噪声</title>
     <url>/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/</url>
     <content><![CDATA[<h2 id="白噪声"><a href="#白噪声" class="headerlink" title="白噪声"></a>白噪声</h2><p>白噪声源自white noise的翻译，其中的 “白” 应该是指其频谱特性是一条直线，并无其他有效信息。</p>
@@ -253,6 +253,50 @@ H = e^{\pm i|\Delta z|}\sqrt{(\frac{\omega}{C})^2-k_x^2-k_y^2} \tag{9}</script><
       </categories>
       <tags>
         <tag>EM learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linear System</title>
+    <url>/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h2><h3 id="Review-of-Classical-Control-Systems"><a href="#Review-of-Classical-Control-Systems" class="headerlink" title="Review of Classical Control Systems"></a>Review of Classical Control Systems</h3><h4 id="Laplace-Transformation"><a href="#Laplace-Transformation" class="headerlink" title="Laplace Transformation"></a>Laplace Transformation</h4><script type="math/tex; mode=display">
+F(s)= \cal{L}[f(t)]=\int_{0}^{\infty}f(t)e^{-st}dt</script><p>Properties of Laplace Transform:</p>
+<ol>
+<li>$\cal{L}[Af(t)]=A\cal{L} [f(t)]$ where $A$ is a constant.</li>
+<li>$\cal{L} [A_1 f_1(t)+A_2 f_2(t)]=A_1 \cal{L} [f_1(t)]+A_2\cal{L} [f_2(t)]$</li>
+</ol>
+<h4 id="Transfer-Function"><a href="#Transfer-Function" class="headerlink" title="Transfer Function"></a>Transfer Function</h4><p>The transfer function of a linear, time-invariant, differential equation (线性时不变差分方程) is defined as </p>
+<script type="math/tex; mode=display">
+G(s)=\frac{b_0 s^m+b_1 s^{m-1}+\cdots b_{m-1}s+b_m}{a_0s^n+a_1s^{n-1}+\cdots a_n}</script><p>计算传递函数时，认为初始状态为0.</p>
+<h4 id="Other-Definitions"><a href="#Other-Definitions" class="headerlink" title="Other Definitions"></a>Other Definitions</h4><ol>
+<li>Proper Transfer Function: $n/geq m$，即传递函数分子的阶数不大于分母的阶数。</li>
+<li>Strictly proper transfer function: $n&gt;m$，即传递函数分子阶数小于分母阶数。</li>
+<li><em><em>denominator</em></em><em><em>denominator</em></em><em><em>denominator</em></em><em><em>denominator</em></em>or** of G(s).</li>
+<li>Poles of G(s): The roots of the denominator polynomial of G(s).</li>
+<li>Zeros of G(s): The roots of the numerator polynomial of G(s).</li>
+</ol>
+<h3 id="Mathematical-Description-of-Systems"><a href="#Mathematical-Description-of-Systems" class="headerlink" title="Mathematical Description of Systems"></a>Mathematical Description of Systems</h3><h4 id="Causality-因果性"><a href="#Causality-因果性" class="headerlink" title="Causality 因果性"></a>Causality 因果性</h4><p>memoryless system:  输出仅取决于当前时刻输入，而不取决于之前的输入和之后的输入。<br>casual system, non-anticipatory system:  系统输出仅取决于之前和当前的输入。</p>
+<h4 id="Linear-system"><a href="#Linear-system" class="headerlink" title="Linear system"></a>Linear system</h4><p>通过叠加法则，可将系统响应分解为零状态响应和零输入响应之和，即</p>
+<p>零输入响应表示为：</p>
+<script type="math/tex; mode=display">
+\{x(t_0),0,y_{zi}(t)~~for~~ t\geq t_0 \}</script><p>零状态响应表示为：</p>
+<script type="math/tex; mode=display">
+\{0,u(t),~~for~~t\geq t_0, y_{zs}(t)~~for~~ t\geq t_0 \}</script><p>故</p>
+<script type="math/tex; mode=display">
+y(t)=y_{zi}(t)+y_{zs}(t)</script><h3 id="Input-Output-Description"><a href="#Input-Output-Description" class="headerlink" title="Input-Output Description"></a>Input-Output Description</h3><script type="math/tex; mode=display">
+y(t)=\int_{t_0}^{t} g(t-\tau)u(\tau)d\tau = u(t)\ast g(t)  \tag{1}</script><p>卷积的连续表达形式。其中 $g(t)$ 是系统对于冲激函数 $\delta(t)$ 的冲激响应 (Impulse Response).</p>
+<h3 id="State-Space-Representation"><a href="#State-Space-Representation" class="headerlink" title="State Space Representation"></a>State Space Representation</h3><p>状态空间方程的一般形式</p>
+<script type="math/tex; mode=display">
+\dot{x}(t)=A(t)x(t)+B(t)u(t) \tag{2} \\
+y(t)=C(t)x(t)+D(t)u(t)</script><p>其中，$x$ 是 $n$ 维状态矢量； $u$ 是 $p$ 维输入(或控制)矢量； $y$ 是 $q$ 维输出矢量；$A(t)$ 是 $n\times n$ 方阵，为系统内部状态的联系，称为状态矩阵或者系统矩阵；$B(t)$ 是 $n\times p $ 矩阵， 为输入对状态的作用，称为输入矩阵或控制矩阵；$C(t)$ 是 $q\times n$ 矩阵，为输出与状态之间的关系，称为输出矩阵； $D(t)$ 是 $q\times p$ 矩阵，表示系统的输入直接作用在输出的部分，称为直接传递矩阵。</p>
+<p>当 $A(t), B(t), C(t), D(t)$ 均为常数时，上述状态空间方程退化为线性时不变方程</p>
+<script type="math/tex; mode=display">
+\dot{x}(t)=Ax(t)+Bu(t) \\
+y(t)=Cx(t)+Du(t)  \tag{3}</script><h3 id="Linearization"><a href="#Linearization" class="headerlink" title="Linearization"></a>Linearization</h3><p>暂时还没看懂哈</p>
+<h2 id="Chapter-3-State-Space-Solutions-and-Properties"><a href="#Chapter-3-State-Space-Solutions-and-Properties" class="headerlink" title="Chapter 3 State-Space Solutions and Properties"></a>Chapter 3 State-Space Solutions and Properties</h2><p>问题描述：对于(3)中的线性时不变系统，目的是 obtain responses $x(t), y(t)$ for $t\geq t_0$ to initial state $x(t_0)$ and $u(t), t\geq t_0$</p>
+<h3 id="Homogeneous-Solution"><a href="#Homogeneous-Solution" class="headerlink" title="Homogeneous Solution"></a>Homogeneous Solution</h3><p>To be continued…</p>
+]]></content>
+      <tags>
+        <tag>signal and system</tag>
       </tags>
   </entry>
 </search>
