@@ -179,7 +179,7 @@
     
     
     <article
-  id="post-Dipole"
+  id="post-Short Electric Dipole"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -190,7 +190,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2023/08/26/Dipole/"
+  <a class="article-title" href="/2023/08/26/Short%20Electric%20Dipole/"
     >Dipole</a> 
 </h2>
  
@@ -199,7 +199,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/08/26/Dipole/" class="article-date">
+      <a href="/2023/08/26/Short%20Electric%20Dipole/" class="article-date">
   <time datetime="2023-08-26T01:34:57.000Z" itemprop="datePublished">2023-08-26</time>
 </a> 
   <div class="article-category">
@@ -210,8 +210,8 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Short-Electric-Dipole-详解"><a href="#Short-Electric-Dipole-详解" class="headerlink" title="Short Electric Dipole 详解"></a>Short Electric Dipole 详解</h1><p><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em>无限小偶极子(infinitesimal dipole)*</em>。</p>
-<p><strong>8月26日更新：</strong><br>把目前遇到过的电场形式总结如下。虽然场量的形式有所不同，实则表示的同一个东西，有些时候是时域形式，有些时候是频域形式，又有些是电流远，有些又是用电荷源表示的。</p>
+  <h1 id="Short-Electric-Dipole-详解"><a href="#Short-Electric-Dipole-详解" class="headerlink" title="Short Electric Dipole 详解"></a>Short Electric Dipole 详解</h1><p>任何直天线都可认为是由大量很短的导体串接而成的，所以需要首先阐明短导体的辐射性能，然后再研究实际使用的长直导体。短的直导体通常称为短偶极子，尽管很短但仍是有限长度的。对于短而趋零的情况，则称无限小偶极子(infinitesimal dipole)。</p>
+<p><strong>8月26日更新：</strong><br>把目前遇到过的电场形式总结如下。虽然场量的形式有所不同，实则表示的同一个东西，有些时候是时域形式，有些时候是频域形式，又有些是电流源，有些又是用电荷源表示的。</p>
 <ol>
 <li><p>天线圣经(Balanis著)中，第三版中在(4-10b)，在本文中的式(64)</p>
 <script type="math/tex; mode=display">
@@ -261,7 +261,7 @@ E_\theta = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta \tag{39}</script></l
 <script type="math/tex; mode=display">
 \nabla^2 \phi - \frac{1}{c^2}\frac{\partial^2\phi}{\partial{t^2}} = -\frac{\rho}{\epsilon_0}  \tag{11}</script><script type="math/tex; mode=display">
 \nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}} = -\mu_0\vec{J}  \tag{12}</script><p>即真空中的Maxwell方程组可以转换为 (10)-(12) 式。</p>
-<p><em><em>time-harmonic</em></em>c** source，上式可以转换为</p>
+<p>对于 time-harmonicsource，上式可以转换为</p>
 <script type="math/tex; mode=display">
 \nabla \cdot \vec{A}-\frac{i\omega}{c^2}\phi = 0 \tag{13}</script><script type="math/tex; mode=display">
 \nabla^2\phi+k^2\phi = -\frac{\rho}{\epsilon_0} \tag{14}</script><script type="math/tex; mode=display">
@@ -334,8 +334,8 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
     &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
     &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
 \end{align}</script><p>解析：式 (37) 为时域情况下的表达式。</p>
-<p><em><em>proportional to the acceleration of the charge.</em></em><em><em>proportional to the acceleration of the charge.</em></em>f the charge.** (二次导即为加速度)</p>
-<p><em><em>Proportional to speed of charge.</em></em><em><em>Proportional to speed of charge.</em></em>Proportional to speed of charge.** (一次导即为速度)</p>
+<p>(1) 第一部分 $\left[\partial^2_t f(t-\tau)\right]$ 是 Radiation field, proportional to the acceleration of the charge. (二次导即为加速度)</p>
+<p>(2) 第二部分 $\left[\tau \partial_t f(t-\tau)\right]$  是 induction field. Proportional to speed of charge.(一次导即为速度)</p>
 <p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
 <p>如果在球坐标下，</p>
 <script type="math/tex; mode=display">
