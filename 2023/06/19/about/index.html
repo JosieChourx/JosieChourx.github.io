@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>computational electrodynamics chapter 2 |  Per Aspera Ad Astra</title>
+      <title>About Me |  Per Aspera Ad Astra</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -67,7 +67,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Computational electrodynamics"
+  id="post-about"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -78,7 +78,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  computational electrodynamics chapter 2
+  About Me
 </h1>
  
 
@@ -86,74 +86,21 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/07/02/Computational%20electrodynamics/" class="article-date">
-  <time datetime="2023-07-02T05:50:57.000Z" itemprop="datePublished">2023-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/computational-electrodynamics/">computational electrodynamics</a>
-  </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
-        </span>
-    </span>
-</div>
- 
+      <a href="/2023/06/19/about/" class="article-date">
+  <time datetime="2023-06-19T12:14:29.000Z" itemprop="datePublished">2023-06-19</time>
+</a>  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
-<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
-<script type="math/tex; mode=display">
-\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
-<script type="math/tex; mode=display">
-u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
-<script type="math/tex; mode=display">
-c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
-<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
-<script type="math/tex; mode=display">
-u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
-<script type="math/tex; mode=display">
-(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
-<script type="math/tex; mode=display">
-\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
-<script type="math/tex; mode=display">
-v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
-<script type="math/tex; mode=display">
-v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
-<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
+  <p>姓名：Josie Chou </p>
+<p>现居：新加坡</p>
+<p>微信：ZRX225319</p>
+<p>2023.12 毕业于新加坡国立大学</p>
  
       <!-- reward -->
       
@@ -218,12 +165,12 @@ u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/07/02/Computational%20electrodynamics/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/06/19/about/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/others/" rel="tag">others</a></li></ul>
 
     </footer>
   </div>
@@ -231,19 +178,19 @@ u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (
    
   <nav class="article-nav">
     
-      <a href="/2023/08/12/Kirchhoff%20migration/" class="article-nav-link">
+      <a href="/2023/07/02/Computational%20electrodynamics/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Kirchhoff migration
+            computational electrodynamics chapter 2
           
         </div>
       </a>
     
     
-      <a href="/2023/06/19/about/" class="article-nav-link">
+      <a href="/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">About Me</div>
+        <div class="article-nav-title">白噪声</div>
       </a>
     
   </nav>
@@ -406,22 +353,6 @@ u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
