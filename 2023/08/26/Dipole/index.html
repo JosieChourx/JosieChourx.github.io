@@ -86,8 +86,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/07/31/Dipole/" class="article-date">
-  <time datetime="2023-07-31T14:53:57.000Z" itemprop="datePublished">2023-07-31</time>
+      <a href="/2023/08/26/Dipole/" class="article-date">
+  <time datetime="2023-08-26T01:34:57.000Z" itemprop="datePublished">2023-08-26</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/Antenna/">Antenna</a>
@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k</span>
+            <span class="post-count">4.4k</span>
         </span>
     </span>
 
@@ -107,7 +107,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">15 分钟</span>
+            <span class="post-count">23 分钟</span>
         </span>
     </span>
 </div>
@@ -122,7 +122,22 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Electric-Dipole-详解"><a href="#Electric-Dipole-详解" class="headerlink" title="Electric Dipole 详解"></a>Electric Dipole 详解</h1><h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
+  <h1 id="Short-Electric-Dipole-详解"><a href="#Short-Electric-Dipole-详解" class="headerlink" title="Short Electric Dipole 详解"></a>Short Electric Dipole 详解</h1><p><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em>无限小偶极子(infinitesimal dipole)*</em>。</p>
+<p><strong>8月26日更新：</strong><br>把目前遇到过的电场形式总结如下。虽然场量的形式有所不同，实则表示的同一个东西，有些时候是时域形式，有些时候是频域形式，又有些是电流远，有些又是用电荷源表示的。</p>
+<ol>
+<li><p>天线圣经(Balanis著)中，第三版中在(4-10b)，在本文中的式(64)</p>
+<script type="math/tex; mode=display">
+E_\theta = j\eta\frac{kI_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{1}{jkr}-\frac{1}{(kr)^2}\right]e^{-jkr} \tag{64}</script></li>
+<li><p>在时域情况下用电荷源表示，在本文中的式(37)，式中的 $f$ 为电荷源。</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37}</script></li>
+<li><p>对应的频域时用电流源表示，在本文中的式(30)</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}</script></li>
+<li>若考虑在远场时，可以得到常用的场量形式(在球坐标下)，在本文中的(39)<script type="math/tex; mode=display">
+E_\theta = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta \tag{39}</script></li>
+</ol>
+<h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
 <script type="math/tex; mode=display">
 \begin{align}
     Ampere's~Law: ~\nabla\times \vec{H} &= \vec{J}+\frac{\partial \vec{D}}{\partial t}   \tag{1}  \\
@@ -230,8 +245,9 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
     &= \frac{-\mu_0e^{-jkr}}{4\pi r^3}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{c^2\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{r}{c}(j\omega)f+f\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right) \\
     &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
     &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
-\end{align}</script><p>解析：<br>(1) 第一部分 $\left[\partial^2_t f(t-\tau)\right]$ 是 Radiation field, ==proportional to the acceleration of the charge.== (二次导即为加速度)</p>
-<p>(2) 第二部分 $\left[\tau \partial_t f(t-\tau)\right]$  是 induction field. ==Proportional to speed of charge.== (一次导即为速度)</p>
+\end{align}</script><p>解析：式 (37) 为时域情况下的表达式。</p>
+<p><em><em>proportional to the acceleration of the charge.</em></em><em><em>proportional to the acceleration of the charge.</em></em>f the charge.** (二次导即为加速度)</p>
+<p><em><em>Proportional to speed of charge.</em></em><em><em>Proportional to speed of charge.</em></em>Proportional to speed of charge.** (一次导即为速度)</p>
 <p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
 <p>如果在球坐标下，</p>
 <script type="math/tex; mode=display">
@@ -248,7 +264,59 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
     &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3\hat{r}\hat{r}\cdot(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta})-(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}))\right] \\
     &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3Il\cos\theta\hat{r}-Il\cos\theta\hat{r}+Il\sin\theta\hat{\theta}\right] \\
     &=\frac{Il}{j4\pi\omega\epsilon_0  r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right) \tag{40}
-\end{align}</script> 
+\end{align}</script><h2 id="（三）-天线圣经中的表示-Solution-in-Balanis"><a href="#（三）-天线圣经中的表示-Solution-in-Balanis" class="headerlink" title="（三） 天线圣经中的表示 Solution in Balanis"></a>（三） 天线圣经中的表示 Solution in Balanis</h2><p>在分析天线或辐射系统时，波从源点到场点的传播时间是极其重要的，偶极子上各点的电流并非同时作用于场点 $P$，而是存在着由射径与距离 $r$ 之差引起的时延。相应地，将电流 $I$ 表示为瞬时形式</p>
+<script type="math/tex; mode=display">
+I = I_0 e^{j\omega t} \tag{41}</script><p>该电流的瞬时传播效应可采用洛伦兹的传播(滞后)时间表示法，写成</p>
+<script type="math/tex; mode=display">
+[I]=I_0e^{j\omega [t-(r/c)]} \tag{42}</script><p>式中 $[I]$ 称为滞后电流。时间滞后 $r/c$ 导致相位滞后 $\omega r/c = 2\pi f r/c$ (弧度) $= 360^o t/T$， 即 (42) 中的方括号表明该量是电流的滞后效应。在距离电流元 $r$ 处，时刻 $t$ 的电场波动是由先前时刻 $t-r/c$ 的电流 $[I]$ 所造成的，而 $r/c$ 则是波以光速行进距离 $r$ 所历经的时间间隔。<br>偶极子所产生的电场和磁场可分别展开为矢量位和标量位。</p>
+<script type="math/tex; mode=display">
+A_z = \frac{\mu_0}{4\pi}\int_{-L/2}^{L/2} \frac{[I]}{s} dz \tag{43}</script><p>其中 $[I]$ 为滞后电流</p>
+<script type="math/tex; mode=display">
+[I]= I_0 e^{j\omega [t-(s/c)]}  \tag{44}</script><p>在上述式子中，$z$ 为原点至导体上一点的距离，$I_0$ 为电流的时间峰值(沿偶极子均匀分布)。若场点与偶极子相距远大于其长度($r]\ggg L$)，且波长也远大于其长度($\lambda\ggg L$)，故令 $s=r$ 而忽略导体不同部分所贡献场的相位差异，则式(43)中的被积函数可认为是常数，积分结果变为</p>
+<script type="math/tex; mode=display">
+A_z =\frac{\mu_0 LI_0 e^{j\omega[t-(r/c)]}}{4\pi r}  \tag{45}</script><p>类似地，电荷分布的滞后标量位 $V$ 可写为</p>
+<script type="math/tex; mode=display">
+V = \frac{1}{4\pi \epsilon_0}\int_V \frac{[\rho]}{s} d\tau  \tag{46}</script><p>式中 $[\rho]$ 是滞后电荷密度</p>
+<script type="math/tex; mode=display">
+[\rho]=\rho_0 e^{j\omega[t-(s/c)]}   \tag{47}</script><p>由于偶极子情况下，电流集中在端点区域，式 (46)可化简为</p>
+<script type="math/tex; mode=display">
+V = \frac{1}{4\pi \epsilon_0}\{\frac{[q]}{s_1}-\frac{[q]}{s_2} \}   \tag{48}</script><p>由 $\frac{dq}{dt}=I$ 和式(44)可以得到</p>
+<script type="math/tex; mode=display">
+[q]=\int [I]dt = I_0 \int e^{j\omega [t-(s/c)]} dt = \frac{[I]}{j\omega}  \tag{49}</script><p>将其带入(48)式可以得到</p>
+<script type="math/tex; mode=display">
+V = \frac{I_0}{4\pi \epsilon_0 j\omega}\left[\frac{e^{j\omega [t-(s_1/c)]}}{s_1}-\frac{e^{j\omega [t-(s_2/c)]}}{s_2}\right]  \tag{50}</script><p>当 $r\ggg L$ 时，连接偶极子端点与场点 $P$ 的直线可认为是平行的，其长度分别为</p>
+<script type="math/tex; mode=display">
+s_1 = r-\frac{L}{2}\cos\theta   \tag{51}</script><p>和</p>
+<script type="math/tex; mode=display">
+s_2 = r+\frac{L}{2}\cos\theta   \tag{52}</script><p>将其带入式(50)，可推出短电偶极子的电场表达式</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi \epsilon_0}\left(\frac{j\omega}{c^2r}+\frac{1}{cr^2}+\frac{1}{j\omega r^3}\right) \tag{53}</script><p>对应的磁场分量为</p>
+<script type="math/tex; mode=display">
+H_\Phi = \frac{I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi}\left(\frac{j\omega}{cr}+\frac{1}{r^2}\right) \tag{54}</script><p>对于 $r$ 非常大的场点，远场处 $E_r\approx 0$，因此只有两个有效分量 $E_\theta$ 和 $H_\Phi$ (所以上面也懒得写出其他分量了)。故在远场条件下</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{j\omega I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi \epsilon_0 c^2r} = j\frac{I_0\beta L}{4\pi\epsilon_0 cr}\sin\theta e^{j\omega [t-(r/c)]}    \tag{55}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{j\omega I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi cr}=j\frac{I_0\beta L}{4\pi r}\sin\theta e^{j\omega [t-(r/c)]}   \tag{56}</script><p>考虑频率非常低的准静态或直流情况，由于</p>
+<script type="math/tex; mode=display">
+[I] = I_0 e^{j\omega [t-(r/c)]} = j\omega [q]  \tag{57}</script><p>故式(55)和(56)可改写为</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{[q] L\sin\theta}{4\pi \epsilon_0}\left(-\frac{\omega^2}{c^2r}+\frac{j\omega}{cr^2}+\frac{1}{r^3}\right)   \tag{58}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{[I]L\sin\theta}{4\pi}\left(\frac{j\omega}{cr}+\frac{1}{r^2}\right) \tag{59}</script><p>在低频情况下 $\omega \rightarrow 0$，分子中含有因子 $\omega$ 的项都可以忽略，还可有</p>
+<script type="math/tex; mode=display">
+[q]=q_0 e^{j\omega [t-(r/c)]} = q_0   \tag{60}</script><p>且</p>
+<script type="math/tex; mode=display">
+[I]=I_0 \tag{61}</script><p>故各场量变为</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{q_0 L\sin\theta}{4\pi\epsilon_0 r^3}  \tag{62}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{I_0 L\sin\theta}{4\pi r^2}   \tag{63}</script><p>对于式(53)，当不考虑时间项时，又可以表示为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    E_\theta &= \frac{I_0 L\sin\theta e^{-j\omega\frac{r}{c}}}{4\pi \epsilon_0}\left(\frac{j\omega}{c^2r}+\frac{1}{cr^2}+\frac{1}{j\omega r^3}\right)  \\
+    &= j\omega\frac{I_0L\sin\theta}{4\pi\epsilon_0 r}\left[\frac{1}{c^2}+\frac{1}{j\omega cr}+\frac{1}{(j\omega r)^2}\right]e^{-j\omega\frac{r}{c}} \\
+    &= j\omega\frac{I_0L\sin\theta}{4\pi\epsilon_0 c^2 r}\left[1+\frac{c}{j\omega r}+\frac{c^2}{(j\omega r)^2}\right]e^{-jkr} ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}\\ 
+    &= j\omega\frac{\mu_0\epsilon_0 I_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{c}{j\omega r}+\frac{c^2}{(j\omega r)^2}\right]e^{-jkr}~~  由于c^2=\frac{1}{\mu_0\epsilon_0}\\ 
+    &=j\eta\frac{kI_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{1}{jkr}-\frac{1}{(kr)^2}\right]e^{-jkr}~~  由于k=\omega\sqrt{\mu_0\epsilon_0},\eta=\sqrt{\frac{\mu_0}{\epsilon_0}}, k=\frac{\omega}{c}  \tag{64}\\ 
+\end{align}</script><p>故式子(64)即为 Balanis 天线圣经中的 (4-10b)式。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -312,7 +380,7 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/07/31/Dipole/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/08/26/Dipole/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,19 +393,10 @@ Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷�
    
   <nav class="article-nav">
     
-      <a href="/2023/08/12/Kirchhoff%20migration/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Kirchhoff migration
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/07/02/Computational%20electrodynamics/" class="article-nav-link">
+      <a href="/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">computational electrodynamics chapter 2</div>
+        <div class="article-nav-title">Linear System</div>
       </a>
     
   </nav>

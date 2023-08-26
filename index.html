@@ -179,6 +179,253 @@
     
     
     <article
+  id="post-Dipole"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/08/26/Dipole/"
+    >Dipole</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/08/26/Dipole/" class="article-date">
+  <time datetime="2023-08-26T01:34:57.000Z" itemprop="datePublished">2023-08-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Antenna/">Antenna</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Short-Electric-Dipole-详解"><a href="#Short-Electric-Dipole-详解" class="headerlink" title="Short Electric Dipole 详解"></a>Short Electric Dipole 详解</h1><p><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em><em>无限小偶极子(infinitesimal dipole)</em></em><em>无限小偶极子(infinitesimal dipole)*</em>。</p>
+<p><strong>8月26日更新：</strong><br>把目前遇到过的电场形式总结如下。虽然场量的形式有所不同，实则表示的同一个东西，有些时候是时域形式，有些时候是频域形式，又有些是电流远，有些又是用电荷源表示的。</p>
+<ol>
+<li><p>天线圣经(Balanis著)中，第三版中在(4-10b)，在本文中的式(64)</p>
+<script type="math/tex; mode=display">
+E_\theta = j\eta\frac{kI_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{1}{jkr}-\frac{1}{(kr)^2}\right]e^{-jkr} \tag{64}</script></li>
+<li><p>在时域情况下用电荷源表示，在本文中的式(37)，式中的 $f$ 为电荷源。</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37}</script></li>
+<li><p>对应的频域时用电流源表示，在本文中的式(30)</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}</script></li>
+<li>若考虑在远场时，可以得到常用的场量形式(在球坐标下)，在本文中的(39)<script type="math/tex; mode=display">
+E_\theta = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta \tag{39}</script></li>
+</ol>
+<h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    Ampere's~Law: ~\nabla\times \vec{H} &= \vec{J}+\frac{\partial \vec{D}}{\partial t}   \tag{1}  \\
+    Faraday's~Law:~\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \tag{2}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{D} &= \rho  \tag{3}  \\
+    Gaussian's~Law:~\nabla \cdot \vec{B} &= 0  \tag{4}  \\
+\end{align}</script><h3 id="1-Vector-and-scalar-potentials"><a href="#1-Vector-and-scalar-potentials" class="headerlink" title="1. Vector and scalar potentials"></a>1. Vector and scalar potentials</h3><p>因为 $\nabla \cdot B=0$，根据 $\nabla \cdot \nabla \times A = 0$，可以定义一个矢量位函数 $A$</p>
+<script type="math/tex; mode=display">
+\vec{B}=\nabla \times \vec{A} \tag{5}</script><p>因此上面的(2)式变为</p>
+<script type="math/tex; mode=display">
+\nabla \times (\vec{E}+\frac{\partial{\vec{A}}}{\partial t}) = 0 \tag{6}</script><p>于是，根据 $\nabla \times \nabla\phi = 0$，可以定义一个标量位函数 $\phi$</p>
+<script type="math/tex; mode=display">
+\vec{E}=-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi \tag{7}</script><p>在空气中，介电常数和磁导率分别为 $\epsilon = \epsilon_0 = 8.85 \times 10^{-12} F/m$，$\mu = \mu_0 = 4\pi \times 10^{-7} H/m$。自由空间中的本构关系为 $\vec{D} = \epsilon_0 \vec{E}$ 和 $\vec{B} = \mu_0 \vec{H}$。</p>
+<p>接下来借用本构关系和Maxwell方程中的(1)和(3)，构造出只含位函数的方程，根据(3)式可以得到</p>
+<script type="math/tex; mode=display">
+\nabla \cdot (\epsilon_0 \vec{E}) = \rho  \\
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right) = \frac{\rho}{\epsilon_0} \\</script><p>由 nabla operator 的性质 $\nabla^2 f = \nabla \cdot (\nabla f) $</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><p>根据(1)式可以得到</p>
+<script type="math/tex; mode=display">
+\nabla\times \vec{H} = \vec{J}+\frac{\partial \vec{D}}{\partial t}\\
+\nabla\times \frac{\vec{B}}{\mu_0} = \vec{J} + \epsilon_0 \frac{\partial{\vec{E}}}{\partial{t}}\\
+\nabla\times(\nabla \times \vec{A}) = \mu_0\vec{J}+\mu_0 \epsilon_0\frac{\partial}{\partial{t}}\left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right)</script><p>由$\nabla^2\vec{A} = \nabla(\nabla\cdot \vec{A})-\nabla\times\nabla\times\vec{A}$ 可以得到</p>
+<script type="math/tex; mode=display">
+\nabla(\nabla\cdot \vec{A}) - \nabla^2\vec{A} = \mu_0\vec{J}+\frac{1}{c^2}\left(-\frac{\partial^2 \vec{A}}{\partial{t^2}}-\frac{\partial (\nabla \phi)}{\partial t}\right) \\
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>因此得到的方程组为</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>可以看出上式中 $\vec{A}$ 和 $\phi$ 的解并不唯一，因此采用 Lorenz condition 来简化这个方程。Lorenz规范如下</p>
+<script type="math/tex; mode=display">
+\nabla \cdot \vec{A} + \frac{1}{c^2}\frac{\partial \phi}{\partial t}=0 \tag{10}</script><p>在这个规范下，(8) 和 (9) 可以转换为</p>
+<script type="math/tex; mode=display">
+\nabla^2 \phi - \frac{1}{c^2}\frac{\partial^2\phi}{\partial{t^2}} = -\frac{\rho}{\epsilon_0}  \tag{11}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}} = -\mu_0\vec{J}  \tag{12}</script><p>即真空中的Maxwell方程组可以转换为 (10)-(12) 式。</p>
+<p><em><em>time-harmonic</em></em>c** source，上式可以转换为</p>
+<script type="math/tex; mode=display">
+\nabla \cdot \vec{A}-\frac{i\omega}{c^2}\phi = 0 \tag{13}</script><script type="math/tex; mode=display">
+\nabla^2\phi+k^2\phi = -\frac{\rho}{\epsilon_0} \tag{14}</script><script type="math/tex; mode=display">
+\nabla^2\vec{A}+k^2\vec{A} = -\mu_0 \vec{J} \tag{15}</script><p>其中的转换关系为 </p>
+<script type="math/tex; mode=display">
+\frac{\partial^n}{\partial t^n} = (-i\omega)^n</script><h3 id="2-Dyadic-Green’s-fuction"><a href="#2-Dyadic-Green’s-fuction" class="headerlink" title="2. Dyadic Green’s fuction"></a>2. Dyadic Green’s fuction</h3><p>为了分析由任意电流分布辐射的电磁场，我们需要借助 Dyadic Green’s Function 进行分析计算。</p>
+<p><strong>总体思路为：<br>(1) 求解 $\vec{J}$<br>(2) 再由式 (15) 求解 $\vec{A}$<br>(3) 再由式 (13) 求解 $\phi$<br>(4) 最后由位函数方程 (5) 和 (7) 求解得到场 $\vec{E}$ 和 $\vec{B}$</strong></p>
+<p>根据 (13) 和 (14)， 标量位函数和矢量位函数的每个分量可以表示为</p>
+<script type="math/tex; mode=display">
+\nabla^2\Psi(\vec{r})+k^2\Psi(\vec{r})=-f(\vec{r}) \tag{16}</script><p>其中 $f(\vec{r})$ 表示任意的源分布。可以看出由源 $f(\vec{r})$ 和由其产生的场 $\Psi(\vec{r})$ 之间是线性的关系，故我们可以将 (16) 式看做是一个线性系统，其中 $f(\vec{r})$ 是输入，$\Psi(\vec{r})$ 是其产生的输出。==当输入为一个冲激函数 $\delta$ 时，其产生的脉冲响应函数即为格林函数。==<br>假设有一个点源置于 $\vec{r}’$，即 $f(\vec{r})=\delta(\vec{r}-\vec{r}’)$，故该方程的解即为格林函数 $g(\vec{r},\vec{r}’)$</p>
+<script type="math/tex; mode=display">
+(\nabla^2+k^2)g(\vec{r},\vec{r}') = -\delta(\vec{r}-\vec{r}') \tag{17}</script><p>因为有 $f(\vec{r})=\iiint f(\vec{r})\delta(\vec{r}-\vec{r}’)d\vec{r}’ $，故式(16) 可以表示为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint g(\vec{r},\vec{r}')f(\vec{r}')d\vec{r}' \tag{18}</script><p>为了得到 $g(\vec{r},\vec{r}’)$，将上式简化，考虑 $\vec{r}’=0$，即把源放在原点时的情况，因此 (17) 式可以化简为</p>
+<script type="math/tex; mode=display">
+(\nabla^2+k^2)g(\vec{r}) = -\delta(\vec{r}) \tag{19}</script><p>求解该方程的过程已省略，最后可以得到格林方程为</p>
+<script type="math/tex; mode=display">
+g(\vec{r})=\frac{e^{-jkr}}{4\pi r}</script><p>其中 $r$ 是从观察点到原点的距离。转换为原来的坐标，只需将 $r$ 换为 $|\vec{r}-\vec{r}’|$，因此该标量格林函数可以表示为</p>
+<script type="math/tex; mode=display">
+g(\vec{r},\vec{r}')=\frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}  \tag{20}</script><p>故对于一个任意的点源，将式 (20) 带入 (18) 可以得到位函数通用表达式为</p>
+<script type="math/tex; mode=display">
+\Psi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}f(\vec{r}')d\vec{r}' \tag{21}</script><p>因此可以得到位函数 $\vec{A}$ 和 $\phi$，同时也是方程 (14) 和 (15) 的解</p>
+<script type="math/tex; mode=display">
+\Phi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\frac{\rho(\vec{r}')}{\epsilon_0}d\vec{r}' \tag{22}</script><script type="math/tex; mode=display">
+\vec{A}(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{23}</script><p>得到位函数后可以求得场</p>
+<script type="math/tex; mode=display">
+\vec{B}(\vec{r})=\nabla\times\vec{A}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{24}</script><script type="math/tex; mode=display">
+\vec{H}(\vec{r})=\frac{\vec{B}}{\mu_0}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{25}</script><p>最后得到电场分量为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)\cdot\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{26}</script><p>其中 </p>
+<script type="math/tex; mode=display">
+\overline{\overline{G}}(\vec{r}-\vec{r}')=(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)g(\vec{r}-\vec{r}') \tag{27}</script><p>为 ==dyadic Green’s function==. 故 $\vec{E}$最终形式为</p>
+<script type="math/tex; mode=display">
+\vec{E}(\vec{r})=-j\omega\mu_0\iiint \overline{\overline{G}}(\vec{r}-\vec{r}')\cdot J(\vec{r}')d\vec{r}' \tag{28}</script><h2 id="（二）-Exact-solution-for-Hertzian-dipole"><a href="#（二）-Exact-solution-for-Hertzian-dipole" class="headerlink" title="（二） Exact solution for Hertzian dipole"></a>（二） Exact solution for Hertzian dipole</h2><p>对于一个任意的在原点的 Hertzian dipole， $\vec{J}(\vec{r})=\vec{I}l\delta (\vec(r))$ ，由式 (25) 可以得到磁场为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{H}(\vec{r}) &= \nabla\times\left(\frac{e^{-jkr}}{4\pi r}\vec{I}l\right)    \\
+    &= \nabla \frac{e^{-jkr}}{4\pi r} \times \vec{I}l \\
+     &= \frac{\partial}{\partial r}\left(\frac{e^{-jkr}}{4\pi r}\right)\times \vec{I}l \\
+     &= \frac{e^{-jkr}}{4\pi r} \hat{r} \times \vec{I}l \left(-jk-\frac{1}{r}\right) \\
+     &= \hat{r} \times \vec{I}l \frac{-jke^{-jkr}}{4\pi r}\left(1-\frac{j}{kr}\right)  \tag{29}
+\end{align}</script><p>根据 Ampere’s Law 可以得到电场</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{1}{j\omega \epsilon_0}\nabla\times \vec{H}(\vec{r})    \\
+    &=\frac{1}{j\omega \epsilon_0}\nabla\times \left[ \hat{r} \times \vec{I}l \frac{e^{-jkr}}{4\pi r}\left(-jk-\frac{1}{r}\right)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}
+\end{align}</script><p>远场和近场：<br>对于远场(辐射场) (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = \frac{-jke^{-jkr}}{4\pi r}\hat{r}\times\vec{I}l \tag{31}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \tag{32}</script><p>对于近场(kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\vec{H}(\vec{r}) = -\hat{r}\times\vec{I}l\frac{1}{4\pi r^2} \tag{33}</script><script type="math/tex; mode=display">
+\vec{E}(\vec{r}) = \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \tag{34}</script><p>因为 current dipole moment $Il$ 是 static electric dipole moment $ql$ 的一阶导，即</p>
+<script type="math/tex; mode=display">
+Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷源</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}=j\omega(ql)\hat{z}=j\omega f \hat{z} \tag{36}</script><p>故式 (30) 又可写为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r})&=\frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right] \\
+    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times\hat{r}\times j\omega f \hat{z}+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot j\omega f \hat{z}-j\omega f \hat{z})\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{-\mu_0e^{-jkr}}{4\pi r}\left[\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\left(\frac{-j\mu_0e^{-jkr}}{4\pi kr^2}-\frac{\mu_0e^{-jkr}}{4\pi k^2r^3}\right)\left[\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f\right] \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi kr^3}\left(jr+\frac{1}{k}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{jr}{k}+\frac{1}{k^2}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(-rc(j\omega)-c^2\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)f ~~ 由于(k=\frac{\omega}{c}), \tau=\frac{r}{c} \\
+    &= \frac{-\mu_0e^{-jkr}}{4\pi r^3}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{c^2\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{r}{c}(j\omega)f+f\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right) \\
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
+    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
+\end{align}</script><p>解析：式 (37) 为时域情况下的表达式。</p>
+<p><em><em>proportional to the acceleration of the charge.</em></em><em><em>proportional to the acceleration of the charge.</em></em>f the charge.** (二次导即为加速度)</p>
+<p><em><em>Proportional to speed of charge.</em></em><em><em>Proportional to speed of charge.</em></em>Proportional to speed of charge.** (一次导即为速度)</p>
+<p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
+<p>如果在球坐标下，</p>
+<script type="math/tex; mode=display">
+\vec{I}l =Il\hat{z}= Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta} \tag{38}</script><p>(30) 式可写为<br>（1）辐射场 (kr&gt;&gt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \\
+    &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}) \\
+    &=\frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta\hat{\theta} \tag{39}
+\end{align}</script><p>（1）近场 (kr&lt;&lt;1)</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \vec{E}(\vec{r}) &= \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3\hat{r}\hat{r}\cdot(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta})-(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}))\right] \\
+    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3Il\cos\theta\hat{r}-Il\cos\theta\hat{r}+Il\sin\theta\hat{\theta}\right] \\
+    &=\frac{Il}{j4\pi\omega\epsilon_0  r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right) \tag{40}
+\end{align}</script><h2 id="（三）-天线圣经中的表示-Solution-in-Balanis"><a href="#（三）-天线圣经中的表示-Solution-in-Balanis" class="headerlink" title="（三） 天线圣经中的表示 Solution in Balanis"></a>（三） 天线圣经中的表示 Solution in Balanis</h2><p>在分析天线或辐射系统时，波从源点到场点的传播时间是极其重要的，偶极子上各点的电流并非同时作用于场点 $P$，而是存在着由射径与距离 $r$ 之差引起的时延。相应地，将电流 $I$ 表示为瞬时形式</p>
+<script type="math/tex; mode=display">
+I = I_0 e^{j\omega t} \tag{41}</script><p>该电流的瞬时传播效应可采用洛伦兹的传播(滞后)时间表示法，写成</p>
+<script type="math/tex; mode=display">
+[I]=I_0e^{j\omega [t-(r/c)]} \tag{42}</script><p>式中 $[I]$ 称为滞后电流。时间滞后 $r/c$ 导致相位滞后 $\omega r/c = 2\pi f r/c$ (弧度) $= 360^o t/T$， 即 (42) 中的方括号表明该量是电流的滞后效应。在距离电流元 $r$ 处，时刻 $t$ 的电场波动是由先前时刻 $t-r/c$ 的电流 $[I]$ 所造成的，而 $r/c$ 则是波以光速行进距离 $r$ 所历经的时间间隔。<br>偶极子所产生的电场和磁场可分别展开为矢量位和标量位。</p>
+<script type="math/tex; mode=display">
+A_z = \frac{\mu_0}{4\pi}\int_{-L/2}^{L/2} \frac{[I]}{s} dz \tag{43}</script><p>其中 $[I]$ 为滞后电流</p>
+<script type="math/tex; mode=display">
+[I]= I_0 e^{j\omega [t-(s/c)]}  \tag{44}</script><p>在上述式子中，$z$ 为原点至导体上一点的距离，$I_0$ 为电流的时间峰值(沿偶极子均匀分布)。若场点与偶极子相距远大于其长度($r]\ggg L$)，且波长也远大于其长度($\lambda\ggg L$)，故令 $s=r$ 而忽略导体不同部分所贡献场的相位差异，则式(43)中的被积函数可认为是常数，积分结果变为</p>
+<script type="math/tex; mode=display">
+A_z =\frac{\mu_0 LI_0 e^{j\omega[t-(r/c)]}}{4\pi r}  \tag{45}</script><p>类似地，电荷分布的滞后标量位 $V$ 可写为</p>
+<script type="math/tex; mode=display">
+V = \frac{1}{4\pi \epsilon_0}\int_V \frac{[\rho]}{s} d\tau  \tag{46}</script><p>式中 $[\rho]$ 是滞后电荷密度</p>
+<script type="math/tex; mode=display">
+[\rho]=\rho_0 e^{j\omega[t-(s/c)]}   \tag{47}</script><p>由于偶极子情况下，电流集中在端点区域，式 (46)可化简为</p>
+<script type="math/tex; mode=display">
+V = \frac{1}{4\pi \epsilon_0}\{\frac{[q]}{s_1}-\frac{[q]}{s_2} \}   \tag{48}</script><p>由 $\frac{dq}{dt}=I$ 和式(44)可以得到</p>
+<script type="math/tex; mode=display">
+[q]=\int [I]dt = I_0 \int e^{j\omega [t-(s/c)]} dt = \frac{[I]}{j\omega}  \tag{49}</script><p>将其带入(48)式可以得到</p>
+<script type="math/tex; mode=display">
+V = \frac{I_0}{4\pi \epsilon_0 j\omega}\left[\frac{e^{j\omega [t-(s_1/c)]}}{s_1}-\frac{e^{j\omega [t-(s_2/c)]}}{s_2}\right]  \tag{50}</script><p>当 $r\ggg L$ 时，连接偶极子端点与场点 $P$ 的直线可认为是平行的，其长度分别为</p>
+<script type="math/tex; mode=display">
+s_1 = r-\frac{L}{2}\cos\theta   \tag{51}</script><p>和</p>
+<script type="math/tex; mode=display">
+s_2 = r+\frac{L}{2}\cos\theta   \tag{52}</script><p>将其带入式(50)，可推出短电偶极子的电场表达式</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi \epsilon_0}\left(\frac{j\omega}{c^2r}+\frac{1}{cr^2}+\frac{1}{j\omega r^3}\right) \tag{53}</script><p>对应的磁场分量为</p>
+<script type="math/tex; mode=display">
+H_\Phi = \frac{I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi}\left(\frac{j\omega}{cr}+\frac{1}{r^2}\right) \tag{54}</script><p>对于 $r$ 非常大的场点，远场处 $E_r\approx 0$，因此只有两个有效分量 $E_\theta$ 和 $H_\Phi$ (所以上面也懒得写出其他分量了)。故在远场条件下</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{j\omega I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi \epsilon_0 c^2r} = j\frac{I_0\beta L}{4\pi\epsilon_0 cr}\sin\theta e^{j\omega [t-(r/c)]}    \tag{55}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{j\omega I_0 L\sin\theta e^{j\omega [t-(r/c)]}}{4\pi cr}=j\frac{I_0\beta L}{4\pi r}\sin\theta e^{j\omega [t-(r/c)]}   \tag{56}</script><p>考虑频率非常低的准静态或直流情况，由于</p>
+<script type="math/tex; mode=display">
+[I] = I_0 e^{j\omega [t-(r/c)]} = j\omega [q]  \tag{57}</script><p>故式(55)和(56)可改写为</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{[q] L\sin\theta}{4\pi \epsilon_0}\left(-\frac{\omega^2}{c^2r}+\frac{j\omega}{cr^2}+\frac{1}{r^3}\right)   \tag{58}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{[I]L\sin\theta}{4\pi}\left(\frac{j\omega}{cr}+\frac{1}{r^2}\right) \tag{59}</script><p>在低频情况下 $\omega \rightarrow 0$，分子中含有因子 $\omega$ 的项都可以忽略，还可有</p>
+<script type="math/tex; mode=display">
+[q]=q_0 e^{j\omega [t-(r/c)]} = q_0   \tag{60}</script><p>且</p>
+<script type="math/tex; mode=display">
+[I]=I_0 \tag{61}</script><p>故各场量变为</p>
+<script type="math/tex; mode=display">
+E_\theta = \frac{q_0 L\sin\theta}{4\pi\epsilon_0 r^3}  \tag{62}</script><script type="math/tex; mode=display">
+H_\Phi = \frac{I_0 L\sin\theta}{4\pi r^2}   \tag{63}</script><p>对于式(53)，当不考虑时间项时，又可以表示为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    E_\theta &= \frac{I_0 L\sin\theta e^{-j\omega\frac{r}{c}}}{4\pi \epsilon_0}\left(\frac{j\omega}{c^2r}+\frac{1}{cr^2}+\frac{1}{j\omega r^3}\right)  \\
+    &= j\omega\frac{I_0L\sin\theta}{4\pi\epsilon_0 r}\left[\frac{1}{c^2}+\frac{1}{j\omega cr}+\frac{1}{(j\omega r)^2}\right]e^{-j\omega\frac{r}{c}} \\
+    &= j\omega\frac{I_0L\sin\theta}{4\pi\epsilon_0 c^2 r}\left[1+\frac{c}{j\omega r}+\frac{c^2}{(j\omega r)^2}\right]e^{-jkr} ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}\\ 
+    &= j\omega\frac{\mu_0\epsilon_0 I_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{c}{j\omega r}+\frac{c^2}{(j\omega r)^2}\right]e^{-jkr}~~  由于c^2=\frac{1}{\mu_0\epsilon_0}\\ 
+    &=j\eta\frac{kI_0L\sin\theta}{4\pi\epsilon_0 r}\left[1+\frac{1}{jkr}-\frac{1}{(kr)^2}\right]e^{-jkr}~~  由于k=\omega\sqrt{\mu_0\epsilon_0},\eta=\sqrt{\frac{\mu_0}{\epsilon_0}}, k=\frac{\omega}{c}  \tag{64}\\ 
+\end{align}</script><p>故式子(64)即为 Balanis 天线圣经中的 (4-10b)式。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-线性系统"
   class="article article-type-post"
   itemscope
@@ -384,185 +631,6 @@ H = e^{\pm i|\Delta z|}\sqrt{(\frac{\omega}{C})^2-k_x^2-k_y^2} \tag{9}</script><
        
   <h1 id="有关逆时偏移成像方法"><a href="#有关逆时偏移成像方法" class="headerlink" title="有关逆时偏移成像方法"></a>有关逆时偏移成像方法</h1><h2 id="基尔霍夫-Kirchhoff-积分偏移成像方法"><a href="#基尔霍夫-Kirchhoff-积分偏移成像方法" class="headerlink" title="基尔霍夫(Kirchhoff)积分偏移成像方法"></a>基尔霍夫(Kirchhoff)积分偏移成像方法</h2><p>利用优化算法，将瞬变电磁场进行波场变换，得到“波场”，将波场分析的原理即地震波场从地面向地下反向外推进行偏移成像的方法用于对瞬变电磁场的解释，形成瞬变电磁场的偏移方法。即对观测电磁数据向下延拓，构建产生响应的地下电阻率图像。</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EM-learning/" rel="tag">EM learning</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Dipole"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/07/31/Dipole/"
-    >Dipole</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/07/31/Dipole/" class="article-date">
-  <time datetime="2023-07-31T14:53:57.000Z" itemprop="datePublished">2023-07-31</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Antenna/">Antenna</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Electric-Dipole-详解"><a href="#Electric-Dipole-详解" class="headerlink" title="Electric Dipole 详解"></a>Electric Dipole 详解</h1><h2 id="（一）-Dyadic-Green’s-Function-in-free-space"><a href="#（一）-Dyadic-Green’s-Function-in-free-space" class="headerlink" title="（一） Dyadic Green’s Function in free space"></a>（一） Dyadic Green’s Function in free space</h2><p>首先给出Maxwell方程组：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    Ampere's~Law: ~\nabla\times \vec{H} &= \vec{J}+\frac{\partial \vec{D}}{\partial t}   \tag{1}  \\
-    Faraday's~Law:~\nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t}  \tag{2}  \\
-    Gaussian's~Law:~\nabla \cdot \vec{D} &= \rho  \tag{3}  \\
-    Gaussian's~Law:~\nabla \cdot \vec{B} &= 0  \tag{4}  \\
-\end{align}</script><h3 id="1-Vector-and-scalar-potentials"><a href="#1-Vector-and-scalar-potentials" class="headerlink" title="1. Vector and scalar potentials"></a>1. Vector and scalar potentials</h3><p>因为 $\nabla \cdot B=0$，根据 $\nabla \cdot \nabla \times A = 0$，可以定义一个矢量位函数 $A$</p>
-<script type="math/tex; mode=display">
-\vec{B}=\nabla \times \vec{A} \tag{5}</script><p>因此上面的(2)式变为</p>
-<script type="math/tex; mode=display">
-\nabla \times (\vec{E}+\frac{\partial{\vec{A}}}{\partial t}) = 0 \tag{6}</script><p>于是，根据 $\nabla \times \nabla\phi = 0$，可以定义一个标量位函数 $\phi$</p>
-<script type="math/tex; mode=display">
-\vec{E}=-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi \tag{7}</script><p>在空气中，介电常数和磁导率分别为 $\epsilon = \epsilon_0 = 8.85 \times 10^{-12} F/m$，$\mu = \mu_0 = 4\pi \times 10^{-7} H/m$。自由空间中的本构关系为 $\vec{D} = \epsilon_0 \vec{E}$ 和 $\vec{B} = \mu_0 \vec{H}$。</p>
-<p>接下来借用本构关系和Maxwell方程中的(1)和(3)，构造出只含位函数的方程，根据(3)式可以得到</p>
-<script type="math/tex; mode=display">
-\nabla \cdot (\epsilon_0 \vec{E}) = \rho  \\
-\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} \\
-\nabla \cdot \left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right) = \frac{\rho}{\epsilon_0} \\</script><p>由 nabla operator 的性质 $\nabla^2 f = \nabla \cdot (\nabla f) $</p>
-<script type="math/tex; mode=display">
-\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><p>根据(1)式可以得到</p>
-<script type="math/tex; mode=display">
-\nabla\times \vec{H} = \vec{J}+\frac{\partial \vec{D}}{\partial t}\\
-\nabla\times \frac{\vec{B}}{\mu_0} = \vec{J} + \epsilon_0 \frac{\partial{\vec{E}}}{\partial{t}}\\
-\nabla\times(\nabla \times \vec{A}) = \mu_0\vec{J}+\mu_0 \epsilon_0\frac{\partial}{\partial{t}}\left(-\frac{\partial \vec{A}}{\partial{t}}-\nabla \phi\right)</script><p>由$\nabla^2\vec{A} = \nabla(\nabla\cdot \vec{A})-\nabla\times\nabla\times\vec{A}$ 可以得到</p>
-<script type="math/tex; mode=display">
-\nabla(\nabla\cdot \vec{A}) - \nabla^2\vec{A} = \mu_0\vec{J}+\frac{1}{c^2}\left(-\frac{\partial^2 \vec{A}}{\partial{t^2}}-\frac{\partial (\nabla \phi)}{\partial t}\right) \\
-\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>因此得到的方程组为</p>
-<script type="math/tex; mode=display">
-\nabla^2 \phi +\frac{\partial}{\partial t}(\nabla \cdot \vec{A}) = -\frac{\rho}{\epsilon_0}  \tag{8}</script><script type="math/tex; mode=display">
-\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}}-\nabla\left(\nabla\cdot \vec{A}+\frac{1}{c^2}\frac{\partial\phi}{\partial t}\right) = -\mu_0\vec{J}  \tag{9}</script><p>可以看出上式中 $\vec{A}$ 和 $\phi$ 的解并不唯一，因此采用 Lorenz condition 来简化这个方程。Lorenz规范如下</p>
-<script type="math/tex; mode=display">
-\nabla \cdot \vec{A} + \frac{1}{c^2}\frac{\partial \phi}{\partial t}=0 \tag{10}</script><p>在这个规范下，(8) 和 (9) 可以转换为</p>
-<script type="math/tex; mode=display">
-\nabla^2 \phi - \frac{1}{c^2}\frac{\partial^2\phi}{\partial{t^2}} = -\frac{\rho}{\epsilon_0}  \tag{11}</script><script type="math/tex; mode=display">
-\nabla^2\vec{A} - \frac{1}{c^2}\frac{\partial^2 \vec{A}}{\partial{t^2}} = -\mu_0\vec{J}  \tag{12}</script><p>即真空中的Maxwell方程组可以转换为 (10)-(12) 式。</p>
-<p><em><em>time-harmonic</em></em>c** source，上式可以转换为</p>
-<script type="math/tex; mode=display">
-\nabla \cdot \vec{A}-\frac{i\omega}{c^2}\phi = 0 \tag{13}</script><script type="math/tex; mode=display">
-\nabla^2\phi+k^2\phi = -\frac{\rho}{\epsilon_0} \tag{14}</script><script type="math/tex; mode=display">
-\nabla^2\vec{A}+k^2\vec{A} = -\mu_0 \vec{J} \tag{15}</script><p>其中的转换关系为 </p>
-<script type="math/tex; mode=display">
-\frac{\partial^n}{\partial t^n} = (-i\omega)^n</script><h3 id="2-Dyadic-Green’s-fuction"><a href="#2-Dyadic-Green’s-fuction" class="headerlink" title="2. Dyadic Green’s fuction"></a>2. Dyadic Green’s fuction</h3><p>为了分析由任意电流分布辐射的电磁场，我们需要借助 Dyadic Green’s Function 进行分析计算。</p>
-<p><strong>总体思路为：<br>(1) 求解 $\vec{J}$<br>(2) 再由式 (15) 求解 $\vec{A}$<br>(3) 再由式 (13) 求解 $\phi$<br>(4) 最后由位函数方程 (5) 和 (7) 求解得到场 $\vec{E}$ 和 $\vec{B}$</strong></p>
-<p>根据 (13) 和 (14)， 标量位函数和矢量位函数的每个分量可以表示为</p>
-<script type="math/tex; mode=display">
-\nabla^2\Psi(\vec{r})+k^2\Psi(\vec{r})=-f(\vec{r}) \tag{16}</script><p>其中 $f(\vec{r})$ 表示任意的源分布。可以看出由源 $f(\vec{r})$ 和由其产生的场 $\Psi(\vec{r})$ 之间是线性的关系，故我们可以将 (16) 式看做是一个线性系统，其中 $f(\vec{r})$ 是输入，$\Psi(\vec{r})$ 是其产生的输出。==当输入为一个冲激函数 $\delta$ 时，其产生的脉冲响应函数即为格林函数。==<br>假设有一个点源置于 $\vec{r}’$，即 $f(\vec{r})=\delta(\vec{r}-\vec{r}’)$，故该方程的解即为格林函数 $g(\vec{r},\vec{r}’)$</p>
-<script type="math/tex; mode=display">
-(\nabla^2+k^2)g(\vec{r},\vec{r}') = -\delta(\vec{r}-\vec{r}') \tag{17}</script><p>因为有 $f(\vec{r})=\iiint f(\vec{r})\delta(\vec{r}-\vec{r}’)d\vec{r}’ $，故式(16) 可以表示为</p>
-<script type="math/tex; mode=display">
-\Psi(\vec{r})=\iiint g(\vec{r},\vec{r}')f(\vec{r}')d\vec{r}' \tag{18}</script><p>为了得到 $g(\vec{r},\vec{r}’)$，将上式简化，考虑 $\vec{r}’=0$，即把源放在原点时的情况，因此 (17) 式可以化简为</p>
-<script type="math/tex; mode=display">
-(\nabla^2+k^2)g(\vec{r}) = -\delta(\vec{r}) \tag{19}</script><p>求解该方程的过程已省略，最后可以得到格林方程为</p>
-<script type="math/tex; mode=display">
-g(\vec{r})=\frac{e^{-jkr}}{4\pi r}</script><p>其中 $r$ 是从观察点到原点的距离。转换为原来的坐标，只需将 $r$ 换为 $|\vec{r}-\vec{r}’|$，因此该标量格林函数可以表示为</p>
-<script type="math/tex; mode=display">
-g(\vec{r},\vec{r}')=\frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}  \tag{20}</script><p>故对于一个任意的点源，将式 (20) 带入 (18) 可以得到位函数通用表达式为</p>
-<script type="math/tex; mode=display">
-\Psi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}f(\vec{r}')d\vec{r}' \tag{21}</script><p>因此可以得到位函数 $\vec{A}$ 和 $\phi$，同时也是方程 (14) 和 (15) 的解</p>
-<script type="math/tex; mode=display">
-\Phi(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\frac{\rho(\vec{r}')}{\epsilon_0}d\vec{r}' \tag{22}</script><script type="math/tex; mode=display">
-\vec{A}(\vec{r})=\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{23}</script><p>得到位函数后可以求得场</p>
-<script type="math/tex; mode=display">
-\vec{B}(\vec{r})=\nabla\times\vec{A}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}\mu_0 J(\vec{r}')d\vec{r}' \tag{24}</script><script type="math/tex; mode=display">
-\vec{H}(\vec{r})=\frac{\vec{B}}{\mu_0}=\nabla\times\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{25}</script><p>最后得到电场分量为</p>
-<script type="math/tex; mode=display">
-\vec{E}(\vec{r})=-j\omega\mu_0(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)\cdot\iiint \frac{e^{-jk|\vec{r}-\vec{r}'|}}{4\pi |\vec{r}-\vec{r}'|}J(\vec{r}')d\vec{r}' \tag{26}</script><p>其中 </p>
-<script type="math/tex; mode=display">
-\overline{\overline{G}}(\vec{r}-\vec{r}')=(\overline{\overline{I}}+\frac{1}{k^2}\nabla\nabla)g(\vec{r}-\vec{r}') \tag{27}</script><p>为 ==dyadic Green’s function==. 故 $\vec{E}$最终形式为</p>
-<script type="math/tex; mode=display">
-\vec{E}(\vec{r})=-j\omega\mu_0\iiint \overline{\overline{G}}(\vec{r}-\vec{r}')\cdot J(\vec{r}')d\vec{r}' \tag{28}</script><h2 id="（二）-Exact-solution-for-Hertzian-dipole"><a href="#（二）-Exact-solution-for-Hertzian-dipole" class="headerlink" title="（二） Exact solution for Hertzian dipole"></a>（二） Exact solution for Hertzian dipole</h2><p>对于一个任意的在原点的 Hertzian dipole， $\vec{J}(\vec{r})=\vec{I}l\delta (\vec(r))$ ，由式 (25) 可以得到磁场为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \vec{H}(\vec{r}) &= \nabla\times\left(\frac{e^{-jkr}}{4\pi r}\vec{I}l\right)    \\
-    &= \nabla \frac{e^{-jkr}}{4\pi r} \times \vec{I}l \\
-     &= \frac{\partial}{\partial r}\left(\frac{e^{-jkr}}{4\pi r}\right)\times \vec{I}l \\
-     &= \frac{e^{-jkr}}{4\pi r} \hat{r} \times \vec{I}l \left(-jk-\frac{1}{r}\right) \\
-     &= \hat{r} \times \vec{I}l \frac{-jke^{-jkr}}{4\pi r}\left(1-\frac{j}{kr}\right)  \tag{29}
-\end{align}</script><p>根据 Ampere’s Law 可以得到电场</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \vec{E}(\vec{r})&=\frac{1}{j\omega \epsilon_0}\nabla\times \vec{H}(\vec{r})    \\
-    &=\frac{1}{j\omega \epsilon_0}\nabla\times \left[ \hat{r} \times \vec{I}l \frac{e^{-jkr}}{4\pi r}\left(-jk-\frac{1}{r}\right)\right] \\
-    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right]  \tag{30}
-\end{align}</script><p>远场和近场：<br>对于远场(辐射场) (kr&gt;&gt;1)</p>
-<script type="math/tex; mode=display">
-\vec{H}(\vec{r}) = \frac{-jke^{-jkr}}{4\pi r}\hat{r}\times\vec{I}l \tag{31}</script><script type="math/tex; mode=display">
-\vec{E}(\vec{r}) = \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \tag{32}</script><p>对于近场(kr&lt;&lt;1)</p>
-<script type="math/tex; mode=display">
-\vec{H}(\vec{r}) = -\hat{r}\times\vec{I}l\frac{1}{4\pi r^2} \tag{33}</script><script type="math/tex; mode=display">
-\vec{E}(\vec{r}) = \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \tag{34}</script><p>因为 current dipole moment $Il$ 是 static electric dipole moment $ql$ 的一阶导，即</p>
-<script type="math/tex; mode=display">
-Il = j\omega(ql) \tag{35}</script><p>此处我们将 $ql$ 替换成任意电荷源</p>
-<script type="math/tex; mode=display">
-\vec{I}l =Il\hat{z}=j\omega(ql)\hat{z}=j\omega f \hat{z} \tag{36}</script><p>故式 (30) 又可写为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \vec{E}(\vec{r})&=\frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[-\hat{r}\times\hat{r}\times\vec{I}l+\left(-\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot \vec{I}l-\vec{I}l)\right] \\
-    &= \frac{-j\omega\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times\hat{r}\times j\omega f \hat{z}+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)(3\hat{r}\hat{r}\cdot j\omega f \hat{z}-j\omega f \hat{z})\right] \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f+\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{-\mu_0e^{-jkr}}{4\pi r}\left[\left(\frac{j}{kr}+\frac{1}{(kr)^2}\right)\left(3\hat{r}\hat{r}\cdot (j\omega)^2 f \hat{z}-(j\omega)^2 f \hat{z}\right)\right] \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\left(\frac{-j\mu_0e^{-jkr}}{4\pi kr^2}-\frac{\mu_0e^{-jkr}}{4\pi k^2r^3}\right)\left[\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f\right] \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi kr^3}\left(jr+\frac{1}{k}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{jr}{k}+\frac{1}{k^2}\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)(j\omega)^2 f  \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]-\frac{\mu_0e^{-jkr}}{4\pi r^3}\left(-rc(j\omega)-c^2\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right)f ~~ 由于(k=\frac{\omega}{c}), \tau=\frac{r}{c} \\
-    &= \frac{-\mu_0e^{-jkr}}{4\pi r^3}\left[\hat{r}\times(\hat{r}\times\hat{z})\cdot (j\omega)^2 f\right]+\frac{c^2\mu_0e^{-jkr}}{4\pi r^3}\left(\frac{r}{c}(j\omega)f+f\right)\left(3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}\right) \\
-    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[(j\omega)^2 f\cdot e^{-jkr} \right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[\tau(j\omega)fe^{-jkr}+fe^{-jkr}\right] ~~  由于e^{-jkr}=e^{-j\omega\frac{r}{c}}=e^{-j\omega\tau}\\ 
-    &= \frac{\hat{r}\times(\hat{r}\times\hat{z})}{4\pi\epsilon_0 c^2 r}\left[\partial_t^2 f(t-\tau)\right]+\frac{3(\hat{r}\cdot\hat{z})\hat{r}-\hat{z}}{4\pi \epsilon_0 r^3}\left[f(t-\tau)+\tau\partial_t f(t-\tau)\right] \tag{37} \\
-\end{align}</script><p>解析：<br>(1) 第一部分 $\left[\partial^2_t f(t-\tau)\right]$ 是 Radiation field, ==proportional to the acceleration of the charge.== (二次导即为加速度)</p>
-<p>(2) 第二部分 $\left[\tau \partial_t f(t-\tau)\right]$  是 induction field. ==Proportional to speed of charge.== (一次导即为速度)</p>
-<p>(3) 第三部分 $\left[f(t-\tau)\right]$  是  Electrical field of static dipole which decays by $\frac{1}{r^3}$.</p>
-<p>如果在球坐标下，</p>
-<script type="math/tex; mode=display">
-\vec{I}l =Il\hat{z}= Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta} \tag{38}</script><p>(30) 式可写为<br>（1）辐射场 (kr&gt;&gt;1)</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \vec{E}(\vec{r}) &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times\vec{I}l \\
-    &= \frac{j\omega\mu_0 e^{-jkr}}{4\pi r}\hat{r}\times\hat{r}\times(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}) \\
-    &=\frac{j\omega\mu_0 e^{-jkr}}{4\pi r}Il\sin\theta\hat{\theta} \tag{39}
-\end{align}</script><p>（1）近场 (kr&lt;&lt;1)</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \vec{E}(\vec{r}) &= \frac{-j}{4\pi\omega\epsilon_0  r^3}(3\hat{r}\hat{r}\cdot\vec{I}l-\vec{I}l) \\
-    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3\hat{r}\hat{r}\cdot(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta})-(Il\cos\theta\hat{r}-Il\sin\theta\hat{\theta}))\right] \\
-    &=\frac{-j}{4\pi\omega\epsilon_0  r^3}\left[3Il\cos\theta\hat{r}-Il\cos\theta\hat{r}+Il\sin\theta\hat{\theta}\right] \\
-    &=\frac{Il}{j4\pi\omega\epsilon_0  r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right) \tag{40}
-\end{align}</script> 
       <!-- reward -->
       
     </div>

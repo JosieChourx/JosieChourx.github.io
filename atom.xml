@@ -6,7 +6,7 @@
   <link href="http://josiechourx.top/atom.xml" rel="self"/>
   
   <link href="http://josiechourx.top/"/>
-  <updated>2023-08-23T08:39:14.538Z</updated>
+  <updated>2023-08-26T10:04:24.177Z</updated>
   <id>http://josiechourx.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dipole</title>
+    <link href="http://josiechourx.top/2023/08/26/Dipole/"/>
+    <id>http://josiechourx.top/2023/08/26/Dipole/</id>
+    <published>2023-08-26T01:34:57.000Z</published>
+    <updated>2023-08-26T10:04:24.177Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Short-Electric-Dipole-详解&quot;&gt;&lt;a href=&quot;#Short-Electric-Dipole-详解&quot; class=&quot;headerlink&quot; title=&quot;Short Electric Dipole 详解&quot;&gt;&lt;/a&gt;Short</summary>
+        
+      
+    
+    
+    
+    <category term="Antenna" scheme="http://josiechourx.top/categories/Antenna/"/>
+    
+    
+    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Linear System</title>
@@ -83,31 +108,6 @@
     
     
     <category term="inverse problem" scheme="http://josiechourx.top/categories/inverse-problem/"/>
-    
-    
-    <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dipole</title>
-    <link href="http://josiechourx.top/2023/07/31/Dipole/"/>
-    <id>http://josiechourx.top/2023/07/31/Dipole/</id>
-    <published>2023-07-31T14:53:57.000Z</published>
-    <updated>2023-08-05T13:47:50.377Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Electric-Dipole-详解&quot;&gt;&lt;a href=&quot;#Electric-Dipole-详解&quot; class=&quot;headerlink&quot; title=&quot;Electric Dipole 详解&quot;&gt;&lt;/a&gt;Electric Dipole 详解&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Antenna" scheme="http://josiechourx.top/categories/Antenna/"/>
     
     
     <category term="EM learning" scheme="http://josiechourx.top/tags/EM-learning/"/>
