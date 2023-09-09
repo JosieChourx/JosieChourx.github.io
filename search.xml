@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>20230909</title>
+    <url>/2023/09/09/20230909/</url>
+    <content><![CDATA[<h3 id="20230909-星期六"><a href="#20230909-星期六" class="headerlink" title="20230909 星期六"></a>20230909 星期六</h3><p>正在完成： CST仿真学习、FEKO仿真学习<br>待完成：CST频域分析dipole、线性系统复习、EM复习</p>
+<h3 id="今日健身"><a href="#今日健身" class="headerlink" title="今日健身"></a>今日健身</h3><p>已经过了体能复健期<br>无氧打卡：背部、臀腿<br>有氧打卡：跑步机30min<br>拉伸20min<br>记得买一个小一点的泡沫轴和弹力带<br>饮食上注意甜食</p>
+<h3 id="另"><a href="#另" class="headerlink" title="另"></a>另</h3><p>戒辣第一周 成功！同时记得早睡(11点前) 争取在雨季来之前改善一下阴虚火旺体质<br>下周五关注论文情况<br>留坡 or not？</p>
+]]></content>
+      <tags>
+        <tag>Live once</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>computational electrodynamics chapter 2</title>
     <url>/2023/07/02/Computational%20electrodynamics/</url>
     <content><![CDATA[<h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
