@@ -317,6 +317,84 @@ H_\Phi = \frac{I_0 L\sin\theta}{4\pi r^2}   \tag{63}</script><p>对于式(53)，
       </tags>
   </entry>
   <entry>
+    <title>信号与系统</title>
+    <url>/2023/09/13/%E6%97%B6%E5%9F%9F%E8%BD%AC%E9%A2%91%E5%9F%9F/</url>
+    <content><![CDATA[<h1 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h1><p>大二学的信号与系统也白学了。。。还是得从头学一遍。最近发现有好多地方需要用到傅里叶变换作为时域信号和频域信号之间的桥梁，索性快速地将信号与系统再回顾一遍了。此处大多数引用的是B站浙大胡浩基老师的课程，讲得真好！</p>
+<h2 id="P1-典型的信号"><a href="#P1-典型的信号" class="headerlink" title="P1 典型的信号"></a>P1 典型的信号</h2><ol>
+<li><p>周期信号：</p>
+<script type="math/tex; mode=display">
+x(t) = &x(t+mT)~~~~~~  &m\in Z \\
+x[n] = &x[n+mN]~~~~~~  &m\in Z,~N是一个自然数</script></li>
+<li><p>功率信号和能量信号<br>设信号 $x(t)$ 为电压或电流。<br>则它在 $1\Omega$ 的电阻上的瞬时功率为： </p>
+<script type="math/tex; mode=display">
+p(t) = |x(t)|^2</script><p>在 $t_1\leq t \leq t_2$ 内消耗的能量为：</p>
+<script type="math/tex; mode=display">
+E = \int_{t_1}^{t_2} |x(t)|^2 dt</script><p>当 $T=(t_2 - t_1)\to\infty$ 时，总能量 $E$ 和平均功率 $P$ 分别定义为：</p>
+<script type="math/tex; mode=display">
+E = \lim \limits_{t_2-t_1 \to \infty} \int_{t_1}^{t_2} |x(t)|^2 dt</script><script type="math/tex; mode=display">
+P = \lim \limits_{t_2-t_1 \to \infty} \frac{1}{t_2-t_1}\int_{t_1}^{t_2} |x(t)|^2 dt</script><p>同理，对于离散信号：</p>
+<script type="math/tex; mode=display">
+E = \sum_{n=-\infty}^{\infty}|x[n]|^2</script><script type="math/tex; mode=display">
+P = \lim \limits_{N \to \infty} \frac{1}{2N+1}\sum_{n=-N}^{N}|x[n]|^2</script><p>如果信号 $x(t)$ 的能量 $E$ 满足： $0&lt;E&lt;\infty$，而 $P=0$，则为能量(有限)信号。<br>如果信号 $x(t)$ 的功率 $P$ 满足： $0&lt;P&lt;\infty$，而 $E=\infty$，则为功率(有限)信号。</p>
+</li>
+<li><p>抽样函数</p>
+<script type="math/tex; mode=display">
+Sa(t)=\frac{sin(t)}{t}</script><p>两个性质：</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \frac{sin(t)}{t} dt =\pi</script><script type="math/tex; mode=display">
+\int_{0}^{+\infty} \frac{sin(t)}{t} dt =\int_{-\infty}^{0} \frac{sin(t)}{t} dt= \frac{\pi}{2}  ~~~(偶函数)</script></li>
+</ol>
+<p>对于任意一个离散信号，可以表示为</p>
+<script type="math/tex; mode=display">
+x[n] = \sum_{k=-\infty}^{+\infty} x[k]\delta [n-k]</script><h2 id="P2-典型的系统"><a href="#P2-典型的系统" class="headerlink" title="P2 典型的系统"></a>P2 典型的系统</h2><p>主要有以下几种系统：线性系统，时不变系统，因果系统，稳定系统，无记忆系统。<br>线性系统判据：每一项都有 $x$，每一项的 $x$ 都是一次的。<br>时不变系统判据：$t$ 只在 $x$ 的括号里，$t$ 只能是 $t$ ，不能是 $2t$，$t^2$ 等其他函数。<br>因果系统：如果一个系统任何时刻输出只取决于现在和过去的输入，就称该系统为因果系统。判据：$x$ 括号里的数恒小于 $y$ 括号里的数。<br>无记忆系统：$y(t)$ 的值仅仅只依赖于 $x(t)$ 的值。判据：$x$ 与 $y$ 括号里的数完全相同。无记忆系统一定是因果系统。<br>稳定系统：若 $x(t)$ 有界，则 $y(t)$ 有界。</p>
+<h2 id="P3-线性时不变-LTI-系统时域分析"><a href="#P3-线性时不变-LTI-系统时域分析" class="headerlink" title="P3 线性时不变(LTI)系统时域分析"></a>P3 线性时不变(LTI)系统时域分析</h2><h3 id="离散LTI系统卷积公式"><a href="#离散LTI系统卷积公式" class="headerlink" title="离散LTI系统卷积公式"></a>离散LTI系统卷积公式</h3><p>单位脉冲序列：</p>
+<script type="math/tex; mode=display">
+x[n]=\delta [n]</script><p>输入单位脉冲序列 $\delta [n]$ 到LTI系统得到的是单位脉冲响应 $h[n]$。<br>故对于任意输入 $x[n]$ 到LTI系统， 得到的输出 $y[n]$ 为</p>
+<script type="math/tex; mode=display">
+y[n] = x[n]\ast h[n]</script><p><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em>相同系统。**<br>求解该卷积有两种方法：</p>
+<ol>
+<li><p>列表法<br> 第一步是确定 $y[n] = x[n] \ast h[n]$ 的取值范围。即 $x[n]$ 的最小横坐标值加 $h[n]$ 的最小横坐标值即为 $y[n]$ 的最小横坐标值，最大横坐标值亦然。</p>
+<p>(这个也很容易理解，比如说输入的$x[n]$可以分解为一系列变形的单位脉冲序列的叠加，假设分解后$x[n]$ 最左边的值为 $\delta [n+1]$，且对于一个LTI系统，它单位脉冲序列 $\delta [n]$ 产生的对应的单位脉冲响应 $h[n]$ 最左边的值为 $3\delta [n+1]$，即$x[n]$对单位脉冲序列的变形为向左移动了一位，故坐标为-1，$h[n]$ 最小坐标也为-1，将 $x[n]$ 输入LTI系统后，对应的脉冲响应也产生向左移动一位的变形，即最小坐标变为-1-1=-2)。</p>
+</li>
+</ol>
+<p>若 $x[n]$ 长度为 $N_1$，$h[n]$ 长度为 $N_2$， 则 $y[n]$ 的长度为 $N_1+N_2-1$</p>
+<ol>
+<li>卷积公式法<script type="math/tex; mode=display">
+x[n]\ast h[n] = \sum_{k=-\infty}^{+\infty} x[k]h[n-k]=\sum_{k=-\infty}^{+\infty} x[k]h[-(k-n)]</script>计算分为四步：翻转(取负)、平移(向右平移$n$个单位)、相乘、求和。<br>吃完晚饭了，回来接着学。。。</li>
+</ol>
+<h3 id="连续LTI系统卷积公式"><a href="#连续LTI系统卷积公式" class="headerlink" title="连续LTI系统卷积公式"></a>连续LTI系统卷积公式</h3><p>冲激函数 $\delta (t)$ (无限窄的方波)，跟上面离散信号中的单位脉冲函数区别一下。<br>将连续信号 $x(t)$ 用无数个冲激函数去做近似，近似过程在这里省略了，给出最后结论。若冲激函数 $\delta(t)$ 的冲激响应为 $h(t)$，则输入任意的连续信号 $x(t)$，它的响应将为：</p>
+<script type="math/tex; mode=display">
+y(t) = x(t)\ast h(t)=\int_{-\infty}^{+\infty} x(\tau)h(t-\tau)d\tau</script><p>胡老师有个神奇的观点，卷积的卷指的是翻转，积指的是相乘，哈哈哈哈。连续LTI系统的卷积公式可以直接求积分计算，或者类似于在离散里面的，画图，翻转、平移(分阶段)、相乘、求和(求取相交面积)。</p>
+<h3 id="冲激函数-delta-t-的性质"><a href="#冲激函数-delta-t-的性质" class="headerlink" title="冲激函数 $\delta (t)$ 的性质"></a>冲激函数 $\delta (t)$ 的性质</h3><p>性质1：</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \delta (t) dt = 1</script><p>性质2：</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} x(t)\delta (t) dt = x(0)</script><p>性质3：</p>
+<script type="math/tex; mode=display">
+x(t)\delta (t)=x(0) \delta (t)</script><script type="math/tex; mode=display">
+x(t)\delta (t-t_0)=x(t_0) \delta (t-t_0)</script><p>性质4：</p>
+<script type="math/tex; mode=display">
+\delta (at) = \frac{1}{|a|}\delta (t)</script><script type="math/tex; mode=display">
+\delta (at+b) = \frac{1}{|a|}\delta (t+\frac{b}{a})</script><h3 id="卷积的性质-连续和离散都同"><a href="#卷积的性质-连续和离散都同" class="headerlink" title="卷积的性质(连续和离散都同)"></a>卷积的性质(连续和离散都同)</h3><p>交换律：</p>
+<script type="math/tex; mode=display">
+x(t) \ast h(t) = h(t) \ast x(t)</script><p>结合律：</p>
+<script type="math/tex; mode=display">
+[x(t) \ast h_1 (t)] \ast h_2(t) = [x(t) \ast h_2 (t)] \ast h_1(t)</script><p>分配率：</p>
+<script type="math/tex; mode=display">
+x(t) \ast [h_1 (t) + h_2 (t)] = x(t) \ast h_1 (t) + x(t) \ast h_2 (t)</script><p>微分器：</p>
+<script type="math/tex; mode=display">
+\frac{d[x(t) \ast h(t)]}{dt} = \frac{dx(t)}{dt} \ast h(t)</script><p>不知道叫什么的性质：</p>
+<script type="math/tex; mode=display">
+x(t + t_0) \ast h(t - t_0) = x(t) \ast h(t)</script><p>啊！终于要到傅里叶变换了</p>
+<h2 id="P4-连续信号频域分析-傅里叶变换"><a href="#P4-连续信号频域分析-傅里叶变换" class="headerlink" title="P4 连续信号频域分析(傅里叶变换)"></a>P4 连续信号频域分析(傅里叶变换)</h2>]]></content>
+      <categories>
+        <category>Courses</category>
+      </categories>
+      <tags>
+        <tag>Courses review and learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>白噪声</title>
     <url>/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/</url>
     <content><![CDATA[<h2 id="白噪声"><a href="#白噪声" class="headerlink" title="白噪声"></a>白噪声</h2><p>白噪声源自white noise的翻译，其中的 “白” 应该是指其频谱特性是一条直线，并无其他有效信息。</p>

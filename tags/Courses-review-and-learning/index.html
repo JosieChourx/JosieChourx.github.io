@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Linear System |  Per Aspera Ad Astra</title>
+      <title>Tag: Courses review and learning |  Per Aspera Ad Astra</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,202 +66,72 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-线性系统"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Linear System
-</h1>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/" class="article-date">
-  <time datetime="2023-08-23T06:14:29.000Z" itemprop="datePublished">2023-08-23</time>
-</a>   
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">675</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
   
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h2><h3 id="Review-of-Classical-Control-Systems"><a href="#Review-of-Classical-Control-Systems" class="headerlink" title="Review of Classical Control Systems"></a>Review of Classical Control Systems</h3><h4 id="Laplace-Transformation"><a href="#Laplace-Transformation" class="headerlink" title="Laplace Transformation"></a>Laplace Transformation</h4><script type="math/tex; mode=display">
-F(s)= \cal{L}[f(t)]=\int_{0}^{\infty}f(t)e^{-st}dt</script><p>Properties of Laplace Transform:</p>
-<ol>
-<li>$\cal{L}[Af(t)]=A\cal{L} [f(t)]$ where $A$ is a constant.</li>
-<li>$\cal{L} [A_1 f_1(t)+A_2 f_2(t)]=A_1 \cal{L} [f_1(t)]+A_2\cal{L} [f_2(t)]$</li>
-</ol>
-<h4 id="Transfer-Function"><a href="#Transfer-Function" class="headerlink" title="Transfer Function"></a>Transfer Function</h4><p>The transfer function of a linear, time-invariant, differential equation (线性时不变差分方程) is defined as </p>
-<script type="math/tex; mode=display">
-G(s)=\frac{b_0 s^m+b_1 s^{m-1}+\cdots b_{m-1}s+b_m}{a_0s^n+a_1s^{n-1}+\cdots a_n}</script><p>计算传递函数时，认为初始状态为0.</p>
-<h4 id="Other-Definitions"><a href="#Other-Definitions" class="headerlink" title="Other Definitions"></a>Other Definitions</h4><ol>
-<li>Proper Transfer Function: $n/geq m$，即传递函数分子的阶数不大于分母的阶数。</li>
-<li>Strictly proper transfer function: $n&gt;m$，即传递函数分子阶数小于分母阶数。</li>
-<li><em><em>denominator</em></em><em><em>denominator</em></em><em><em>denominator</em></em><em><em>denominator</em></em>or** of G(s).</li>
-<li>Poles of G(s): The roots of the denominator polynomial of G(s).</li>
-<li>Zeros of G(s): The roots of the numerator polynomial of G(s).</li>
-</ol>
-<h3 id="Mathematical-Description-of-Systems"><a href="#Mathematical-Description-of-Systems" class="headerlink" title="Mathematical Description of Systems"></a>Mathematical Description of Systems</h3><h4 id="Causality-因果性"><a href="#Causality-因果性" class="headerlink" title="Causality 因果性"></a>Causality 因果性</h4><p>memoryless system:  输出仅取决于当前时刻输入，而不取决于之前的输入和之后的输入。<br>casual system, non-anticipatory system:  系统输出仅取决于之前和当前的输入。</p>
-<h4 id="Linear-system"><a href="#Linear-system" class="headerlink" title="Linear system"></a>Linear system</h4><p>通过叠加法则，可将系统响应分解为零状态响应和零输入响应之和，即</p>
-<p>零输入响应表示为：</p>
-<script type="math/tex; mode=display">
-\{x(t_0),0,y_{zi}(t)~~for~~ t\geq t_0 \}</script><p>零状态响应表示为：</p>
-<script type="math/tex; mode=display">
-\{0,u(t),~~for~~t\geq t_0, y_{zs}(t)~~for~~ t\geq t_0 \}</script><p>故</p>
-<script type="math/tex; mode=display">
-y(t)=y_{zi}(t)+y_{zs}(t)</script><h3 id="Input-Output-Description"><a href="#Input-Output-Description" class="headerlink" title="Input-Output Description"></a>Input-Output Description</h3><script type="math/tex; mode=display">
-y(t)=\int_{t_0}^{t} g(t-\tau)u(\tau)d\tau = u(t)\ast g(t)  \tag{1}</script><p>卷积的连续表达形式。其中 $g(t)$ 是系统对于冲激函数 $\delta(t)$ 的冲激响应 (Impulse Response).</p>
-<h3 id="State-Space-Representation"><a href="#State-Space-Representation" class="headerlink" title="State Space Representation"></a>State Space Representation</h3><p>状态空间方程的一般形式</p>
-<script type="math/tex; mode=display">
-\dot{x}(t)=A(t)x(t)+B(t)u(t) \tag{2} \\
-y(t)=C(t)x(t)+D(t)u(t)</script><p>其中，$x$ 是 $n$ 维状态矢量； $u$ 是 $p$ 维输入(或控制)矢量； $y$ 是 $q$ 维输出矢量；$A(t)$ 是 $n\times n$ 方阵，为系统内部状态的联系，称为状态矩阵或者系统矩阵；$B(t)$ 是 $n\times p $ 矩阵， 为输入对状态的作用，称为输入矩阵或控制矩阵；$C(t)$ 是 $q\times n$ 矩阵，为输出与状态之间的关系，称为输出矩阵； $D(t)$ 是 $q\times p$ 矩阵，表示系统的输入直接作用在输出的部分，称为直接传递矩阵。</p>
-<p>当 $A(t), B(t), C(t), D(t)$ 均为常数时，上述状态空间方程退化为线性时不变方程</p>
-<script type="math/tex; mode=display">
-\dot{x}(t)=Ax(t)+Bu(t) \\
-y(t)=Cx(t)+Du(t)  \tag{3}</script><h3 id="Linearization"><a href="#Linearization" class="headerlink" title="Linearization"></a>Linearization</h3><p>暂时还没看懂哈</p>
-<h2 id="Chapter-3-State-Space-Solutions-and-Properties"><a href="#Chapter-3-State-Space-Solutions-and-Properties" class="headerlink" title="Chapter 3 State-Space Solutions and Properties"></a>Chapter 3 State-Space Solutions and Properties</h2><p>问题描述：对于(3)中的线性时不变系统，目的是 obtain responses $x(t), y(t)$ for $t\geq t_0$ to initial state $x(t_0)$ and $u(t), t\geq t_0$</p>
-<h3 id="Homogeneous-Solution"><a href="#Homogeneous-Solution" class="headerlink" title="Homogeneous Solution"></a>Homogeneous Solution</h3><p>To be continued…</p>
- 
-      <!-- reward -->
-      
-    </div>
+  <ul class="ads">
     
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
         <li>
-          <i class="ri-copyright-line"></i>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-          
+            <a href="">
+                <img src="" width="" alt="">
+            </a>
         </li>
-      </ul>
-    </div>
     
-    <footer class="article-footer">
+        <li>
+            <a href="">
+                <img src="" width="" alt="">
+            </a>
+        </li>
+    
+</ul>
+  
+  
+  <article class="articles">
+    
+    
+    <h1 class="page-type-title">#&nbspCourses review and learning</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2023" class="archive-year">2023</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2023/09/13/%E6%97%B6%E5%9F%9F%E8%BD%AC%E9%A2%91%E5%9F%9F/" class="archive-article-date">
+  <time datetime="2023-09-13T06:20:57.000Z" itemprop="datePublished">09/13</time>
+</a>
        
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://josiechourx.top/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/signal-and-system/" rel="tag">signal and system</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-  <nav class="article-nav">
-    
-      <a href="/2023/08/26/Short%20Electric%20Dipole/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Short Electric Dipole
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Integral formulation for migration in two and three dimensions</div>
-      </a>
-    
-  </nav>
-
-  
-   
-  
-   
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2023/09/13/%E6%97%B6%E5%9F%9F%E8%BD%AC%E9%A2%91%E5%9F%9F/"
+    >信号与系统</a> 
+</h2>
  
-</article>
 
+    </header>
+    
+    
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Courses-review-and-learning/" rel="tag">Courses review and learning</a></li></ul>
+
+    
+  </div>
+</article>
+      
+      
+    </div>
+  </div>
+  
+  
+
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -406,22 +276,6 @@ y(t)=Cx(t)+Du(t)  \tag{3}</script><h3 id="Linearization"><a href="#Linearization
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
