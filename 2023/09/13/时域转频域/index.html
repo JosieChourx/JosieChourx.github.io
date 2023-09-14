@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k</span>
+            <span class="post-count">2.4k</span>
         </span>
     </span>
 
@@ -154,7 +154,9 @@ x[n] = \sum_{k=-\infty}^{+\infty} x[k]\delta [n-k]</script><h2 id="P2-典型的�
 <script type="math/tex; mode=display">
 x[n]=\delta [n]</script><p>输入单位脉冲序列 $\delta [n]$ 到LTI系统得到的是单位脉冲响应 $h[n]$。<br>故对于任意输入 $x[n]$ 到LTI系统， 得到的输出 $y[n]$ 为</p>
 <script type="math/tex; mode=display">
-y[n] = x[n]\ast h[n]</script><p><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em><em><em>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</em></em>相同系统。**<br>求解该卷积有两种方法：</p>
+y[n] = x[n]\ast h[n]</script><p>可以理解为将 $x[n]$ 表示为不同个经过变形后的单位脉冲序列的叠加，对于每一个单位脉冲序列，经过LTI系统后都会产生一个经过了相应变形的单位脉冲响应，将产生的所有的 $h[n]$ 叠加即为 $y[n]$。(详细举例解释可见胡老师课程P7开始部分) 啊….要五点了好困还没看到傅里叶出现！</p>
+<p><strong>h[n] 是LTI系统唯一的标识，只要两个LTI系统的 h[n] 一样，则是相同系统。</strong></p>
+<p>求解该卷积有两种方法：</p>
 <ol>
 <li><p>列表法<br> 第一步是确定 $y[n] = x[n] \ast h[n]$ 的取值范围。即 $x[n]$ 的最小横坐标值加 $h[n]$ 的最小横坐标值即为 $y[n]$ 的最小横坐标值，最大横坐标值亦然。</p>
 <p>(这个也很容易理解，比如说输入的$x[n]$可以分解为一系列变形的单位脉冲序列的叠加，假设分解后$x[n]$ 最左边的值为 $\delta [n+1]$，且对于一个LTI系统，它单位脉冲序列 $\delta [n]$ 产生的对应的单位脉冲响应 $h[n]$ 最左边的值为 $3\delta [n+1]$，即$x[n]$对单位脉冲序列的变形为向左移动了一位，故坐标为-1，$h[n]$ 最小坐标也为-1，将 $x[n]$ 输入LTI系统后，对应的脉冲响应也产生向左移动一位的变形，即最小坐标变为-1-1=-2)。</p>
