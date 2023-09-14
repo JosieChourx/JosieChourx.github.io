@@ -98,7 +98,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">2.3k</span>
         </span>
     </span>
 
@@ -107,7 +107,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6 分钟</span>
+            <span class="post-count">10 分钟</span>
         </span>
     </span>
 </div>
@@ -126,8 +126,8 @@
 <h2 id="P1-典型的信号"><a href="#P1-典型的信号" class="headerlink" title="P1 典型的信号"></a>P1 典型的信号</h2><ol>
 <li><p>周期信号：</p>
 <script type="math/tex; mode=display">
-x(t) = &x(t+mT)~~~~~~  &m\in Z \\
-x[n] = &x[n+mN]~~~~~~  &m\in Z,~N是一个自然数</script></li>
+x(t) = x(t+mT)~~~~~~  m\in Z \\
+x[n] = x[n+mN]~~~~~~  m\in Z,~N是一个自然数</script></li>
 <li><p>功率信号和能量信号<br>设信号 $x(t)$ 为电压或电流。<br>则它在 $1\Omega$ 的电阻上的瞬时功率为： </p>
 <script type="math/tex; mode=display">
 p(t) = |x(t)|^2</script><p>在 $t_1\leq t \leq t_2$ 内消耗的能量为：</p>
@@ -189,7 +189,53 @@ x(t) \ast [h_1 (t) + h_2 (t)] = x(t) \ast h_1 (t) + x(t) \ast h_2 (t)</script><p
 \frac{d[x(t) \ast h(t)]}{dt} = \frac{dx(t)}{dt} \ast h(t)</script><p>不知道叫什么的性质：</p>
 <script type="math/tex; mode=display">
 x(t + t_0) \ast h(t - t_0) = x(t) \ast h(t)</script><p>啊！终于要到傅里叶变换了</p>
-<h2 id="P4-连续信号频域分析-傅里叶变换"><a href="#P4-连续信号频域分析-傅里叶变换" class="headerlink" title="P4 连续信号频域分析(傅里叶变换)"></a>P4 连续信号频域分析(傅里叶变换)</h2> 
+<h2 id="P4-连续信号频域分析-傅里叶变换"><a href="#P4-连续信号频域分析-傅里叶变换" class="headerlink" title="P4 连续信号频域分析(傅里叶变换)"></a>P4 连续信号频域分析(傅里叶变换)</h2><h3 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h3><p><strong>正交函数系：</strong></p>
+<p>三角函数列</p>
+<script type="math/tex; mode=display">
+1,\cos x,\sin x,\cos 2x,\sin 2x,\cdots,\cos nx,\sin nx \tag{1}</script><p>称为三角函数系，且具有共同的周期 $2\pi$。</p>
+<p>在三角函数系中，任何两个不相同的函数的乘积在 $[-\pi, \pi]$ 上的积分等于零，即</p>
+<script type="math/tex; mode=display">
+\int_{-\pi}^{\pi} \cos nxdx = \int_{-\pi}^{\pi} \sin nxdx = 0</script><script type="math/tex; mode=display">
+\int_{-\pi}^{\pi} \cos mx \cos nxdx=0 ~~ (m\neq n)</script><script type="math/tex; mode=display">
+\int_{-\pi}^{\pi} \sin mx \sin nxdx=0 ~~ (m\neq n)</script><script type="math/tex; mode=display">
+\int_{-\pi}^{\pi} \cos mx \sin nxdx=0</script><p>而(1)中任何一个函数的平方在 $[-\pi, \pi]$ 上的积分都不等于零，即</p>
+<script type="math/tex; mode=display">
+\int_{-\pi}^{\pi} \cos^ nx dx = \int_{-\pi}^{\pi} \sin^ nx dx = \pi</script><p>若两个函数 $\phi$ 和 $\psi$ 在 $[a,b]$ 上可积，且</p>
+<script type="math/tex; mode=display">
+\int_{a}^{b} \phi(x)\psi(x)dx = 0</script><p>则称 $\phi$ 和 $\psi$ 在 $[a,b]$ 上是正交的，或在 $[a,b]$ 上具有正交性。由此三角函数系(1)在 $[-\pi, \pi]$ 上具有正交性，或者说它们是正交函数系。</p>
+<p><strong>傅里叶级数</strong><br>函数 $x(t)$ 的傅里叶级数</p>
+<script type="math/tex; mode=display">
+x(t) = B_0+\sum_{n=1}^{\infty}(B_k\cos (k\omega_0 t)+C_k\sin (k\omega_0 t))</script><p>其中：</p>
+<script type="math/tex; mode=display">
+B_0 = \frac{1}{T_0} \int_{0}^{T_0}x(t)dt</script><script type="math/tex; mode=display">
+B_k = \frac{2}{T_0} \int_{0}^{T_0}x(t)\cos (k\omega_0 t)dt</script><script type="math/tex; mode=display">
+C_k = \frac{2}{T_0} \int_{0}^{T_0}x(t)\sin (k\omega_0 t)dt</script><p>能表示成这样的形式前提是 $x$ 满足收敛性条件：</p>
+<ol>
+<li><p>一个周期绝对可积，即</p>
+<script type="math/tex; mode=display">
+\int_{0}^{T_0} x(t)dt < +\infty</script></li>
+<li><p>一个周期内 $x(t)$ 最值有限。</p>
+</li>
+<li>一个周期内连续点有限。</li>
+</ol>
+<p><strong>傅里叶级数的复数表达形式</strong></p>
+<script type="math/tex; mode=display">
+x(t) = \sum_{k=-\infty}^{+\infty} a_k e^{jk\omega_0 t}</script><script type="math/tex; mode=display">
+a_k = \frac{1}{T_0} \int_{T_0} x(t)e^{-jk\omega_0 t}dt</script><p>上述两种形式等价的，且可以相互转换。</p>
+<h3 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h3><p>将傅里叶级数推广到非周期函数。（上述傅里叶级数具有周期 $T_0$，且 $T_0 = \frac{2\pi}{\omega_0}$）<br>非周期函数 $x(t)$ 的傅里叶变换：</p>
+<script type="math/tex; mode=display">
+X(j\omega) = \int_{-\infty}^{+\infty} x(t)e^{-j\omega t} dt</script><script type="math/tex; mode=display">
+x(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} X(j\omega) e^{j\omega t} d\omega</script><h3 id="离散傅里叶变换"><a href="#离散傅里叶变换" class="headerlink" title="离散傅里叶变换"></a>离散傅里叶变换</h3><p>考虑长度为 $N$ 的时域复信号 $x[n]$，它通过 $N$ 点的 $DFT$ 就可以变成长度为 $N$ 的频域复信号 $X[k]$，反过来从频域变换到时域就是 $IDFT$</p>
+<script type="math/tex; mode=display">
+X[k]=\sum_{n=0}^{N-1} x[n]e^{-j2\pi kn/N}</script><script type="math/tex; mode=display">
+x[n]=\frac{1}{N}\sum_{n=0}^{N-1} X[k]e^{j2\pi kn/N}</script><p>$Matlab$ 中采用 $FFT$ 来实现 $DFT$，$FFT$ 是 $DFT$ 的快速算法，从数学本质上和 $DFT$ 是没有什么区别的。</p>
+<p>从时域转换到频域，$X[0]$ 代表直流分量，紧接着的 $\frac{N}{2}$ 个点代表的是正频率分量，接下来的 $\frac{N}{2}-1$ 个点代表的是负频率分量。</p>
+<p>如果输入的时域信号是一个非周期信号，那么 $FFT$ 的长度需要不小于时域信号的长度，但是如果时域信号是一个周期信号，那么 $FFT$ 的长度只需要比该周期信号的一个周期长即可。</p>
+<p>发现一个讲得很清楚明白的帖子：</p>
+<p><a target="_blank" rel="noopener" href="https://www.guyuehome.com/35495">Matlab实现傅里叶变换</a></p>
+<p>实现从时域到频域的转换，最后得到频域的幅值谱和相位谱。</p>
+<p>不写了，花了两个半天，干饭去！</p>
+ 
       <!-- reward -->
       
     </div>
@@ -678,6 +724,21 @@ x(t + t_0) \ast h(t - t_0) = x(t) \ast h(t)</script><p>啊！终于要到傅里�
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
