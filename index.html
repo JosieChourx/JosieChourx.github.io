@@ -179,6 +179,77 @@
     
     
     <article
+  id="post-20230916"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/09/16/20230916/"
+    >20230916</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/09/16/20230916/" class="article-date">
+  <time datetime="2023-09-16T14:54:29.000Z" itemprop="datePublished">2023-09-16</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="20230916-星期六"><a href="#20230916-星期六" class="headerlink" title="20230916 星期六"></a>20230916 星期六</h3><p>今天有一个疑惑尚未解决，记录一下，怕我忘了。</p>
+<p>对于高斯一族：</p>
+<ol>
+<li>高斯信号：</li>
+</ol>
+<script type="math/tex; mode=display">
+W(t)=e^{-\zeta (t-\chi)^2}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\zeta = 2\pi^2f^2,~~~ \chi = \frac{1}{f}</script><p>其对应的频域信号(即傅里叶变换)为</p>
+<script type="math/tex; mode=display">
+Y(f) = \sqrt{\frac{\pi}{\zeta}}e^{-\frac{\pi^2f^2}{\zeta}}e^{-i2\pi f\chi};</script><ol>
+<li>高斯一阶导信号 gaussiandot：<script type="math/tex; mode=display">
+W(t)= -2\zeta(t-\chi)e^{-\zeta (t-\chi)^2}</script>因为时域与频域有以下的对应关系：<script type="math/tex; mode=display">
+(\frac{\partial}{\partial t})^n = (-i\omega)^n</script></li>
+</ol>
+<p>故其对应的频域信号为：</p>
+<script type="math/tex; mode=display">
+Y(f) = (-i2\pi f)\sqrt{\frac{\pi}{\zeta}}e^{-\frac{\pi^2f^2}{\zeta}}e^{-j2\pi f\chi};</script><ol>
+<li>高斯二阶导信号 gaussiandotdot：<script type="math/tex; mode=display">
+W(t)= 2\zeta(2\zeta(t-\chi)^2-1)e^{-\zeta (t-\chi)^2}</script>其对应的频域信号应该为：<script type="math/tex; mode=display">
+Y(f) = (-i2\pi f)^2\sqrt{\frac{\pi}{\zeta}}e^{-\frac{\pi^2f^2}{\zeta}}e^{-j2\pi f\chi};</script>但是在 $Matlab$ 中，高斯信号和高斯一阶信号的 $FFT$ 和上述解析解的幅值和相位都能对上，只有高斯二阶导的相位对不上，真奇怪。有待解决。</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Live-once/" rel="tag">Live once</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-时域转频域"
   class="article article-type-post"
   itemscope
@@ -1394,21 +1465,6 @@ u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (
     
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
