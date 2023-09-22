@@ -206,7 +206,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="20230916-星期六"><a href="#20230916-星期六" class="headerlink" title="20230916 星期六"></a>20230916 星期六</h3><p>今天有一个疑惑尚未解决，记录一下，怕我忘了。</p>
+  <h3 id="20230916-星期六"><a href="#20230916-星期六" class="headerlink" title="20230916 星期六"></a>20230916 星期六</h3><p><strong>2023.09.22更新：</strong><br>得到答案了，对于gaussiandotdot，相位出现不同的点都在 3.14 和 -3.14，即 $\pi$ 和 $-\pi$，其对应的相位是一样的</p>
+<script type="math/tex; mode=display">
+e^{j\pi} = e^{j(-\pi)} = 1</script><p>———————————————————— 原po ———————————————————<br>今天有一个疑惑尚未解决，记录一下，怕我忘了。</p>
 <p>对于高斯一族：</p>
 <ol>
 <li>高斯信号：</li>
@@ -1465,6 +1467,21 @@ u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

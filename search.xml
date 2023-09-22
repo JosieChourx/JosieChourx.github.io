@@ -3,7 +3,9 @@
   <entry>
     <title>20230916</title>
     <url>/2023/09/16/20230916/</url>
-    <content><![CDATA[<h3 id="20230916-星期六"><a href="#20230916-星期六" class="headerlink" title="20230916 星期六"></a>20230916 星期六</h3><p>今天有一个疑惑尚未解决，记录一下，怕我忘了。</p>
+    <content><![CDATA[<h3 id="20230916-星期六"><a href="#20230916-星期六" class="headerlink" title="20230916 星期六"></a>20230916 星期六</h3><p><strong>2023.09.22更新：</strong><br>得到答案了，对于gaussiandotdot，相位出现不同的点都在 3.14 和 -3.14，即 $\pi$ 和 $-\pi$，其对应的相位是一样的</p>
+<script type="math/tex; mode=display">
+e^{j\pi} = e^{j(-\pi)} = 1</script><p>———————————————————— 原po ———————————————————<br>今天有一个疑惑尚未解决，记录一下，怕我忘了。</p>
 <p>对于高斯一族：</p>
 <ol>
 <li>高斯信号：</li>
@@ -42,9 +44,97 @@ Y(f) = (-i2\pi f)^2\sqrt{\frac{\pi}{\zeta}}e^{-\frac{\pi^2f^2}{\zeta}}e^{-j2\pi 
       </tags>
   </entry>
   <entry>
+    <title>computational electrodynamics chapter 2</title>
+    <url>/2023/07/02/Computational%20electrodynamics/</url>
+    <content><![CDATA[<h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
+<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
+<script type="math/tex; mode=display">
+\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
+<script type="math/tex; mode=display">
+u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
+<script type="math/tex; mode=display">
+c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
+<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
+<script type="math/tex; mode=display">
+u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
+<script type="math/tex; mode=display">
+(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
+<script type="math/tex; mode=display">
+\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
+<script type="math/tex; mode=display">
+v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
+<script type="math/tex; mode=display">
+v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
+<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
+<script type="math/tex; mode=display">
+u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
+<script type="math/tex; mode=display">
+u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
+<script type="math/tex; mode=display">
+{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
+]]></content>
+      <categories>
+        <category>computational electrodynamics</category>
+      </categories>
+      <tags>
+        <tag>EM learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kirchhoff migration</title>
     <url>/2023/08/12/Kirchhoff%20migration/</url>
     <content><![CDATA[<h1 id="有关逆时偏移成像方法"><a href="#有关逆时偏移成像方法" class="headerlink" title="有关逆时偏移成像方法"></a>有关逆时偏移成像方法</h1><h2 id="基尔霍夫-Kirchhoff-积分偏移成像方法"><a href="#基尔霍夫-Kirchhoff-积分偏移成像方法" class="headerlink" title="基尔霍夫(Kirchhoff)积分偏移成像方法"></a>基尔霍夫(Kirchhoff)积分偏移成像方法</h2><p>利用优化算法，将瞬变电磁场进行波场变换，得到“波场”，将波场分析的原理即地震波场从地面向地下反向外推进行偏移成像的方法用于对瞬变电磁场的解释，形成瞬变电磁场的偏移方法。即对观测电磁数据向下延拓，构建产生响应的地下电阻率图像。</p>
+]]></content>
+      <categories>
+        <category>inverse problem</category>
+      </categories>
+      <tags>
+        <tag>EM learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Integral formulation for migration in two and three dimensions</title>
+    <url>/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/</url>
+    <content><![CDATA[<h1 id="Integral-formulation-for-migration-in-2D-and-3D"><a href="#Integral-formulation-for-migration-in-2D-and-3D" class="headerlink" title="Integral formulation for migration in 2D and 3D"></a>Integral formulation for migration in 2D and 3D</h1><p>​        Summation (integration) along a  diffraction hyperbola(衍射双曲线) was recognized as a way to  automate the familiar point-to-point coordinate transformation performed by interpreters in ==mapping  reflections from the x, t (traveltime) domain into the  x, z (depth domain).==<br>​        Migration can also be viewed as a downward continuation operation which transforms surface recorded data to a deeper hypothetical recording  surface.</p>
+<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>In homogeneous scalar wave equation</p>
+<script type="math/tex; mode=display">
+\nabla^2U-\frac{1}{C^2}U_{tt}=-4\pi q(r,t) \tag{1}</script><p>The complete solution to the equation is turned to be homogeneous wave equation and inhomogeneous boundary conditions of the Dirichlet type.  The remaining surface integral is given by</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{4\pi}\int dt_0\int dS_0 \left[G\frac{\partial}{\partial n}U(r_0,t_0)-U(r_0,t_0)\frac{\partial}{\partial n}G\right] \tag{2}</script><p>The specific geometry of interest is shown in Figure 1</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/1.jpg" alt="1" style="zoom:70%;" /></p>
+<p><em><em>n</em></em><strong>n</strong> the outward normal vector to the surface $S_0$. 因此边值表示简化为一个包含 $S_0$ 上波场的表面积分和一个合适的格林函数 $G$. 由于方程 (2) 中的 $U(r_0,t_0)$ 等同于观测到的地质数据，因此使得在 $S_0$ 面上 $G=0$.  A Green’s function having  the desired properties at the free surface consists of  a point source at $r_0$ and its negative image at $r_0^{‘}$ .</p>
+<script type="math/tex; mode=display">
+G(r,t|r_0,t_0)=\frac{\delta(t-t_0-\frac{R}{C})}{R}-\frac{\delta(t-t_0-\frac{R^{'}}{C})}{R} \tag{3}</script><p>where</p>
+<script type="math/tex; mode=display">
+R=\sqrt{(z-z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>and </p>
+<script type="math/tex; mode=display">
+R^{'}=\sqrt{(z+z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>将(3)式替换进(2)式，可以得到在任何点的波长 $U(r,t)$ 的积分表示。</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{2\pi}\int dt_0 \int dA_0 \cdot U(r_0,t_0)\frac{\partial}{\partial z_0}\left[\frac{\delta(t-t_0-\frac{R}{C})}{R}\right] \tag{4}</script><p><em><em>Kirchhoff integral</em></em><em><em>Kirchhoff integral</em></em>f integral**. </p>
+<p>通过处理对 $z_0$ 的微分和对 $t_0$ 的积分，可以得到一个 (4) 的等价的表达式</p>
+<script type="math/tex; mode=display">
+U(r,t)=\frac{1}{2\pi} \int dA_0 \frac{\cos\theta}{RC}\left[U^{'}(r_0,t_0)+\frac{C}{R}U(r_0,t_0)\right]_{t_0=t-(\frac{R}{C})} \tag{5}</script><p>方程(4)的另外一种表示是通过将 $z_0$ 导数与 $z$ 导数交换，然后可以在积分外取</p>
+<script type="math/tex; mode=display">
+U(r,t)=-\frac{1}{\pi} \frac{\partial}{\partial z} \int dA_0 \frac{U(r_0,t-\frac{R}{C})}{R} \tag{6}</script><p>如前所述，积分变换方程 (4) 可以用其他符号来表示成三维卷积</p>
+<script type="math/tex; mode=display">
+U(x,y,z,t)=U(x,y,z_0,t)\ast\frac{1}{2\pi} \frac{\partial}{\partial z_0}\left[\frac{\delta(t\pm \frac{r}{C})}{r}\right]  \tag{7}</script><p>where</p>
+<script type="math/tex; mode=display">
+r^2=\Delta z^2+x^2+y^2</script><p>若对x, y和t进行傅里叶变换，则该表达式在频域上变为复乘法</p>
+<script type="math/tex; mode=display">
+\tilde{U}(k_x,k_y,z,\omega)=\tilde{U}(k_x,k_y,z_0,\omega)H(k_x,k_y,\Delta z,\omega)  \tag{8}</script><p>where</p>
+<script type="math/tex; mode=display">
+H = e^{\pm i|\Delta z|}\sqrt{(\frac{\omega}{C})^2-k_x^2-k_y^2} \tag{9}</script><p>传递函数 $H$ 是一个纯相位算子，体现了标量波动方程的色散关系。方程(7)和(8)中符号的选择很重要，因为它决定了推导的方向。如下图所示</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/2.jpg" alt="2" style="zoom:70%;" /></p>
+<p><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em>e sign** in operator H to extrapolate ==converging waves back toward their origins==.</p>
+<p>为了更好的阐述方程(4)，即基尔霍夫积分方程，以及迁移原则，如下图所示</p>
+<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/3.jpg" alt="3" style="zoom:70%;" /></p>
+<p>输入假设是在 $Z=0$ 上堆叠的数据， 输出是在某些 $x,y$ 位置上的单轨迹。当receiver向下移动通过一些重叠的位置时候，通过计算 $t=0$ 的积分，在每一步都映射出一个点。</p>
 ]]></content>
       <categories>
         <category>inverse problem</category>
@@ -259,94 +349,6 @@ H_\Phi = \frac{I_0 L\sin\theta}{4\pi r^2}   \tag{63}</script><p>对于式(53)，
       </tags>
   </entry>
   <entry>
-    <title>computational electrodynamics chapter 2</title>
-    <url>/2023/07/02/Computational%20electrodynamics/</url>
-    <content><![CDATA[<h1 id="Chapter-2-一维标量波动方程"><a href="#Chapter-2-一维标量波动方程" class="headerlink" title="Chapter 2 一维标量波动方程"></a>Chapter 2 一维标量波动方程</h1><p>本章采用数值FDTD方法求解一维标量波动方程，是后续解决二维和三维麦克斯韦方程组的基础。</p>
-<h2 id="2-2-波动方程解"><a href="#2-2-波动方程解" class="headerlink" title="2.2 波动方程解"></a>2.2 波动方程解</h2><p>考虑以下一维标量波动方程：</p>
-<script type="math/tex; mode=display">
-\frac{\partial^2{u}}{\partial t^2} = c^2 \frac{\partial^2{u}}{\partial x^2}  \tag{1}</script><p>其中 $u = u(x,t)$. 假设以下形式的解：</p>
-<script type="math/tex; mode=display">
-u(x,t) = F(x+ct) + G(x-ct)</script><p>其中 $F$ 和 $G$ 是任意函数。将 $F$ 和 $G$ 代入上述二阶求导当中，可以得到：</p>
-<script type="math/tex; mode=display">
-c^2F''(x+ct)+c^2G''(x-ct) = c^2[F''(x+ct)+G''(x-ct)]  \tag{2}</script><p>无论 $F$ 和 $G$ 的取值，这都是一个恒等式。故 $F$ 和 $G$ 是该波动方程的解。考虑在某一特定时刻 $t_0$，$F = F(x+ct)$. 经历了 $\Delta t$ 后，$F$ 向左移动了 $c\Delta t$ 米(往 $-x<br>$ 方向)。因为函数 $F$ 中关于时间的部分增加了 $c\Delta t$，所以关于空间的部分需要减少$c\Delta t$来维持与之前相同的函数值。对于$G(x-ct)$也是同样的，但它将会是一个右行波。两个函数中的$c$表示向 $+x$ 或 $-x$ 方向传播的波的波速。</p>
-<h2 id="2-3-色散关系"><a href="#2-3-色散关系" class="headerlink" title="2.3 色散关系"></a>2.3 色散关系</h2><p>&emsp;&emsp;在这一章将介绍色散关系。色散定义为行波的波长 $\lambda$ 随频率 $f$ 的变化。一般情况下，色散表示为行波的波数 $k = 2\pi/\lambda$，其中角频率为 $\omega = 2\pi f$.<br>&emsp;&emsp;考虑一个连续正弦行波的解，它的矢量形式为：</p>
-<script type="math/tex; mode=display">
-u(x,t) = e^{j(\omega t-kx)} \tag{3}</script><p>其中 $\omega$ 和 $k$ 是基于 $j = \sqrt{-1}$ 的定义。 将其带入 $(1)$ 可以得到：</p>
-<script type="math/tex; mode=display">
-(j\omega)^2e^{j(\omega t -kx)} = c^2(-jk)^2e^{j(\omega t -kx)}</script><p>根据左右系数相同，我们可以得到：</p>
-<script type="math/tex; mode=display">
-\omega^2 = c^2k^2  \rightarrow  k = \pm \omega/c \tag{4}</script><p>这是对于一维标量波动方程的色散关系式。可以看出波数 $k$ 线性正比于正弦波频率。其中 $+$ 表示往 $+x$ 方向传播， $-$ 表示往 $-x$ 方向传播。<br>根据 $(4)$ 式我们同样可以表示波的相速度：</p>
-<script type="math/tex; mode=display">
-v_p = \omega /k = \pm c \tag{5}</script><p>可以看出相速度与频率无关，始终为常数 $\pm c$。<br>根据 $(4)$ 式后得到的 $(5)$ 式中的恒定相速度，故可以称之为无色散的。故无论传播了多长的距离波形将不会改变。<br>同样，考虑角频率是波数的函数，即 $\omega = \omega(k)$，故通过对 $k$ 求导可以得到群速:</p>
-<script type="math/tex; mode=display">
-v_g = \frac{d\omega}{dk} = \frac{2c^2k}{2\omega} = \frac{c^2}{\omega}\cdot(\pm \frac{\omega}{c}) = \pm c</script><p>故群速也与频率无关，恒定为 $\pm c$. </p>
-<h2 id="2-4-有限差"><a href="#2-4-有限差" class="headerlink" title="2.4 有限差"></a>2.4 有限差</h2><p>&emsp;&emsp;考虑 $u(x,t_n)$ 到 $x_i + \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} + \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_1,t_n}</script><p>最后一项可以看作残差，其中 $\xi_1$ 是空间中位于 $(x_i, x_i + \Delta x)$ 里的一点。同样，考虑 $u(x,t_n)$ 到 $x_i - \Delta x$ 在时间点 $t_n$ 处的展开：</p>
-<script type="math/tex; mode=display">
-u(x_i - \Delta x)\mid_{t_n} = u\mid_{x_i,t_n} - \Delta x \cdot {\frac{\partial u}{\partial x}}\mid_{x_i,t_n} + \frac{(\Delta x)^2}{2}\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} - \frac{(\Delta x)^3}{6}\cdot{\frac{\partial^3 u}{\partial x^3}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{24}\cdot{\frac{\partial^4 u}{\partial x^4}}\mid_{\xi_2,t_n}</script><p>其中 $\xi_2$ 是空间中位于 $(x_i, x_i - \Delta x)$ 里的一点。将上述两式相加可得：</p>
-<script type="math/tex; mode=display">
-u(x_i + \Delta x)\mid_{t_n} + u(x_i - \Delta x)\mid_{t_n} = 2u\mid_{x_i,t_n} + (\Delta x)^2\cdot{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} + \frac{(\Delta x)^4}{12}\cdot{\frac{\partial^3 u}{\partial x^4}}\mid_{\xi_3,t_n} \tag{6}</script><p>故根据中值定理，$\xi_3$ 是空间中位于 $(x_i - \Delta x, x_i + \Delta x)$ 里的一点。最后由 $(6)$ 式可以得到：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = [\frac{u(x_i + \Delta x)-2u(x_i)+u(x_i - \Delta x)}{(\Delta x)^2}]_{t_n} + O[(\Delta x)^2] \tag{7}</script><p>其中 $O[(\Delta x)^2]$ 代表最后那个快要趋于0的残差项，因为平方项衰减得很快。<br>用下标 $i$ 表示空间位置， 下标 $n$ 表示观测时间点，则 $(7)$ 式可以表示为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial x^2}}\mid_{x_i,t_n} = \frac{u_{i+1}^{n} - 2u_{i}^{n} +u_{i-1}^{n} }{(\Delta x)^2} + O[(\Delta x)^2] \tag{8}</script><p>在接下来的有限差表达式中，都用 $u_{i}^{n}$ 来表示在场点 $x_i =i\Delta x$ 和时间点 $t_n = n\Delta t$处的场量。<br>同样的，对于场量关于时间的求导，可以类比于 $(8)$ 式表达为：</p>
-<script type="math/tex; mode=display">
-{\frac{\partial^2 u}{\partial t^2}}\mid_{x_i,t_n} = \frac{u_{i}^{n+1} - 2u_{i}^{n} +u_{i}^{n-1} }{(\Delta t)^2} + O[(\Delta t)^2] \tag{9}</script><h2 id="2-4-有限差求解一维波动方程"><a href="#2-4-有限差求解一维波动方程" class="headerlink" title="2.4 有限差求解一维波动方程"></a>2.4 有限差求解一维波动方程</h2><p>&emsp;&emsp;考虑</p>
-]]></content>
-      <categories>
-        <category>computational electrodynamics</category>
-      </categories>
-      <tags>
-        <tag>EM learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Integral formulation for migration in two and three dimensions</title>
-    <url>/2023/08/13/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions/</url>
-    <content><![CDATA[<h1 id="Integral-formulation-for-migration-in-2D-and-3D"><a href="#Integral-formulation-for-migration-in-2D-and-3D" class="headerlink" title="Integral formulation for migration in 2D and 3D"></a>Integral formulation for migration in 2D and 3D</h1><p>​        Summation (integration) along a  diffraction hyperbola(衍射双曲线) was recognized as a way to  automate the familiar point-to-point coordinate transformation performed by interpreters in ==mapping  reflections from the x, t (traveltime) domain into the  x, z (depth domain).==<br>​        Migration can also be viewed as a downward continuation operation which transforms surface recorded data to a deeper hypothetical recording  surface.</p>
-<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p>In homogeneous scalar wave equation</p>
-<script type="math/tex; mode=display">
-\nabla^2U-\frac{1}{C^2}U_{tt}=-4\pi q(r,t) \tag{1}</script><p>The complete solution to the equation is turned to be homogeneous wave equation and inhomogeneous boundary conditions of the Dirichlet type.  The remaining surface integral is given by</p>
-<script type="math/tex; mode=display">
-U(r,t)=\frac{1}{4\pi}\int dt_0\int dS_0 \left[G\frac{\partial}{\partial n}U(r_0,t_0)-U(r_0,t_0)\frac{\partial}{\partial n}G\right] \tag{2}</script><p>The specific geometry of interest is shown in Figure 1</p>
-<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/1.jpg" alt="1" style="zoom:70%;" /></p>
-<p><em><em>n</em></em><strong>n</strong> the outward normal vector to the surface $S_0$. 因此边值表示简化为一个包含 $S_0$ 上波场的表面积分和一个合适的格林函数 $G$. 由于方程 (2) 中的 $U(r_0,t_0)$ 等同于观测到的地质数据，因此使得在 $S_0$ 面上 $G=0$.  A Green’s function having  the desired properties at the free surface consists of  a point source at $r_0$ and its negative image at $r_0^{‘}$ .</p>
-<script type="math/tex; mode=display">
-G(r,t|r_0,t_0)=\frac{\delta(t-t_0-\frac{R}{C})}{R}-\frac{\delta(t-t_0-\frac{R^{'}}{C})}{R} \tag{3}</script><p>where</p>
-<script type="math/tex; mode=display">
-R=\sqrt{(z-z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>and </p>
-<script type="math/tex; mode=display">
-R^{'}=\sqrt{(z+z_0)^2+(x-x_0)^2+(y-y_0)^2}</script><p>将(3)式替换进(2)式，可以得到在任何点的波长 $U(r,t)$ 的积分表示。</p>
-<script type="math/tex; mode=display">
-U(r,t)=\frac{1}{2\pi}\int dt_0 \int dA_0 \cdot U(r_0,t_0)\frac{\partial}{\partial z_0}\left[\frac{\delta(t-t_0-\frac{R}{C})}{R}\right] \tag{4}</script><p><em><em>Kirchhoff integral</em></em><em><em>Kirchhoff integral</em></em>f integral**. </p>
-<p>通过处理对 $z_0$ 的微分和对 $t_0$ 的积分，可以得到一个 (4) 的等价的表达式</p>
-<script type="math/tex; mode=display">
-U(r,t)=\frac{1}{2\pi} \int dA_0 \frac{\cos\theta}{RC}\left[U^{'}(r_0,t_0)+\frac{C}{R}U(r_0,t_0)\right]_{t_0=t-(\frac{R}{C})} \tag{5}</script><p>方程(4)的另外一种表示是通过将 $z_0$ 导数与 $z$ 导数交换，然后可以在积分外取</p>
-<script type="math/tex; mode=display">
-U(r,t)=-\frac{1}{\pi} \frac{\partial}{\partial z} \int dA_0 \frac{U(r_0,t-\frac{R}{C})}{R} \tag{6}</script><p>如前所述，积分变换方程 (4) 可以用其他符号来表示成三维卷积</p>
-<script type="math/tex; mode=display">
-U(x,y,z,t)=U(x,y,z_0,t)\ast\frac{1}{2\pi} \frac{\partial}{\partial z_0}\left[\frac{\delta(t\pm \frac{r}{C})}{r}\right]  \tag{7}</script><p>where</p>
-<script type="math/tex; mode=display">
-r^2=\Delta z^2+x^2+y^2</script><p>若对x, y和t进行傅里叶变换，则该表达式在频域上变为复乘法</p>
-<script type="math/tex; mode=display">
-\tilde{U}(k_x,k_y,z,\omega)=\tilde{U}(k_x,k_y,z_0,\omega)H(k_x,k_y,\Delta z,\omega)  \tag{8}</script><p>where</p>
-<script type="math/tex; mode=display">
-H = e^{\pm i|\Delta z|}\sqrt{(\frac{\omega}{C})^2-k_x^2-k_y^2} \tag{9}</script><p>传递函数 $H$ 是一个纯相位算子，体现了标量波动方程的色散关系。方程(7)和(8)中符号的选择很重要，因为它决定了推导的方向。如下图所示</p>
-<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/2.jpg" alt="2" style="zoom:70%;" /></p>
-<p><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em><em><em>positive sign</em></em>e sign** in operator H to extrapolate ==converging waves back toward their origins==.</p>
-<p>为了更好的阐述方程(4)，即基尔霍夫积分方程，以及迁移原则，如下图所示</p>
-<p><img src="D:/JosieChourx/myblog/source/_posts/Paper%20reading%20(1)%20Integral%20formulation%20for%20migration%20in%20two%20and%20three%20dimensions.assets/3.jpg" alt="3" style="zoom:70%;" /></p>
-<p>输入假设是在 $Z=0$ 上堆叠的数据， 输出是在某些 $x,y$ 位置上的单轨迹。当receiver向下移动通过一些重叠的位置时候，通过计算 $t=0$ 的积分，在每一步都映射出一个点。</p>
-]]></content>
-      <categories>
-        <category>inverse problem</category>
-      </categories>
-      <tags>
-        <tag>EM learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>信号与系统</title>
     <url>/2023/09/13/%E6%97%B6%E5%9F%9F%E8%BD%AC%E9%A2%91%E5%9F%9F/</url>
     <content><![CDATA[<h1 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h1><p>大二学的信号与系统也白学了。。。还是得从头学一遍。最近发现有好多地方需要用到傅里叶变换作为时域信号和频域信号之间的桥梁，索性快速地将信号与系统再回顾一遍了。此处大多数引用的是B站浙大胡浩基老师的课程，讲得真好！</p>
@@ -472,6 +474,24 @@ x[n]=\frac{1}{N}\sum_{n=0}^{N-1} X[k]e^{j2\pi kn/N}</script><p>$Matlab$ 中采�
       </tags>
   </entry>
   <entry>
+    <title>白噪声</title>
+    <url>/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/</url>
+    <content><![CDATA[<h2 id="白噪声"><a href="#白噪声" class="headerlink" title="白噪声"></a>白噪声</h2><p>白噪声源自white noise的翻译，其中的 “白” 应该是指其频谱特性是一条直线，并无其他有效信息。</p>
+<h3 id="用功率谱密度分析随机信号，为什么不用频谱分析："><a href="#用功率谱密度分析随机信号，为什么不用频谱分析：" class="headerlink" title="用功率谱密度分析随机信号，为什么不用频谱分析："></a>用功率谱密度分析随机信号，为什么不用频谱分析：</h3><p>频谱分析是针对确定信号的（因为要满足狄利克雷条件，随机信号无法满足），这样分析才有意义。随机信号有若干的样本函数，他们不仅是很难确定的，而且是随机的，所以即使你找到了一条样本函数，得到了频谱，它也是无意义的，因为它不能反映整个随机过程的情况。</p>
+<p>一个信号有三个组成部分:幅值、相位和频率成分。<br>对于随机信号而言,这三个组成部分都是随机的，它的幅值是围绕平均值在交变，包含所有的频率成分，相位完全杂乱无序。任一时刻与下一时刻之间没有任何关联，所以，不能用确定的数学函数来表征，只能从统计学角度来分析处理。</p>
+<p>那么为什么用功率谱可以呢？因为统计特性是不随时间的推移而变化的，所以随机过程的自相关函数能够在时域完整描述其统计特性，而自相关函数的FT变换，也就是功率谱密度是在频域对随机过程统计特性的完整描述。</p>
+<p>狄利克雷条件是一个信号存在傅里叶变换的充分不必要条件。</p>
+<p>狄利克雷条件括三方面：</p>
+<p>（1 ）在一周期内，连续或只有有限个第一类间断点；</p>
+<p>（2）在一周期内，极大值和极小值的数目应是有限个；</p>
+<p>（3）在一周期内，信号是绝对可积的。</p>
+<p>高斯白噪声是一个功率信号，其功率有限，能量无限。</p>
+]]></content>
+      <tags>
+        <tag>signal and system</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linear System</title>
     <url>/2023/08/23/%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h2 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h2><h3 id="Review-of-Classical-Control-Systems"><a href="#Review-of-Classical-Control-Systems" class="headerlink" title="Review of Classical Control Systems"></a>Review of Classical Control Systems</h3><h4 id="Laplace-Transformation"><a href="#Laplace-Transformation" class="headerlink" title="Laplace Transformation"></a>Laplace Transformation</h4><script type="math/tex; mode=display">
@@ -510,24 +530,6 @@ y(t)=C(t)x(t)+D(t)u(t)</script><p>其中，$x$ 是 $n$ 维状态矢量； $u$ �
 y(t)=Cx(t)+Du(t)  \tag{3}</script><h3 id="Linearization"><a href="#Linearization" class="headerlink" title="Linearization"></a>Linearization</h3><p>暂时还没看懂哈</p>
 <h2 id="Chapter-3-State-Space-Solutions-and-Properties"><a href="#Chapter-3-State-Space-Solutions-and-Properties" class="headerlink" title="Chapter 3 State-Space Solutions and Properties"></a>Chapter 3 State-Space Solutions and Properties</h2><p>问题描述：对于(3)中的线性时不变系统，目的是 obtain responses $x(t), y(t)$ for $t\geq t_0$ to initial state $x(t_0)$ and $u(t), t\geq t_0$</p>
 <h3 id="Homogeneous-Solution"><a href="#Homogeneous-Solution" class="headerlink" title="Homogeneous Solution"></a>Homogeneous Solution</h3><p>To be continued…</p>
-]]></content>
-      <tags>
-        <tag>signal and system</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>白噪声</title>
-    <url>/2023/06/19/%E7%99%BD%E5%99%AA%E5%A3%B0/</url>
-    <content><![CDATA[<h2 id="白噪声"><a href="#白噪声" class="headerlink" title="白噪声"></a>白噪声</h2><p>白噪声源自white noise的翻译，其中的 “白” 应该是指其频谱特性是一条直线，并无其他有效信息。</p>
-<h3 id="用功率谱密度分析随机信号，为什么不用频谱分析："><a href="#用功率谱密度分析随机信号，为什么不用频谱分析：" class="headerlink" title="用功率谱密度分析随机信号，为什么不用频谱分析："></a>用功率谱密度分析随机信号，为什么不用频谱分析：</h3><p>频谱分析是针对确定信号的（因为要满足狄利克雷条件，随机信号无法满足），这样分析才有意义。随机信号有若干的样本函数，他们不仅是很难确定的，而且是随机的，所以即使你找到了一条样本函数，得到了频谱，它也是无意义的，因为它不能反映整个随机过程的情况。</p>
-<p>一个信号有三个组成部分:幅值、相位和频率成分。<br>对于随机信号而言,这三个组成部分都是随机的，它的幅值是围绕平均值在交变，包含所有的频率成分，相位完全杂乱无序。任一时刻与下一时刻之间没有任何关联，所以，不能用确定的数学函数来表征，只能从统计学角度来分析处理。</p>
-<p>那么为什么用功率谱可以呢？因为统计特性是不随时间的推移而变化的，所以随机过程的自相关函数能够在时域完整描述其统计特性，而自相关函数的FT变换，也就是功率谱密度是在频域对随机过程统计特性的完整描述。</p>
-<p>狄利克雷条件是一个信号存在傅里叶变换的充分不必要条件。</p>
-<p>狄利克雷条件括三方面：</p>
-<p>（1 ）在一周期内，连续或只有有限个第一类间断点；</p>
-<p>（2）在一周期内，极大值和极小值的数目应是有限个；</p>
-<p>（3）在一周期内，信号是绝对可积的。</p>
-<p>高斯白噪声是一个功率信号，其功率有限，能量无限。</p>
 ]]></content>
       <tags>
         <tag>signal and system</tag>
